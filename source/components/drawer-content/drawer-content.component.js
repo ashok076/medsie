@@ -46,7 +46,7 @@ const DrawerComponent = ({navigation, userData}) => {
               <Icon name="home" color={color} size={size} />
             )}
             label="Home"
-            onPress={() => navigation.navigate('Fileupload')}
+            onPress={() => navigation.navigate('Home')}
           />
         </Drawer.Section>
       </DrawerContentScrollView>
