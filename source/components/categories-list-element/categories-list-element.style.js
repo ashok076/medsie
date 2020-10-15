@@ -14,7 +14,16 @@ const styles = StyleSheet.create({
         height: "40%"
     },
     cardView: {
-    padding: 5
+        padding: 5
+    },
+    body: {
+        padding: 7
+    },
+    horizontalView: {
+        flexDirection: 'row'
+    },
+    ratingView: {
+        height: '10%'
     }
 })
 
