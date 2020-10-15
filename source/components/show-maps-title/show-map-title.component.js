@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {View, TouchableOpacity} from 'react-native';
 import {Text} from 'react-native-paper'
 
+import NoBackgroundButton from '../no-background-button/no-background-button.component'
+
 import styles from './show-map-title.style';
 
 const ShowMapsTitle = ({title}) => (
@@ -9,9 +11,7 @@ const ShowMapsTitle = ({title}) => (
             <View>
                 <View style={styles.titleView}>
                     <Text>{title}</Text>
-                    <TouchableOpacity style={styles.showMap}>
-                        <Text>Show Maps</Text>
-                    </TouchableOpacity>
+                    <NoBackgroundButton title="Show Maps" />
                 </View>
             </View>
 )

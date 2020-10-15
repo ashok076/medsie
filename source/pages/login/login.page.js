@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View, ScrollView, Text, TouchableOpacity} from 'react-native';
 
 import InputText from '../../components/input-text/input-text.component';
-import InputTextIcon from '../../components/input-text-icon/input-text-icon.component.js'
+import InputTextIcon from '../../components/input-text-icon/input-text-icon.component'
 import Button from '../../components/button/button.component';
 import TouchText from '../../components/touch-text/touch-text.component'
 

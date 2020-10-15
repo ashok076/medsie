@@ -14,32 +14,12 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 import styles from './drawer-content.style';
 
-const DrawerComponent = ({navigation, userData}) => {
+const DrawerComponent = ({navigation}) => {
   let name = 'name';
-  let access_token = null;
-  console.log('Draewr: ', userData);
-  if (userData && userData.userData) {
-    name = userData.userData.fullname;
-    access_token = userData.userData.access_token;
-  }
   return (
     <View style={styles.drawerContent}>
       <DrawerContentScrollView>
         <View style={styles.drawerContent}>
-          <View style={styles.userInfoSection}>
-            <View style={styles.avatarView}>
-              <Avatar.Image
-                source={{
-                  uri: 'https://api.adorable.io/avatars/285/10@adorable.io.png',
-                }}
-                size={50}
-              />
-              <View style={styles.userInfoView}>
-                <Title style={styles.title}>{name}</Title>
-              </View>
-            </View>
-          </View>
-        </View>
         <Drawer.Section style={styles.drawerSection}>
           <DrawerItem
             icon={({color, size}) => (
@@ -49,6 +29,33 @@ const DrawerComponent = ({navigation, userData}) => {
             onPress={() => navigation.navigate('Home')}
           />
         </Drawer.Section>
+        <Drawer.Section style={styles.drawerSection}>
+          <DrawerItem
+            label="Login"
+            onPress={() => navigation.navigate('Home')}
+          />
+          <DrawerItem
+            label="Register"
+            onPress={() => navigation.navigate('Home')}
+          />
+          <DrawerItem
+            label="List a store"
+            onPress={() => navigation.navigate('Home')}
+          />
+          <DrawerItem
+            label="Settings"
+            onPress={() => navigation.navigate('Home')}
+          />
+          <DrawerItem
+            label="Privacy Policy"
+            onPress={() => navigation.navigate('Home')}
+          />
+          <DrawerItem
+            label="About Medsie"
+            onPress={() => navigation.navigate('Home')}
+          />
+        </Drawer.Section>
+        </View>
       </DrawerContentScrollView>
       <Drawer.Section style={styles.bottomDrawerSection}>
         <Drawer.Item
@@ -57,7 +64,6 @@ const DrawerComponent = ({navigation, userData}) => {
           )}
           label="Log Out"
           onPress={() => {
-            logout(navigation, access_token);
             navigation.closeDrawer();
           }}
         />
