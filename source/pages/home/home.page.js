@@ -20,6 +20,8 @@ class Home extends Component {
             <SafeAreaView style={styles.container}>
                 <View>
                     <Header navigation={navigation}/>
+                </View>
+                <View style={styles.bodyContainer}>
                     <HomeContent navigation={navigation}/>
                 </View>
             </SafeAreaView>
