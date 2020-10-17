@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, ScrollView, Text, TouchableWithoutFeedback, ToastAndroid} from 'react-native';
+import {View, ScrollView, Text, TouchableWithoutFeedback, ToastAndroid, Image} from 'react-native';
 import qs from 'qs';
 
 import InputText from '../../components/input-text/input-text.component';
@@ -80,6 +80,8 @@ navigate = (page) => {
             <View style={styles.container}>
                 <ScrollView keyboardShouldPersistTaps='handled'>
                 <View style={styles.innerContainer}>
+                    <View>
+                        <Image source={require('../../assets/png-images/medsie_logo.png')}/>
                     <Text style={styles.title}>Find stores, doctors and events right next to you</Text>
                     <Text style={styles.loginText}>LOGIN</Text>
                     <View style={styles.inputContainer}>
@@ -115,6 +117,7 @@ navigate = (page) => {
                         </Text>
                     </View>
                     <Loader isLoader={isLoader}/>
+                    </View>
                 </View>
             </ScrollView>
             </View>

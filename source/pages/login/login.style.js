@@ -5,11 +5,12 @@ import {Color} from '../../assets/color/color.assets'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Color.backGroundColor
+        backgroundColor: Color.backGroundColor,
     },
     innerContainer: {
       padding: 10,
-        backgroundColor: Color.backGroundColor
+        backgroundColor: Color.backGroundColor,
+        marginTop: 100
     },
   inputContainer: {
     paddingTop: 15,
