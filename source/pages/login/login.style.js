@@ -1,15 +1,21 @@
 import {StyleSheet} from 'react-native'
 
+import {Color} from '../../assets/color/color.assets'
+
 const styles = StyleSheet.create({
     container: {
-        padding: 15,
-        flex: 1
+        flex: 1,
+        backgroundColor: Color.backGroundColor
+    },
+    innerContainer: {
+      padding: 10,
+        backgroundColor: Color.backGroundColor
     },
   inputContainer: {
-    paddingTop: 20,
+    paddingTop: 15,
   },
   buttonContainer: {
-    paddingTop: 20,
+    paddingTop: 15,
   },
   forgotPassView: {
     width: '100%',
@@ -17,7 +23,8 @@ const styles = StyleSheet.create({
     marginTop: 18
   },
   forgotPassword: {
-      fontSize: 15
+      fontSize: 14,
+      color: Color.grey
   },
   accountView: {
     width: '100%',
@@ -25,24 +32,24 @@ const styles = StyleSheet.create({
     marginTop: 30
   },
   accountText: {
-      fontSize: 17
+      fontSize: 15
   },
   createAcTouch: {
       flexDirection: 'row'
   },
   createTxt: {
-    fontSize: 17
+    fontSize: 15
   },
   createTouchTxt: {
-      color: 'purple', 
-      fontSize: 17
+      color: Color.primaryColor, 
+      fontSize: 15
   },
   loginText: {
-      fontSize: 19,
+      fontSize: 17,
       marginTop: 20
   },
   title: {
-      fontSize: 19,
+      fontSize: 17,
       width: "75%",
       marginTop: 15
   }
