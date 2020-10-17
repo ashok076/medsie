@@ -41,12 +41,14 @@ submit  = () => {
                 'FirstName': firstname 
             })
             register(data).then(res => {
-                this.showMessage('Account created successfull')
+                this.showMessage('Account created successfully')
+                console.log("Res: ", res)
                 this.setState({ isLoader: false })
                 navigation.goBack()
             }).catch(error => {
                 this.showMessage(error.response.data.error_description)
                 this.setState({ isLoader: false })
+                console.log("error: ", error)
             })
         }
     }

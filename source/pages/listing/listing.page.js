@@ -19,14 +19,16 @@ class Listing extends Component {
         return (
             <SafeAreaView style={styles.container}>
                 <BackHeader title=""/>
-                <ScrollView>
-                    <CompanyCard />
-                    <ActionButtons/>
-                    <Introduction />
-                    <View style={styles.border}/>
-                    <TimingStatus />
-                    <View style={styles.border}/>
-                    <Reviews />
+                    <ScrollView>
+                    <View style={styles.innerContainer}>
+                        <CompanyCard />
+                        <ActionButtons/>
+                        <Introduction />
+                        <View style={styles.border}/>
+                        <TimingStatus />
+                        <View style={styles.border}/>
+                        <Reviews />
+                        </View>
                 </ScrollView>
             </SafeAreaView>
         )
