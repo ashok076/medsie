@@ -8,10 +8,11 @@ import styles from './introduction.style';
 
 const Introduction  = () => (
             <View style={styles.container}>
-                <Title>Introduction</Title>
+                <Title style={styles.title}>Introduction</Title>
                 <ReadMore
-                    numberOfLines={3}>
-                    <Text style={styles.cardText}>
+                    numberOfLines={5}
+                    textStyle={styles.introduction}>
+                    <Text style={styles.introductions}>
                         At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
       praesentium voluptatum deleniti atque corrupti quos dolores et quas
       molestias excepturi sint occaecati cupiditate non provident, similique

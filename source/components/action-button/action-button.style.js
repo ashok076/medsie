@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+import {Color} from '../../assets/color/color.assets'
+
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
@@ -8,11 +10,14 @@ const styles = StyleSheet.create({
         marginTop: 10
     },
     icon: {
-        marginRight: 10,
+        marginRight: 15,
         borderRadius: 50,
-        width: 45,
-        height: 45,
-        backgroundColor: 'pink'
+        alignItems: 'center',
+    },
+    label: {
+        fontSize: 12,
+        color: Color.purpleishBlue,
+        fontFamily: 'Asap-Regular'
     }
 })
 

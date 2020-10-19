@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     },
     margin: {
         marginRight: 5
-    }
+    },
 })
 
 export default styles;

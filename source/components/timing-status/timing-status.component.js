@@ -29,7 +29,7 @@ const list = [{
 
 const TimingStatus  = () => (
             <View style={styles.container}>
-            <Title style={styles.close}>Close </Title>
+            <Title style={styles.close}>CLOSED NOW </Title>
                 <View>
                     <FlatList
                         data={list}
@@ -42,10 +42,10 @@ const TimingStatus  = () => (
 const renderTime = (item) => (
     <View style={[styles.row, styles.viewMargin]}>
         <View style={styles.rowContainer}>
-            <Text>{item.item.days}</Text>
+            <Text style={styles.days}>{item.item.days}</Text>
         </View>
         <View style={styles.rowContainer}>
-            <Text>{item.item.time}</Text>
+            <Text style={styles.time}>{item.item.time}</Text>
         </View>
     </View>
 )
