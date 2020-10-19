@@ -33,6 +33,7 @@ const DrawerComponent = ({navigation}) => {
             )}
             label="Recreational Shops"
             onPress={() => navigation.navigate('Home')}
+            labelStyle={styles.labelStyle}
           />
           <DrawerItem
             icon={({color, size}) => (
@@ -40,6 +41,7 @@ const DrawerComponent = ({navigation}) => {
             )}
             label="Medical Shops"
             onPress={() => navigation.navigate('Home')}
+            labelStyle={styles.labelStyle}
           />
           <DrawerItem
             icon={({color, size}) => (
@@ -47,6 +49,7 @@ const DrawerComponent = ({navigation}) => {
             )}
             label="Deliveries"
             onPress={() => navigation.navigate('Home')}
+            labelStyle={styles.labelStyle}
           />
           <DrawerItem
             icon={({color, size}) => (
@@ -54,6 +57,7 @@ const DrawerComponent = ({navigation}) => {
             )}
             label="Doctors"
             onPress={() => navigation.navigate('Home')}
+            labelStyle={styles.labelStyle}
           />
           <DrawerItem
             icon={({color, size}) => (
@@ -61,32 +65,39 @@ const DrawerComponent = ({navigation}) => {
             )}
             label="Events"
             onPress={() => navigation.navigate('Home')}
+            labelStyle={styles.labelStyle}
           />
         </Drawer.Section>
         <Drawer.Section style={styles.drawerSection}>
           <DrawerItem
             label="Login"
             onPress={() => navigation.navigate('Home')}
+            labelStyle={styles.labelStyle}
           />
           <DrawerItem
             label="Register"
             onPress={() => navigation.navigate('Home')}
+            labelStyle={styles.labelStyle}
           />
           <DrawerItem
             label="List a store"
             onPress={() => navigation.navigate('Home')}
+            labelStyle={styles.labelStyle}
           />
           <DrawerItem
             label="Settings"
             onPress={() => navigation.navigate('Home')}
+            labelStyle={styles.labelStyle}
           />
           <DrawerItem
             label="Privacy Policy"
             onPress={() => navigation.navigate('Home')}
+            labelStyle={styles.labelStyle}
           />
           <DrawerItem
             label="About Medsie"
             onPress={() => navigation.navigate('Home')}
+            labelStyle={styles.labelStyle}
           />
         </Drawer.Section>
         </View>
@@ -100,6 +111,7 @@ const DrawerComponent = ({navigation}) => {
           onPress={() => {
             navigation.closeDrawer();
           }}
+            labelStyle={styles.labelStyle}
         />
       </Drawer.Section>
     </View>

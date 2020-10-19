@@ -10,9 +10,9 @@ const Stack = createStackNavigator();
 
 const MainStackNavigator = () => (
   <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Screen name="Home" component={DrawerNavigator} />
     <Stack.Screen name="Login" component={Login} />
     <Stack.Screen name="Registration" component={Registration} />
-    <Stack.Screen name="Home" component={DrawerNavigator} />
     <Stack.Screen name="Listing" component={Listing} />
   </Stack.Navigator>
 );

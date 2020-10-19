@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#FFF',
     fontSize: 15,
-    fontFamily: 'PublicSans-Regular',
+    fontFamily: 'Asap-Regular',
   },
 });
 

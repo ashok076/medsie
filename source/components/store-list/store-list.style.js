@@ -5,6 +5,8 @@ const styles = StyleSheet.create({
         marginTop: 10,
         paddingTop: 10,
         paddingBottom: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })
 

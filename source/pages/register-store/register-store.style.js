@@ -1,9 +1,10 @@
 import {StyleSheet} from 'react-native';
 
+import {Color} from '../../assets/color/color.assets'
+
 const styles = StyleSheet.create({
     container:{
-        flex: 1,
-        padding: 10
+        backgroundColor: Color.backGroundColor,
     },
   inputContainer: {
     paddingTop: 20,
@@ -21,7 +22,9 @@ const styles = StyleSheet.create({
   },
   underline: {
     borderBottomWidth: 0.5,
-    borderColor: '#000'
+    borderColor: '#000',
+    fontFamily: 'Asap-Regular',
+    color: Color.grey
   },
   rowD: {
     flexDirection: 'row',
@@ -37,9 +40,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   title: {
-    fontSize: 20,
+    fontSize: 22,
     paddingTop: 20,
-    paddingBottom: 20
+    paddingBottom: 20,
+    fontFamily: 'Asap-SemiBold'
+  },
+  uploadImageTxt: {
+    fontFamily: 'Asap-Regular',
+    color: Color.grey
+  },
+  text: {
+    fontFamily: 'Asap-Regular',
+    color: Color.grey
   }
 })
 

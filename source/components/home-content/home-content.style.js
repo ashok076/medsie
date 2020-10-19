@@ -5,7 +5,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     title: {
-        fontSize: 20
+        fontSize: 22,
+        fontFamily: 'Asap-SemiBold'
     },
     searchView: {
         flexDirection: 'row',
@@ -15,6 +16,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         width: "15%"
+    },
+    contentContainer: {
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })
 

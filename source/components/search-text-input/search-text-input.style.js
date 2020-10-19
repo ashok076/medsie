@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+import {Color} from '../../assets/color/color.assets'
+
 const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
@@ -9,8 +11,19 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 0.7,
     padding: 10,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    borderColor: Color.grey,
   },
+  searchText: {
+    color: Color.grey,
+    fontFamily: 'Asap-Regular',
+    fontSize: 14
+  },
+  location: {
+    color: Color.lightGrey,
+    fontFamily: 'Asap-Regular',
+    fontSize: 14
+  }
 });
 
 export default styles;

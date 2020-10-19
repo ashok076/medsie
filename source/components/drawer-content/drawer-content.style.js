@@ -52,6 +52,9 @@ const styles = StyleSheet.create({
       marginLeft: 15,
       flexDirection: 'column'
   },
+  labelStyle: {
+    fontFamily: 'Asap-Regular',
+  }
 });
 
 export default styles;

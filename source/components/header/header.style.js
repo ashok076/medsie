@@ -1,12 +1,10 @@
 import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   headerView: {
-    height: 40,
+    height: 60,
     width: '100%',
     alignItems: 'center',
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 15,
     borderBottomWidth: 0.5,
     borderBottomColor: "#000000",
     padding: 10
@@ -15,9 +13,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   logo: {
-    justifyContent: 'flex-end',
-    height: 30,
-    width: 30
+    marginLeft: 25
   },
 });
 export default styles

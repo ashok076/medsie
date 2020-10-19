@@ -6,8 +6,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 15,
+    fontSize: 14,
     marginLeft: 15,
+    fontFamily: 'Asap-Regular',
   },
   rowObject: {
     flexDirection: 'row',

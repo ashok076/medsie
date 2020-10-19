@@ -4,8 +4,9 @@ import {Color} from '../../assets/color/color.assets'
 
 const styles = StyleSheet.create({
     placeholder:  {
-        fontSize: 15,
-        color: Color.grey
+        fontSize: 14,
+        color: Color.grey,
+        fontFamily: 'Asap-Regular',
     },
     editTextView: {
         marginTop: 10
@@ -18,7 +19,8 @@ const styles = StyleSheet.create({
         borderColor: Color.grey,
         padding: 12,
         fontSize: 17,
-        borderWidth: 0.5
+        borderWidth: 0.5,
+        fontFamily: 'Asap-Regular',
     }
 })
 

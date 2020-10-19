@@ -6,8 +6,8 @@ import styles from './search-text-input.style'
 
 const SearchTextInput = ({navigation, location}) => (
     <TouchableOpacity style={styles.inputContainer}>
-        <Text>Search</Text>
-        <Text>{location ? location : "Location"}</Text>
+        <Text style={styles.searchText}>Search</Text>
+        <Text style={styles.location}>{location ? location : "Location"}</Text>
     </TouchableOpacity>
 )
 

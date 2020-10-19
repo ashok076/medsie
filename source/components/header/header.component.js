@@ -11,7 +11,7 @@ const Header = ({navigation}) => (
       onPress={() => navigation.toggleDrawer()}>
       <Icon name="menu" color="rgba(0,0,0,0.4)" size={24} />
     </TouchableOpacity>
-    {/* <Image style={styles.logo} source={require('../../assets/png-images/logo.png')}/> */}
+    <Image style={styles.logo} source={require('../../assets/png-images/medsie_logo.png')}/>
   </View>
 );
 export default Header;

@@ -5,7 +5,7 @@ import {Color} from '../../assets/color/color.assets'
 const styles = StyleSheet.create({
   input: {
     color: '#000000',
-    fontFamily: 'PublicSans-Regular',
+    fontFamily: 'Asap-Regular',
     padding: 12,
     flex: 1,
     fontSize: 17
@@ -20,13 +20,15 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 5,
     borderColor: Color.grey,
+        fontFamily: 'Asap-Regular',
   },
   iconStyle: {
     margin: 15,
   },    
   placeholder:  {
         fontSize: 16,
-        color: Color.grey
+        color: Color.grey,
+        fontFamily: 'Asap-Regular',
     },
 });
 

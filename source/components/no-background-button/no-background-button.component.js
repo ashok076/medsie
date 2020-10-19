@@ -8,7 +8,7 @@ const NoBackgroundButton = ({title}) => (
 
             <View>
                     <TouchableOpacity style={styles.showMap}>
-                        <Text>{title}</Text>
+                        <Text style={styles.title}>{title}</Text>
                     </TouchableOpacity>
             </View>
 )

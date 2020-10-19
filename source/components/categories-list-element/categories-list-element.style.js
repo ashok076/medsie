@@ -17,13 +17,22 @@ const styles = StyleSheet.create({
         padding: 5
     },
     body: {
-        padding: 7
+        padding: 8
     },
     horizontalView: {
         flexDirection: 'row'
     },
     ratingView: {
         height: '10%'
+    },
+    title: {
+        fontFamily: 'Asap-Regular',
+    },
+    caption: {
+        fontFamily: 'Asap-Regular',
+    },
+    place: {
+        fontFamily: 'Asap-Regular',
     }
 })
 

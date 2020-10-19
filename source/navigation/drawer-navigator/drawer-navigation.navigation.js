@@ -9,9 +9,9 @@ const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   return (
-    <Drawer.Navigator initialRouteName="Home" drawerContent={(prop) => <DrawerComponent {...prop} />}>
-      <Drawer.Screen name="Home" component={Home} />
+    <Drawer.Navigator drawerContent={(prop) => <DrawerComponent {...prop} />}>
       <Drawer.Screen name="RegisterStore" component={RegisterStore} />
+      <Drawer.Screen name="Home" component={Home} />
     </Drawer.Navigator>
   );
 };

@@ -33,26 +33,32 @@ const styles = StyleSheet.create({
     marginTop: 30
   },
   accountText: {
-      fontSize: 15
+      fontSize: 14,
+      fontFamily: 'Asap-Regular',
   },
   createAcTouch: {
-      flexDirection: 'row'
+      flexDirection: 'row',
+      fontFamily: 'Asap-Regular',
   },
   createTxt: {
-    fontSize: 15
+    fontSize: 14,
+      fontFamily: 'Asap-Regular',
   },
   createTouchTxt: {
       color: Color.primaryColor, 
-      fontSize: 15
+      fontSize: 14,
+      fontFamily: 'Asap-Regular',
   },
   loginText: {
-      fontSize: 17,
-      marginTop: 20
+      fontSize: 16,
+      marginTop: 20,
+        fontFamily: 'Asap-SemiBold',
   },
   title: {
-      fontSize: 17,
+      fontSize: 22,
       width: "75%",
-      marginTop: 15
+      marginTop: 15,
+      fontFamily: 'Asap-SemiBold',
   }
 })
 

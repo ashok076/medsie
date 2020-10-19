@@ -21,7 +21,7 @@ class RegisterStore extends Component {
 storeHours = () => (
     <View>
         <View style={styles.row}>
-            <Text> Store Hours </Text>
+            <Text style={styles.text}> Store Hours </Text>
             <Text style={styles.underline}> Add custom dates </Text>
         </View>
     </View>
@@ -30,7 +30,7 @@ storeHours = () => (
 weekdays = () => (
     <View>
         <View style={styles.row}>
-            <Text> Weekdays </Text>
+            <Text style={styles.text}> Weekdays </Text>
             <View style={styles.rowD}>
                 <NoBackgroundButton title="10:00 AM"/>
                 <Text> to </Text>
@@ -43,7 +43,7 @@ weekdays = () => (
 weekends = () => (
     <View>
         <View style={styles.row}>
-            <Text> Weekends </Text>
+            <Text style={styles.text}> Weekends </Text>
             <View style={styles.rowD}>
                 <NoBackgroundButton title="10:00 AM"/>
                 <Text> to </Text>
@@ -56,7 +56,7 @@ weekends = () => (
 uploadImage = () => (
     <TouchableOpacity style={styles.uploadImageView}>
         <Icon name="upload" size={30}/>
-        <Text> Upload an Image </Text>
+        <Text style={styles.uploadImageTxt}> Upload an Image </Text>
     </TouchableOpacity>
 )
 
@@ -65,7 +65,7 @@ uploadImage = () => (
         return (
             <SafeAreaView>
                 <ScrollView>
-                    <View>
+                    <View style={styles.container}>
                     <Header navigation={navigation}/>
                     <View style={styles.bodycontainer}>
                     <Text style={styles.title}> Register your store </Text>

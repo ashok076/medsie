@@ -10,7 +10,7 @@ const ShowMapsTitle = ({title}) => (
 
             <View>
                 <View style={styles.titleView}>
-                    <Text>{title}</Text>
+                    <Text style={styles.title}>{title}</Text>
                     <NoBackgroundButton title="Show Maps" />
                 </View>
             </View>

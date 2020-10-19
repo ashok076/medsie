@@ -1,9 +1,13 @@
 import {StyleSheet} from 'react-native';
 
+import {Color} from '../../assets/color/color.assets'
+
 const styles = StyleSheet.create({
     placeholder:  {
-        fontSize: 18,
-        alignItems: 'flex-start'
+        fontSize: 14,
+        alignItems: 'flex-start',
+        fontFamily: 'Asap-Regular',
+        color: Color.grey,
     },
     editTextView: {
         marginTop: 15
@@ -13,7 +17,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         height: 150,
         width: "100%",
-        borderColor: "#000",
+        borderColor: Color.grey,
         padding: 15,
         fontSize: 17,
         borderWidth: 0.5,
@@ -26,7 +30,9 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     message: {
-        fontSize: 15,
+        fontSize: 14,
+        fontFamily: 'Asap-Regular',
+        color: Color.lightGrey,
     },
 })
 
