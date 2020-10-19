@@ -11,6 +11,12 @@ import {
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
+import Shops from '../../assets/svg-files/shops.svg';
+import MedicalShops from '../../assets/svg-files/medical-shops.svg';
+import Deliveries from '../../assets/svg-files/deliveries.svg';
+import Doctors from '../../assets/svg-files/docto.svg';
+import Events from '../../assets/svg-files/event.svg';
+
 
 import styles from './drawer-content.style';
 
@@ -23,9 +29,37 @@ const DrawerComponent = ({navigation}) => {
         <Drawer.Section style={styles.drawerSection}>
           <DrawerItem
             icon={({color, size}) => (
-              <Icon name="home" color={color} size={size} />
+              <Shops width={size} height={size} />
             )}
-            label="Home"
+            label="Recreational Shops"
+            onPress={() => navigation.navigate('Home')}
+          />
+          <DrawerItem
+            icon={({color, size}) => (
+              <MedicalShops width={size} height={size} />
+            )}
+            label="Medical Shops"
+            onPress={() => navigation.navigate('Home')}
+          />
+          <DrawerItem
+            icon={({color, size}) => (
+              <Deliveries width={size} height={size} />
+            )}
+            label="Deliveries"
+            onPress={() => navigation.navigate('Home')}
+          />
+          <DrawerItem
+            icon={({color, size}) => (
+              <Doctors width={size} height={size} />
+            )}
+            label="Doctors"
+            onPress={() => navigation.navigate('Home')}
+          />
+          <DrawerItem
+            icon={({color, size}) => (
+              <Events width={size} height={size} />
+            )}
+            label="Events"
             onPress={() => navigation.navigate('Home')}
           />
         </Drawer.Section>
