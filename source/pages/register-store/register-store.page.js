@@ -61,12 +61,13 @@ uploadImage = () => (
 )
 
     render(){
-        const {navigation} = this.props;
+        const {navigation, route} = this.props;
+        const {showDrawer} = route.params
         return (
             <SafeAreaView>
                 <ScrollView>
                     <View style={styles.container}>
-                    <Header navigation={navigation}/>
+                    {showDrawer ? <Header navigation={navigation}/> : <View/>}
                     <View style={styles.bodycontainer}>
                     <Text style={styles.title}> Register your store </Text>
                         {this.uploadImage()}

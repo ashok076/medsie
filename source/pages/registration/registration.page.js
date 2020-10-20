@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View, ScrollView, Text, TouchableWithoutFeedback, ToastAndroid} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import qs from 'qs'
 
 import InputText from '../../components/input-text/input-text.component';
@@ -24,6 +25,7 @@ class Registration extends Component {
             password: '',
             confirmpassword: '',
             isLoader: false,
+            access_token: ''
         }
     }
 
@@ -42,14 +44,23 @@ submit  = () => {
             })
             register(data).then(res => {
                 this.showMessage('Account created successfully')
-                console.log("Res: ", res)
-                this.setState({ isLoader: false })
-                navigation.goBack()
+                this.setState({ isLoader: false, access_token: res.access_token },() => this.saveAccessToken())
             }).catch(error => {
                 this.showMessage(error.response.data.error_description)
                 this.setState({ isLoader: false })
                 console.log("error: ", error)
             })
+        }
+    }
+}
+
+saveAccessToken = async () => {
+    const {access_token} = this.state;
+    if (access_token !== null || access_token !== undefined || access_token !== ''){
+        try {
+            await AsyncStorage.setItem('access_token', access_token);
+        } catch (error) {
+            console.log("Async Access token error", access_token);
         }
     }
 }
@@ -92,6 +103,30 @@ showMessage = (message) => {
       ToastAndroid.SHORT,
       ToastAndroid.BOTTOM
     );
+}
+
+navigate = () => {
+    const {navigation} = this.props;
+    const access_token = this.getSaveAccessToken();
+    if (access_token !== ''){
+        navigation.navigate('RegisterStore', {
+            showDrawer: false
+        });
+    }else {
+        this.showMessage('Please first register to list your store')
+    }
+    
+}
+
+getSaveAccessToken = async () => {
+    try {
+    const value = await AsyncStorage.getItem('@storage_Key')
+    if(value !== null) {
+      return value
+    }
+  } catch(e) {
+    return '';
+  }
 }
 
     render(){
@@ -155,7 +190,7 @@ showMessage = (message) => {
                             Do you want your store to get listed?
                         </Text>
                         <Text style={styles.accountText}>
-                            <TouchableWithoutFeedback><View style={styles.createAcTouch}><Text style={styles.createTxt}>Click here to </Text><Text style={styles.createTouchTxt}>list your store</Text></View></TouchableWithoutFeedback>
+                            <TouchableWithoutFeedback onPress={() => this.navigate()}><View style={styles.createAcTouch}><Text style={styles.createTxt}>Click here to </Text><Text style={styles.createTouchTxt}>list your store</Text></View></TouchableWithoutFeedback>
                         </Text>
                     </View>
                     <Loader isLoader={isLoader}/>

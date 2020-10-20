@@ -26,3 +26,17 @@ export const login = async (data) => {
         throw error;
     });
 }
+
+export const registerStore = async (data, access_token) => {
+    return axios(API.REGISTER_STORE, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Bearer ' + access_token
+        },
+        data
+    }).then(response => response.data)
+    .catch(error => {
+        throw error;
+    })
+}
