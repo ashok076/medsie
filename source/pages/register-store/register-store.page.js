@@ -14,7 +14,10 @@ class RegisterStore extends Component {
     constructor(){
         super()
         this.state = {
-            hide: 1
+            storeName: '',
+            storeNumber: '',
+            storeAddress: '',
+            addIntroduction: '',
         }
     }
 
@@ -62,7 +65,8 @@ uploadImage = () => (
 
     render(){
         const {navigation, route} = this.props;
-        const {showDrawer} = route.params
+        const {showDrawer} = route.params;
+        const {storeName, storeNumber, storeAddress, addIntroduction} = this.state;
         return (
             <SafeAreaView>
                 <ScrollView>
@@ -74,23 +78,34 @@ uploadImage = () => (
                         <View style={styles.inputContainer}>
                         <InputText
                             placeHolder="Enter store name"
+                            value={storeName}
+                            keyboardType="default"
+                            onChangeText={(storeName) => this.setState({ storeName })}
                         />
                     </View>
                     <View style={styles.inputContainer}>
                         <InputText
                             placeHolder="Enter store number"
                             keyboardType="number-pad"
+                            value={storeNumber}
+                            onChangeText={(storeNumber) => this.setState({ storeNumber })}
                         />
                     </View>
                     <View style={styles.inputContainer}>
                         <InputText
                             placeHolder="Enter store address"
+                            value={storeAddress}
+                            keyboardType="default"
+                            onChangeText={(storeAddress) => this.setState({ storeAddress })}
                         />
                     </View>
                     <View style={styles.inputContainer}>
                         <MultilineInput
                             placeHolder="Enter store address"
                             message="Not more than 500 words"
+                            value={addIntroduction}
+                            keyboardType="default"
+                            onChangeText={(addIntroduction) => this.setState({ addIntroduction })}
                         />
                     </View>
                     {this.storeHours()}
