@@ -86,7 +86,7 @@ const DrawerComponent = ({navigation}) => {
           />
           <DrawerItem
             label="Settings"
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.navigate('AccountSettings')}
             labelStyle={styles.labelStyle}
           />
           <DrawerItem

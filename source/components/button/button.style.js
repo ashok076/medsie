@@ -6,12 +6,14 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 5
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: 'black'
   },
   title: {
-    color: '#FFF',
-    fontSize: 15,
-    fontFamily: 'Asap-Regular',
+    color: '#000',
+    fontSize: 16,
+    fontFamily: 'Asap-SemiBold',
   },
 });
 

@@ -5,7 +5,7 @@ import {Color} from '../../assets/color/color.assets'
 const styles = StyleSheet.create({
     container: {
         height: 150,
-        width: '90%'
+        width: '90%',
     },
     row: {
         flexDirection: 'row',

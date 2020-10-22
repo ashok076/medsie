@@ -7,9 +7,9 @@ import MedicalHome from "../../assets/svg-files/medical-shops-home.svg";
 import ShopHome from "../../assets/svg-files/shops-home.svg";
 
 export const categories = [
-    {id: 1, icon: <ShopHome height={60} width={60}/>},
-    {id: 2, icon: <MedicalHome height={60} width={60}/>},
-    {id: 3, icon: <DeliveriesHome height={60} width={60}/>},
-    {id: 4, icon: <DoctorHome height={60} width={60}/>},
-    {id: 5, icon: <EventsHome height={60} width={60}/>},
+    {id: 1, icon: <ShopHome height={55} width={55}/>},
+    {id: 2, icon: <MedicalHome height={55} width={55}/>},
+    {id: 3, icon: <DeliveriesHome height={55} width={55}/>},
+    {id: 4, icon: <DoctorHome height={55} width={55}/>},
+    {id: 5, icon: <EventsHome height={55} width={55}/>},
 ]

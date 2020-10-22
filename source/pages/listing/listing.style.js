@@ -5,6 +5,7 @@ import {Color} from '../../assets/color/color.assets'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: "#FFFFFF"
     },
     border: {
         borderBottomWidth: 0.5,
