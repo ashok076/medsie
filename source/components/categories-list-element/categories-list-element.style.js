@@ -5,8 +5,8 @@ const height = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
     card: {
-        width: width / 2.6,
-        height: height / 4,
+        width: width / 2.8,
+        height: height / 3.5,
         marginRight: 10,
         borderRadius: 5,
     },
@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
     },
     place: {
         fontFamily: 'Asap-Regular',
+    },
+    starView: {
+        alignItems: 'flex-start'
     }
 })
 

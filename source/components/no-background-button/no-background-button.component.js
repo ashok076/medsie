@@ -4,10 +4,10 @@ import {Text} from 'react-native-paper'
 
 import styles from './no-background-button.style';
 
-const NoBackgroundButton = ({title}) => (
+const NoBackgroundButton = ({title, onPress}) => (
 
             <View>
-                    <TouchableOpacity style={styles.showMap}>
+                    <TouchableOpacity style={styles.showMap} onPress={onPress}>
                         <Text style={styles.title}>{title}</Text>
                     </TouchableOpacity>
             </View>

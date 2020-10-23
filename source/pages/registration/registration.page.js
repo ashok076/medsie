@@ -58,7 +58,7 @@ saveAccessToken = async () => {
     const {access_token} = this.state;
     if (access_token !== null || access_token !== undefined || access_token !== ''){
         try {
-            await AsyncStorage.setItem('access_token', access_token);
+            await AsyncStorage.setItem('access_token', JSON.stringify(access_token));
         } catch (error) {
             console.log("Async Access token error", access_token);
         }
@@ -120,9 +120,9 @@ navigate = () => {
 
 getSaveAccessToken = async () => {
     try {
-    const value = await AsyncStorage.getItem('@storage_Key')
+    const value = await AsyncStorage.getItem('access_token')
     if(value !== null) {
-      return value
+      return JSON.parse(value)
     }
   } catch(e) {
     return '';

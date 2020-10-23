@@ -11,11 +11,11 @@ const Stack = createStackNavigator();
 
 const MainStackNavigator = () => (
   <Stack.Navigator screenOptions={{headerShown: false}}>
-    <Stack.Screen name="Listing" component={Listing} />
-    <Stack.Screen name="Home" component={DrawerNavigator} />
     <Stack.Screen name="Login" component={Login} />
     <Stack.Screen name="Registration" component={Registration} />
     <Stack.Screen name="RegisterStore" component={RegisterStore} />
+    <Stack.Screen name="Listing" component={Listing} />
+    <Stack.Screen name="Home" component={DrawerNavigator} />
   </Stack.Navigator>
 );
 

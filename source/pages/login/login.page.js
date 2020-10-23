@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View, ScrollView, Text, TouchableWithoutFeedback, ToastAndroid, Image} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import qs from 'qs';
 
 import InputText from '../../components/input-text/input-text.component';
@@ -18,7 +19,8 @@ class Login extends Component {
             isShowPassword: true,
             emailid: '',
             password: '',
-            isLoader: false
+            isLoader: false,
+            access_token: ''
         }
     }
 
@@ -36,13 +38,25 @@ submit  = () => {
             login(data).then(res => {
                 this.showMessage('Logged in successfull')
                 this.navigate('Home')
-                this.setState({ isLoader: false })
+                this.setState({ isLoader: false, access_token: res.access_token }, () => this.saveAccessToken())
             }).catch(error => {
                 console.log("error", error.response.data)
                 this.showMessage(error.response.data.error_description)
                 this.setState({ isLoader: false })
             })
         }
+}
+
+saveAccessToken = async () => {
+    const {access_token} = this.state;
+    if (access_token !== null || access_token !== undefined || access_token !== ''){
+        try {
+            console.log("Store access: ", access_token)
+            await AsyncStorage.setItem('access_token', JSON.stringify(access_token));
+        } catch (error) {
+            console.log("Async Access token error", access_token);
+        }
+    }
 }
 
     validation = () => {

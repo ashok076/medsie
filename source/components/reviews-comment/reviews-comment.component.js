@@ -21,7 +21,7 @@ const ReviewsComment = ({list}) => (
 renderReviews = (item) => (
     <Card style={styles.card} elevation={1}>
         <View style={styles.row}>
-            <Avatar.Text size={30} label="XD" />
+            <Avatar.Text size={30} label="M" />
             <View style={styles.usernameContainer}>
             <Text>User Name</Text>
             <Caption>Time</Caption>
