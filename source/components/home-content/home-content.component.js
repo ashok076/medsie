@@ -27,7 +27,7 @@ class HomeContent extends Component {
                     <TouchableOpacity style={styles.tune}><Filter width={30} height={30} /></TouchableOpacity>
                 </View>
                     <StoreList storeList={categories}/>
-                    <Categories />
+                    <Categories navigation={navigation}/>
                 </View>
             </ScrollView>
         )

@@ -81,7 +81,9 @@ const DrawerComponent = ({navigation}) => {
           />
           <DrawerItem
             label="List a store"
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.navigate('RegisterStore', {
+            showDrawer: true
+        })}
             labelStyle={styles.labelStyle}
           />
           <DrawerItem

@@ -44,7 +44,7 @@ submit = async () => {
         Buss_Name: storeName,
         Buss_Number: storeNumber,
         Buss_Address: storeAddress,
-        addIntroduction: Buss_Description
+        Buss_Description: addIntroduction
     })
 }
 

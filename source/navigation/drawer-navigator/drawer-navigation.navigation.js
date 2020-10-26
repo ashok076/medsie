@@ -12,8 +12,8 @@ const DrawerNavigator = () => {
   return (
     <Drawer.Navigator drawerContent={(prop) => <DrawerComponent {...prop} />}>
       <Drawer.Screen name="Home" component={Home} />
-      <Drawer.Screen name="RegisterStore" component={RegisterStore} />
       <Drawer.Screen name="AccountSettings" component={AccountSettings} />
+      <Drawer.Screen name="RegisterStore" component={RegisterStore} />
     </Drawer.Navigator>
   );
 };

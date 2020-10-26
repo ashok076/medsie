@@ -15,55 +15,57 @@ class Categories extends Component {
         }
     }
 
-    recreationalShops = () => (
+    recreationalShops = (navigation) => (
         <View>
-            <ShowMapsTitle title="Recreational Shops"/>
+            <ShowMapsTitle title="Recreational Shops" onPress={() => navigation.navigate('ShowMaps')}/>
+            <CategoriesList list={this.state.array}/>
+        </View>
+    ) 
+
+    medicalShops = (navigation) => (
+        <View>
+            <ShowMapsTitle title="Medical Shops" onPress={() => navigation.navigate('ShowMaps')}/>
             <CategoriesList list={this.state.array}/>
         </View>
     )
 
-    medicalShops = () => (
+    deliveries = (navigation) => (
         <View>
-            <ShowMapsTitle title="Medical Shops"/>
+            <ShowMapsTitle title="Deliveries" onPress={() => navigation.navigate('ShowMaps')}/>
             <CategoriesList list={this.state.array}/>
         </View>
     )
 
-    deliveries = () => (
+    doctors = (navigation) => (
         <View>
-            <ShowMapsTitle title="Deliveries"/>
+            <ShowMapsTitle title="Doctors" onPress={() => navigation.navigate('ShowMaps')}/>
             <CategoriesList list={this.state.array}/>
         </View>
     )
 
-    doctors = () => (
+    events = (navigation) => (
         <View>
-            <ShowMapsTitle title="Doctors"/>
-            <CategoriesList list={this.state.array}/>
-        </View>
-    )
-
-    events = () => (
-        <View>
-            <ShowMapsTitle title="Events"/>
+            <ShowMapsTitle title="Events" onPress={() => navigation.navigate('ShowMaps')}/>
             <CategoriesList list={this.state.array}/>
         </View>
     )
 
     render(){
         const {array} = this.state;
+        const {navigation} = this.props;
+        console.log("Nav: ", navigation)
         return (
             <View>
                 <View style={styles.gap}/>
-                {this.recreationalShops()}
+                {this.recreationalShops(navigation)}
                 <View style={styles.gap}/>
-                {this.medicalShops()}
+                {this.medicalShops(navigation)}
                 <View style={styles.gap}/>
-                {this.deliveries()}
+                {this.deliveries(navigation)}
                 <View style={styles.gap}/>
-                {this.doctors()}
+                {this.doctors(navigation)}
                 <View style={styles.gap}/>
-                {this.events()}
+                {this.events(navigation)}
             </View>
         )
     }

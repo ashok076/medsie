@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     container: {
-        height: 140,
+        height: 90,
         width: '90%',
         padding: 10
     },

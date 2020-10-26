@@ -29,6 +29,9 @@ const styles = StyleSheet.create({
   inputContainer: {
     paddingTop: 15,
   },
+  buttonContainer: {
+    paddingTop: 20,
+  },
 })
 
 export default styles;

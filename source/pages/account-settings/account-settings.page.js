@@ -5,6 +5,7 @@ import {Text} from 'react-native-paper'
 import Header from '../../components/header/header.component'
 import InputText from '../../components/input-text/input-text.component'
 import InputTextIcon from '../../components/input-text-icon/input-text-icon.component';
+import Button from '../../components/button/button.component';
 
 import styles from './account-settings.style';
 
@@ -67,7 +68,10 @@ class AccountSettings extends Component{
                             onChangeText={(dob) => this.setState({ dob })}
                         />
                         </View>
+                    <View style={styles.buttonContainer}>
+                        <Button title="Edit Settings" onPress={() => this.submit()}/>
                     </View>
+                </View>
                 </ScrollView>
             </View>
         )

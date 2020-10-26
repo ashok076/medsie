@@ -19,7 +19,6 @@ class Listing extends Component {
     render(){
         return (
             <SafeAreaView style={styles.container}>
-                <BackHeader title=""/>
                     <ScrollView>
                     <View style={styles.innerContainer}>
                         <CompanyCard />

@@ -6,12 +6,12 @@ import NoBackgroundButton from '../no-background-button/no-background-button.com
 
 import styles from './show-map-title.style';
 
-const ShowMapsTitle = ({title}) => (
+const ShowMapsTitle = ({title, onPress}) => (
 
             <View>
                 <View style={styles.titleView}>
                     <Text style={styles.title}>{title}</Text>
-                    <NoBackgroundButton title="Show Maps" />
+                    <NoBackgroundButton title="Show Maps" onPress={onPress}/>
                 </View>
             </View>
 )

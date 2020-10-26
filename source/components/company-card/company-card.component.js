@@ -9,7 +9,7 @@ import styles from './company-card.style';
 
 const CompanyCard  = ({title, location, time, image}) => (
                 <View style={[styles.row, styles.container]}>
-                    <View style={{height: '100%', width: '30%', backgroundColor: Color.purpleishBlue}}/>
+                    <View style={{height: '100%', width: '25%', backgroundColor: Color.purpleishBlue}}/>
                     <View style={styles.info}>
                         <Title style={styles.title}>Title</Title>
                         <View style={[styles.row]}>
