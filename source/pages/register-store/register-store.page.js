@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/Feather';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { format } from "date-fns";
+import qs from 'qs';
 
 import Header from '../../components/header/header.component';
 import InputText from '../../components/input-text/input-text.component';
@@ -33,23 +34,50 @@ class RegisterStore extends Component {
     }
 
 submit = async () => {
-    const {storeName, storeNumber, storeAddress, addIntroduction} = this.state;
+    const {storeName, storeNumber, storeAddress, addIntroduction, fromWeekD, toWeekD} = this.state;
     let access_token = ''
     try {
         access_token = await AsyncStorage.getItem('access_token')
     } catch (error) {
         console.log(error)
     }
-    let data = qs.stringify({
+    let arr = []
+    let bussHours = {
+        BHT_Weekdays: 'Monday',
+        BHT_FromTime: fromWeekD,
+        BHT_ToTime: toWeekD,
+        BHT_CustomDate: ''
+    }
+    arr.push(bussHours)
+    let data = JSON.stringify({
+        Type: 1,
         Buss_Name: storeName,
         Buss_Number: storeNumber,
         Buss_Address: storeAddress,
-        Buss_Description: addIntroduction
+        Buss_Description: addIntroduction,
+        BusinessHoursTransMaster_DTO: JSON.stringify(arr),
+        Buss_City: '',
+        Buss_Country: '',
+        Buss_Zip: '',
+        Buss_Description: '',
+        Buss_UserId: '',
+        Buss_Image_Path: '',
+        Buss_CatId: '',
+        Buss_TypeOfBuss: '',
+        Buss_SellType: '',
+        Buss_Lat: '',
+        Buss_Long: '',
+        UserID: ''
     })
+    console.log("Data: ", data);
+    await registerStore(data, JSON.parse(access_token))
+        .then(response => console.log("Res: ", response))
+        .catch(error => console.log("Error: ", error))
 }
 
 onDateTimeChange = (event, selectedDate) => {
-    let dateTime = format(selectedDate, "HH:mm a");
+    console.log("Event: ", event, selectedDate)
+    let dateTime = format(selectedDate, "hh:mm a");
     const {key} = this.state;
     this.setState({ [key]: dateTime })
 }
@@ -104,7 +132,6 @@ dateTimePicker = () => (
             value={new Date()}
             style={{width: 300, opacity: 1, height: 30, marginTop: 50}}
             onChange={this.onDateTimeChange}
-            is24Hour={false}
             minuteInterval={1}
             />
         )}
@@ -113,13 +140,13 @@ dateTimePicker = () => (
 
     render(){
         const {navigation, route} = this.props;
-        // const {showDrawer} = route.params;
+        const {showDrawer} = route.params;
         const {storeName, storeNumber, storeAddress, addIntroduction} = this.state;
         return (
             <SafeAreaView>
                 <ScrollView>
                     <View style={styles.container}>
-                    {/* {showDrawer ? <Header navigation={navigation}/> : <View/>} */}
+                    {showDrawer ? <Header navigation={navigation}/> : <View/>}
                     <View style={styles.bodycontainer}>
                     <Text style={styles.title}> Register your store </Text>
                         {this.uploadImage()}
@@ -142,14 +169,14 @@ dateTimePicker = () => (
                     <View style={styles.inputContainer}>
                         <InputText
                             placeHolder="Enter store address"
-                            value={storeAddress}
                             keyboardType="default"
+                            value={storeAddress}
                             onChangeText={(storeAddress) => this.setState({ storeAddress })}
                         />
                     </View>
                     <View style={styles.inputContainer}>
                         <MultilineInput
-                            placeHolder="Enter store address"
+                            placeHolder="Add Introduction"
                             message="Not more than 500 words"
                             value={addIntroduction}
                             keyboardType="default"

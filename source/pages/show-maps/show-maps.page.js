@@ -46,10 +46,12 @@ renderContent = () => (
   );
 
     render(){
+        const {navigation, route} = this.props;
+        console.log("Nav: ", navigation)
         return(
             <>
             <View>
-                <Header/>
+                <Header navigation={navigation}/>
                 <View style={{width: '100%', height: '100%', backgroundColor: '#add8e6'}}/>
             </View>
             <Modalize

@@ -5,6 +5,7 @@ import DrawerComponent from '../../components/drawer-content/drawer-content.comp
 import Home from '../../pages/home/home.page';
 import RegisterStore from '../../pages/register-store/register-store.page';
 import AccountSettings from '../../pages/account-settings/account-settings.page'
+import ShowMaps from '../../pages/show-maps/show-maps.page'
 
 const Drawer = createDrawerNavigator();
 
@@ -14,6 +15,7 @@ const DrawerNavigator = () => {
       <Drawer.Screen name="Home" component={Home} />
       <Drawer.Screen name="AccountSettings" component={AccountSettings} />
       <Drawer.Screen name="RegisterStore" component={RegisterStore} />
+      <Drawer.Screen name="ShowMaps" component={ShowMaps} />
     </Drawer.Navigator>
   );
 };
