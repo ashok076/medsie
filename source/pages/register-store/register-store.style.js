@@ -52,6 +52,9 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'Asap-Regular',
     color: Color.grey
+  },
+  contain: {
+    backgroundColor: 'white'
   }
 })
 

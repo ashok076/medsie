@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, TouchableOpacity, ScrollView} from 'react-native';
+import {View, TouchableOpacity, ScrollView, SafeAreaView} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Text} from 'react-native-paper'
 
@@ -72,7 +72,7 @@ class AccountSettings extends Component{
         const {navigation} = this.props;
         const {isShowPassword, emailid, password, isLoader, phone, dob, name} = this.state;
         return(
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
                 <Header navigation={navigation}/>
                 <ScrollView keyboardShouldPersistTaps='handled'>
                     <View style={styles.innerContainer}>
@@ -125,7 +125,7 @@ class AccountSettings extends Component{
                     </View>
                 </View>
                 </ScrollView>
-            </View>
+            </SafeAreaView>
         )
     }
 }

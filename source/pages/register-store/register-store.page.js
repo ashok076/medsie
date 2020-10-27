@@ -209,7 +209,7 @@ dateTimePicker = () => (
         const {storeName, storeNumber, storeAddress, addIntroduction, modal, array, businessCategory, sellingType, key, catArray, isLoader} = this.state;
         console.log("Sell: ", catArray)
         return (
-            <SafeAreaView>
+            <SafeAreaView style={styles.contain}>
                 <ScrollView>
                     <View style={styles.container}>
                     {showDrawer ? <Header navigation={navigation}/> : <View/>}

@@ -20,16 +20,17 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 5,
     borderColor: Color.grey,
-        fontFamily: 'Asap-Regular',
+    fontFamily: 'Asap-Regular',
   },
   iconStyle: {
-    margin: 15,
+    margin: 10,
   },    
   placeholder:  {
         fontSize: 16,
         color: Color.grey,
         fontFamily: 'Asap-Regular',
     },
+    
 });
 
 export default styles;

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>medsie.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>2B7B9477A7813EFEA80F148AC941CBC01E052846</string>
+				<key>dateExpires</key>
+				<string>25/08/21</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>QH3MGDX858.com.example.medsie</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>QH3MGDX858</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>QH3MGDX858.com.example.medsie</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>medsie.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>c6318bba-0285-43fb-85f1-754b715546c2</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: *</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>QH3MGDX858</string>
+				<key>name</key>
+				<string>Avigma Technologies</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
