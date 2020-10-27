@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, SafeAreaView, ScrollView, Text, TouchableOpacity} from 'react-native';
+import {View, SafeAreaView, ScrollView, Text, TouchableOpacity, ToastAndroid} from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/Feather';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -8,47 +8,92 @@ import qs from 'qs';
 
 import Header from '../../components/header/header.component';
 import InputText from '../../components/input-text/input-text.component';
-import MultilineInput from '../../components/multiline-input/multiline-input.component'
+import MultilineInput from '../../components/multiline-input/multiline-input.component';
 import Button from '../../components/button/button.component';
-import NoBackgroundButton from '../../components/no-background-button/no-background-button.component'
-import {registerStore} from '../../configure/api/api.configure'
+import NoBackgroundButton from '../../components/no-background-button/no-background-button.component';
+import ModalPicker from '../../components/modal-picker/modal-picker.component'
+import ModalList from '../../components/modal-list/modal-list.component';
+import Loader from '../../components/loader/loader.component';
+import {registerStore, categoryStore} from '../../configure/api/api.configure';
+import {selling_type, week_days, week_ends} from './register-store.list';
 
 import styles from './register-store.style';
 
 class RegisterStore extends Component {
-    constructor(){
-        super()
-        this.state = {
+    initialState = {
             storeName: '',
             storeNumber: '',
             storeAddress: '',
             addIntroduction: '',
+            businessCategory: '',
+            sellingType: '',
             isPickerVisible: false,
             mode: '',
             fromWeekD: '10:00 AM',
             toWeekD: '10:00 PM',
             fromWeekE: '10:00 AM',
             toWeekE: '10:00 PM',
-            key: ''
+            key: '',
+            modal: '',
+            array: [],
+            catArray: [],
+            access_token: '',
+            isLoader: false
+    }
+    constructor(){
+        super()
+        this.state = {
+            ...this.initialState
         }
     }
 
-submit = async () => {
-    const {storeName, storeNumber, storeAddress, addIntroduction, fromWeekD, toWeekD} = this.state;
-    let access_token = ''
-    try {
+  componentDidMount() {
+    const {navigation, route} = this.props;
+    navigation.addListener('focus', () => {
+      this.getAccessToken();
+      this.setState(this.initialState)
+    });
+  }
+
+  getAccessToken = async () => {
+      let access_token = ''
+      try {
         access_token = await AsyncStorage.getItem('access_token')
+        this.setState({ access_token }, () => this.getCategory())
     } catch (error) {
         console.log(error)
     }
-    let arr = []
-    let bussHours = {
-        BHT_Weekdays: 'Monday',
+  }
+
+  getCategory = async () => {
+      const {access_token} = this.state
+      await categoryStore(JSON.parse(access_token))
+        .then(response => {
+            console.log("Cat Res: ", response)
+            let arr = [];
+            response[0].map(val => 
+                arr.push({
+                    id: val.Cat_PkId,
+                    type: val.Cat_Name
+                })
+            )
+            this.setState({ catArray: arr })
+            })
+        .catch(error => console.log("Error: ", error))
+  }
+
+submit = async () => {
+    const {storeName, storeNumber, storeAddress, addIntroduction, fromWeekD, toWeekD, access_token} = this.state;
+    this.setState({ isLoader: true, isPickerVisible: false })
+    let arr = [];
+    week_days.map(day => {
+        arr.push({
+        BHT_Weekdays: day,
         BHT_FromTime: fromWeekD,
         BHT_ToTime: toWeekD,
         BHT_CustomDate: ''
-    }
-    arr.push(bussHours)
+        })
+    })
     let data = JSON.stringify({
         Type: 1,
         Buss_Name: storeName,
@@ -71,8 +116,20 @@ submit = async () => {
     })
     console.log("Data: ", data);
     await registerStore(data, JSON.parse(access_token))
-        .then(response => console.log("Res: ", response))
+        .then(response => {
+            console.log("Res: ", response)
+            this.setState({ isLoader: false })
+            this.showMessage("Your store is successfully registered")
+            })
         .catch(error => console.log("Error: ", error))
+}
+
+showMessage = (message) => {
+    ToastAndroid.showWithGravity(
+      message,
+      ToastAndroid.SHORT,
+      ToastAndroid.BOTTOM
+    );
 }
 
 onDateTimeChange = (event, selectedDate) => {
@@ -81,6 +138,14 @@ onDateTimeChange = (event, selectedDate) => {
     const {key} = this.state;
     this.setState({ [key]: dateTime })
 }
+
+  changeModalVisibility = (bool) => {
+    this.setState({modal: bool});
+  };
+
+  changeState = (key, value) => {
+    this.setState({[key]: value});
+  };
 
 storeHours = () => (
     <View>
@@ -141,7 +206,8 @@ dateTimePicker = () => (
     render(){
         const {navigation, route} = this.props;
         const {showDrawer} = route.params;
-        const {storeName, storeNumber, storeAddress, addIntroduction} = this.state;
+        const {storeName, storeNumber, storeAddress, addIntroduction, modal, array, businessCategory, sellingType, key, catArray, isLoader} = this.state;
+        console.log("Sell: ", catArray)
         return (
             <SafeAreaView>
                 <ScrollView>
@@ -164,6 +230,20 @@ dateTimePicker = () => (
                             keyboardType="number-pad"
                             value={storeNumber}
                             onChangeText={(storeNumber) => this.setState({ storeNumber })}
+                        />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <ModalPicker
+                            placeHolder="Enter business category"
+                            onPress={() => this.setState({ modal: true, array: catArray, key: 'businessCategory' })}
+                            value={businessCategory}
+                        />
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <ModalPicker
+                            placeHolder="Enter selling type"
+                            onPress={() => this.setState({ modal: true, array: selling_type, key: 'sellingType' })}
+                            value={sellingType}
                         />
                     </View>
                     <View style={styles.inputContainer}>
@@ -191,6 +271,14 @@ dateTimePicker = () => (
                         <Button title="Submit" onPress={() => this.submit()}/>
                     </View>
                     </View>
+                    <ModalList
+                        isModalVisible={modal}
+                        list={array}
+                        changeModalVisibility={this.changeModalVisibility}
+                        changeState={this.changeState}
+                        id={key}
+                    />
+                    <Loader isLoader={isLoader}/>
                 </View>
                 </ScrollView>
             </SafeAreaView>

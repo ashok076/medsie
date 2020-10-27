@@ -40,3 +40,35 @@ export const registerStore = async (data, access_token) => {
         throw error;
     })
 }
+
+export const categoryStore = async (access_token) => {
+    return axios(API.CATEGORY_STORE, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Bearer ' + access_token
+        },
+        data: JSON.stringify({
+            Type: 1
+        })
+    }).then(response => response.data)
+    .catch(error => {
+        throw error;
+    })
+}
+
+export const accountSettings = async (access_token) => {
+    return axios(API.ACCOUNT_SETTING, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Bearer ' + access_token
+        },
+        data: JSON.stringify({
+            Type: 1
+        })
+    }).then(response => response.data)
+    .catch(error => {
+        throw error;
+    })
+}
