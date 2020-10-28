@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {View, ScrollView, Text, TouchableWithoutFeedback, ToastAndroid, Image} from 'react-native';
+import {View, ScrollView, Text, TouchableWithoutFeedback, Image} from 'react-native';
+import { Toast } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import qs from 'qs';
 
@@ -76,11 +77,11 @@ saveAccessToken = async () => {
     }
 
 showMessage = (message) => {
-    ToastAndroid.showWithGravity(
-      message,
-      ToastAndroid.SHORT,
-      ToastAndroid.BOTTOM
-    );
+    Toast.show({
+        text: message,
+        style: styles.toasttxt,
+        duration: 5000
+    })
 }
 
 navigate = (page) => {

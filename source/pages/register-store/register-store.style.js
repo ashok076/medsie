@@ -55,6 +55,9 @@ const styles = StyleSheet.create({
   },
   contain: {
     backgroundColor: 'white'
+  },
+  toasttxt: {
+    fontFamily: 'Asap-Regular',
   }
 })
 

@@ -59,6 +59,9 @@ const styles = StyleSheet.create({
       width: "75%",
       marginTop: 15,
       fontFamily: 'Asap-SemiBold',
+  },
+  toasttxt: {
+    fontFamily: 'Asap-Regular',
   }
 })
 

@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {View, SafeAreaView, ScrollView, Text, TouchableOpacity, ToastAndroid} from 'react-native';
+import {View, SafeAreaView, ScrollView, Text, TouchableOpacity} from 'react-native';
+import { Toast } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/Feather';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { format } from "date-fns";
 import qs from 'qs';
 
@@ -125,18 +126,18 @@ submit = async () => {
 }
 
 showMessage = (message) => {
-    ToastAndroid.showWithGravity(
-      message,
-      ToastAndroid.SHORT,
-      ToastAndroid.BOTTOM
-    );
+    Toast.show({
+        text: message,
+        style: styles.toasttxt
+    })
 }
 
-onDateTimeChange = (event, selectedDate) => {
-    console.log("Event: ", event, selectedDate)
+onDateTimeChange = (selectedDate) => {
+    console.log("Event: ", selectedDate)
     let dateTime = format(selectedDate, "hh:mm a");
     const {key} = this.state;
     this.setState({ [key]: dateTime })
+    this.setState({ isPickerVisible: false })
 }
 
   changeModalVisibility = (bool) => {
@@ -191,15 +192,12 @@ uploadImage = () => (
 
 dateTimePicker = () => (
     <View>
-    {this.state.isPickerVisible && (
-        <DateTimePicker
+        {this.state.isPickerVisible && <DateTimePickerModal
+            isVisible={this.state.isPickerVisible !== null}
             mode={this.state.mode}
-            value={new Date()}
-            style={{width: 300, opacity: 1, height: 30, marginTop: 50}}
-            onChange={this.onDateTimeChange}
-            minuteInterval={1}
-            />
-        )}
+            onConfirm={this.onDateTimeChange}
+            onCancel={ () => this.setState({ isPickerVisible: false }) }
+        />}
     </View>
 )
 
