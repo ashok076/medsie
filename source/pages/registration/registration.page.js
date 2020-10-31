@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, ScrollView, Text, TouchableWithoutFeedback} from 'react-native';
+import {View, ScrollView, Text, TouchableWithoutFeedback, SafeAreaView} from 'react-native';
 import { Toast } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import qs from 'qs'
@@ -133,7 +133,7 @@ getSaveAccessToken = async () => {
         const {isShowPassword, isShowConfirmPassword, firstname, emailid, mobile, password, confirmpassword, isLoader} = this.state;
         const {navigation} = this.props
         return (
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
                 <ScrollView keyboardShouldPersistTaps='handled'>
                 <View style={styles.innerContainer}>
                     <BackHeader title="Back to login" navigation={navigation}/>
@@ -196,7 +196,7 @@ getSaveAccessToken = async () => {
                     <Loader isLoader={isLoader}/>
                 </View>
             </ScrollView>
-            </View>
+            </SafeAreaView>
         )
     }
 }

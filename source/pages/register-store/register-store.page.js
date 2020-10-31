@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import qs from 'qs';
 
 import Header from '../../components/header/header.component';
+import BackHeader from '../../components/back-header/back-header.component'
 import InputText from '../../components/input-text/input-text.component';
 import MultilineInput from '../../components/multiline-input/multiline-input.component';
 import Button from '../../components/button/button.component';
@@ -210,12 +211,12 @@ dateTimePicker = () => (
             <SafeAreaView style={styles.contain}>
                 <ScrollView>
                     <View style={styles.container}>
-                    {showDrawer ? <Header navigation={navigation}/> : <View/>}
+                    {showDrawer ? <Header navigation={navigation}/> : <BackHeader title="Back to create an account" navigation={navigation}/>}
                     <View style={styles.bodycontainer}>
                     <Text style={styles.title}> Register your store </Text>
                         {this.uploadImage()}
                         <View style={styles.inputContainer}>
-                        <InputText
+                        <InputText 
                             placeHolder="Enter store name"
                             value={storeName}
                             keyboardType="default"

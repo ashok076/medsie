@@ -6,15 +6,15 @@ import Icons from 'react-native-vector-icons/AntDesign';
 import styles from './back-header.style';
 
 const BackHeader = ({navigation, title}) =>  (
-  <View style={styles.titleView}>
+  <TouchableOpacity style={styles.titleView} onPress={() => navigation.goBack()}>
     <View style={styles.rowObject}>
-    <TouchableOpacity onPress={() => navigation.goBack()}>
+    <View>
       <Icons
         name="arrowleft"
         color={'rgb(33, 47, 60)'}
         size={24}
       />
-    </TouchableOpacity>
+    </View>
     <Title
       style={[
         styles.title,
@@ -25,6 +25,6 @@ const BackHeader = ({navigation, title}) =>  (
       {title}
     </Title>
   </View>
-  </View>
+  </TouchableOpacity>
     )
 export default BackHeader;

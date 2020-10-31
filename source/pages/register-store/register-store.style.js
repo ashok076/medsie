@@ -5,15 +5,13 @@ import {Color} from '../../assets/color/color.assets'
 const styles = StyleSheet.create({
     container:{
         backgroundColor: Color.backGroundColor,
+        padding: 10
     },
   inputContainer: {
     paddingTop: 20,
   },
   buttonContainer: {
     paddingTop: 20,
-  },
-  bodycontainer: {
-    padding: 20
   },
   row: {
     flexDirection: 'row',
@@ -41,7 +39,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    paddingTop: 20,
     paddingBottom: 20,
     fontFamily: 'Asap-SemiBold'
   },
@@ -54,7 +51,8 @@ const styles = StyleSheet.create({
     color: Color.grey
   },
   contain: {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+        padding: 10
   },
   toasttxt: {
     fontFamily: 'Asap-Regular',

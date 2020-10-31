@@ -5,11 +5,11 @@ import {Color} from '../../assets/color/color.assets'
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Color.backGroundColor
+        backgroundColor: Color.backGroundColor,
     },
     innerContainer: {
-      padding: 10,
-        backgroundColor: Color.backGroundColor
+        backgroundColor: Color.backGroundColor,
+    padding: 10,
     },
   inputContainer: {
     paddingTop: 15,
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     paddingTop: 15,
   },
-  forgotPassView: {
+  forgotPassView: { 
     width: '100%',
     alignItems: 'center',
     marginTop: 18
@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
   },
   loginText: {
       fontSize: 16,
-      marginTop: 20,
       fontFamily: 'Asap-SemiBold',
   },
   toasttxt: {

@@ -21,15 +21,17 @@ class Listing extends Component {
             <SafeAreaView style={styles.container}>
                     <ScrollView>
                     <View style={styles.innerContainer}>
-                        <CompanyCard />
-                        <ActionButtons/>
-                        <Introduction />
-                        <View style={styles.border}/>
-                        <TimingStatus />
-                        <View style={styles.border}/>
-                        <Reviews />
-                        <ReviewsComment list={[0,1,2,3]}/>
-                        </View>
+                        <View style={styles.main}>
+                            <CompanyCard style={styles.main}/>
+                            <ActionButtons/>
+                            <Introduction />
+                            <View style={styles.border}/>
+                            <TimingStatus />
+                            <View style={styles.border}/>
+                            <Reviews />
+                            <ReviewsComment list={[0,1,2,3]}/>
+                            </View>
+                    </View>
                 </ScrollView>
             </SafeAreaView>
         )

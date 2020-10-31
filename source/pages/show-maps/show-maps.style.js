@@ -6,9 +6,6 @@ const styles = StyleSheet.create({
     padding: 5,
   },
 
-  contentModal: {
-  },
-
   contentSubheading: {
     marginBottom: 2,
     fontSize: 16,
@@ -63,6 +60,9 @@ const styles = StyleSheet.create({
     left: 0,
     zIndex: 0,
   },
+  container: {
+    flex: 1
+  }
 });
 
 export default styles;

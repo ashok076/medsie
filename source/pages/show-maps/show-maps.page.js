@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {View, Text} from "react-native";
+import {View, Text, SafeAreaView} from "react-native";
 import { Modalize } from 'react-native-modalize';
 
 import Listing from '../../pages/listing/listing.page';
@@ -49,7 +49,7 @@ renderContent = () => (
         const {navigation, route} = this.props;
         console.log("Nav: ", navigation)
         return(
-            <>
+            <SafeAreaView style={styles.container}>
             <View>
                 <Header navigation={navigation}/>
                 <View style={{width: '100%', height: '100%', backgroundColor: '#add8e6'}}/>
@@ -62,9 +62,10 @@ renderContent = () => (
                 modalStyle={styles.modalizeContent}
                 handleStyle={styles.handle}
                 rootStyle={styles.modalize}>
-                    <Listing />
+                    {/* <Listing /> */}
+                    {this.renderContent()}
                 </Modalize>
-            </>
+            </SafeAreaView>
         )
     }
 }

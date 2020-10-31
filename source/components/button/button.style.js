@@ -7,11 +7,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 5,
-    borderWidth: 1,
-    borderColor: 'black'
   },
   title: {
-    color: '#000',
+    color: '#FFF',
     fontSize: 16,
     fontFamily: 'Asap-SemiBold',
   },

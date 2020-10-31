@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
     },
     innerContainer: {
         padding: 10
+    },
+    main: {
+        flex: 1
     }
 })
 
