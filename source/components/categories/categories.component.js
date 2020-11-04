@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, FlatList, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import {Text} from 'react-native-paper'
 
 import CategoriesList from '../categories-list/categories-list.component';
@@ -53,19 +53,18 @@ class Categories extends Component {
     render(){
         const {array} = this.state;
         const {navigation} = this.props;
-        console.log("Nav: ", navigation)
         return (
             <View>
                 <View style={styles.gap}/>
                 {this.recreationalShops(navigation)}
                 <View style={styles.gap}/>
-                {this.medicalShops(navigation)}
+                {/* {this.medicalShops(navigation)}
                 <View style={styles.gap}/>
                 {this.deliveries(navigation)}
                 <View style={styles.gap}/>
                 {this.doctors(navigation)}
                 <View style={styles.gap}/>
-                {this.events(navigation)}
+                {this.events(navigation)} */}
             </View>
         )
     }

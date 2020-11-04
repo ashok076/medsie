@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, ScrollView, Text, TouchableWithoutFeedback, Image} from 'react-native';
+import {View, ScrollView, Text, TouchableWithoutFeedback, Image, SafeAreaView} from 'react-native';
 import { Toast } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import qs from 'qs';
@@ -20,15 +20,15 @@ class Login extends Component {
             isShowPassword: true,
             emailid: '',
             password: '',
+            access_token: '' ,
             isLoader: false,
-            access_token: ''
         }
     }
 
-submit  = () => {
+submit  = async () => {
     const {emailid, password, firstname} = this.state;
+    const {navigation} = this.props;
     if (this.validation()){
-        this.setState({ isLoader: true })
             let data = qs.stringify({
                 'grant_type': 'password',
                 'username': emailid,
@@ -36,16 +36,24 @@ submit  = () => {
                 'ClientId': '1',
                 'FirstName': '' 
             })
-            login(data).then(res => {
+            await login(data).then(res => {
                 this.showMessage('Logged in successfull')
-                this.navigate('Home')
-                this.setState({ isLoader: false, access_token: res.access_token }, () => this.saveAccessToken())
+                this.home()
+                this.setState({access_token: res.access_token, isLoader: false }, () => this.saveAccessToken())
             }).catch(error => {
-                console.log("error", error.response.data)
-                this.showMessage(error.response.data.error_description)
+                console.log("error", error)
                 this.setState({ isLoader: false })
+                alert(error)
             })
         }
+}
+
+home = () => {
+    const {navigation} = this.props;
+    navigation.reset({
+        index: 0,
+        routes: [{name: 'Home'}],
+    });
 }
 
 saveAccessToken = async () => {
@@ -56,6 +64,7 @@ saveAccessToken = async () => {
             await AsyncStorage.setItem('access_token', JSON.stringify(access_token));
         } catch (error) {
             console.log("Async Access token error", access_token);
+            alert(error)
         }
     }
 }
@@ -89,14 +98,19 @@ navigate = (page) => {
     navigation.navigate(page)
 }
 
+    header = () => (
+<View style={styles.headerView}>
+    <Image style={styles.logo} source={require('../../assets/png-images/medsie_logo.png')}/>
+  </View>
+    )
+
     render(){
         const {isShowPassword, emailid, password, isLoader} = this.state;
         return (
-            <View style={styles.container}>
-                <ScrollView keyboardShouldPersistTaps='handled'>
+            <SafeAreaView style={styles.container}>
+                {this.header()}
+                <ScrollView keyboardShouldPersistTaps='handled' style={{ flex: 1 }}>
                 <View style={styles.innerContainer}>
-                    <View>
-                        <Image source={require('../../assets/png-images/medsie_logo.png')}/>
                     <Text style={styles.title}>Find stores, doctors and events right next to you</Text>
                     <Text style={styles.loginText}>LOGIN</Text>
                     <View style={styles.inputContainer}>
@@ -130,12 +144,17 @@ navigate = (page) => {
                         <Text style={styles.accountText}>
                             <TouchableWithoutFeedback onPress={() => this.navigate('Registration')}><View style={styles.createAcTouch}><Text style={styles.createTxt}>Click here to </Text><Text style={styles.createTouchTxt}>create a new account</Text></View></TouchableWithoutFeedback>
                         </Text>
+                        <TouchableWithoutFeedback onPress={() => this.home()}>
+                            <Text style={styles.skip}>
+                                Skip for now >
+                            </Text>
+                        </TouchableWithoutFeedback>
+                        
                     </View>
                     <Loader isLoader={isLoader}/>
                     </View>
-                </View>
             </ScrollView>
-            </View>
+            </SafeAreaView>
         )
     }
 }

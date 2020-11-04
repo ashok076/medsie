@@ -13,7 +13,7 @@ const ReviewsComment = ({list}) => (
     <View>
         <FlatList
             data={list}
-            renderItem={(item, id) => renderReviews(item)}
+            renderItem={(item) => renderReviews(item)}
             />
     </View>
 )

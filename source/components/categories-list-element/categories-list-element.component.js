@@ -10,8 +10,8 @@ import StarOutline from '../../assets/svg-files/star-outline.svg'
 
 import styles from './categories-list-element.style';
 
-const CategoriesListElement = ({item}) =>  (
-            <View style={styles.cardView}>
+const CategoriesListElement = ({item, key}) =>  (
+            <View style={styles.cardView} key={key}>
                 <Card style={styles.card}>
                     <View style={[styles.image, {backgroundColor: Color.purpleishBlue}]}/>
                     <View style={styles.body}> 

@@ -33,7 +33,7 @@ const TimingStatus  = () => (
                 <View>
                     <FlatList
                         data={list}
-                        renderItem={(item, id) => renderTime(item)}
+                        renderItem={(item) => renderTime(item)}
                         />
                 </View>
             </View>

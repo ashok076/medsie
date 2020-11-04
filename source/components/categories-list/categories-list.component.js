@@ -9,7 +9,8 @@ const CategoriesList = ({list}) =>  (
             <View style={styles.categoryList}>
                     <FlatList
                         data={list}
-                        renderItem={(item, id) => <CategoriesListElement item={item} />}
+                        renderItem={(item, index) => <CategoriesListElement item={item} key={index}/>}
+                        keyExtractor={(item, index) => item.id}
                         horizontal={true}
                         showsHorizontalScrollIndicator={false}
                         />

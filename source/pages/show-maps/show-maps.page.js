@@ -47,7 +47,6 @@ renderContent = () => (
 
     render(){
         const {navigation, route} = this.props;
-        console.log("Nav: ", navigation)
         return(
             <SafeAreaView style={styles.container}>
             <View>
@@ -62,8 +61,8 @@ renderContent = () => (
                 modalStyle={styles.modalizeContent}
                 handleStyle={styles.handle}
                 rootStyle={styles.modalize}>
-                    {/* <Listing /> */}
-                    {this.renderContent()}
+                    <Listing />
+                    {/* {this.renderContent()} */}
                 </Modalize>
             </SafeAreaView>
         )

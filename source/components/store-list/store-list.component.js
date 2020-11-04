@@ -9,7 +9,7 @@ const StoreList = ({navigation, storeList}) => (
     <View style={styles.container}>
         <FlatList
             data={storeList}
-            renderItem={(item, id) => <StoreElement item={item} />}
+            renderItem={(item) => <StoreElement item={item} />}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             />

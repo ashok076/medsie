@@ -5,7 +5,7 @@ import {Color} from '../../assets/color/color.assets'
 const styles = StyleSheet.create({
     container:{
         backgroundColor: Color.backGroundColor,
-        padding: 10
+        padding: 5
     },
   inputContainer: {
     paddingTop: 20,

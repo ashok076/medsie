@@ -68,6 +68,13 @@ class AccountSettings extends Component{
         })
 }
 
+    navigate = (nav) => {
+        const {navigation} = this.props;
+        navigation.navigate('RegisterStore', {
+            showDrawer: false
+        });
+    }
+
     render(){
         const {navigation} = this.props;
         const {isShowPassword, emailid, password, isLoader, phone, dob, name} = this.state;
@@ -78,7 +85,7 @@ class AccountSettings extends Component{
                     <View style={styles.innerContainer}>
                         <View style={[styles.row, styles.titleContainer]}>
                             <Text style={styles.titeText}>Account Settings</Text>
-                            <TouchableOpacity><Text style={styles.editText}>Edit Settings</Text></TouchableOpacity>
+                            <TouchableOpacity onPress={() => this.navigate('RegisterStore')}><Text style={styles.editText}>My Store</Text></TouchableOpacity>
                         </View>
                         <View style={styles.inputContainer}>
                         <InputText

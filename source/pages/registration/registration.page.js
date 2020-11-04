@@ -30,10 +30,12 @@ class Registration extends Component {
         }
     }
 
-submit  = () => {
+submit  = async () => {
     const {emailid, confirmpassword, firstname} = this.state;
     const { navigation } = this.props
+    this.showMessage('Starting method...');
     if (this.validation()){
+        this.showMessage('Validation completed...')
         if (this.passwordCheck()){
         this.setState({ isLoader: true })
             let data = qs.stringify({
@@ -41,15 +43,19 @@ submit  = () => {
                 'username': emailid,
                 'password': confirmpassword,
                 'ClientId': '2',
-                'FirstName': firstname 
+                'FirstName': firstname
             })
-            register(data).then(res => {
+            this.showMessage('API called...')
+            await register(data).then(res => {
                 this.showMessage('Account created successfully')
                 this.setState({ isLoader: false, access_token: res.access_token },() => this.saveAccessToken())
+                navigation.reset({
+                    index: 0,
+                    routes: [{name: 'Home'}],
+                });
             }).catch(error => {
-                this.showMessage(error.response.data.error_description)
                 this.setState({ isLoader: false })
-                console.log("error: ", error)
+                alert(error)
             })
         }
     }
@@ -62,6 +68,7 @@ saveAccessToken = async () => {
             await AsyncStorage.setItem('access_token', JSON.stringify(access_token));
         } catch (error) {
             console.log("Async Access token error", access_token);
+            alert(error)
         }
     }
 }
@@ -105,27 +112,19 @@ showMessage = (message) => {
     })
 }
 
-navigate = () => {
+navigate = async () => {
     const {navigation} = this.props;
-    const access_token = this.getSaveAccessToken();
-    if (access_token !== ''){
+    try {
+     const access_token = await AsyncStorage.getItem('access_token');
+     if (access_token !== null){
         navigation.navigate('RegisterStore', {
             showDrawer: false
         });
     }else {
         this.showMessage('Please first register to list your store')
     }
-    
-}
-
-getSaveAccessToken = async () => {
-    try {
-    const value = await AsyncStorage.getItem('access_token')
-    if(value !== null) {
-      return JSON.parse(value)
-    }
   } catch(e) {
-    return '';
+    console.log("Async error: ", e)
   }
 }
 
@@ -140,7 +139,7 @@ getSaveAccessToken = async () => {
                     <Text style={styles.loginText}>CREATE AN ACCOUNT</Text>
                     <View style={styles.inputContainer}>
                         <InputText
-                            placeHolder="First Name"
+                            placeHolder="Name"
                             value={firstname}
                             keyboardType="default"
                             onChangeText={(firstname) => this.setState({ firstname })}

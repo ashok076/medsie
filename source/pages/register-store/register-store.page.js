@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { format } from "date-fns";
 import qs from 'qs';
+import ImagePicker from 'react-native-image-crop-picker';
 
 import Header from '../../components/header/header.component';
 import BackHeader from '../../components/back-header/back-header.component'
@@ -16,7 +17,7 @@ import NoBackgroundButton from '../../components/no-background-button/no-backgro
 import ModalPicker from '../../components/modal-picker/modal-picker.component'
 import ModalList from '../../components/modal-list/modal-list.component';
 import Loader from '../../components/loader/loader.component';
-import {registerStore, categoryStore} from '../../configure/api/api.configure';
+import {registerStore, categoryStore, registerStoreImage} from '../../configure/api/api.configure';
 import {selling_type, week_days, week_ends} from './register-store.list';
 
 import styles from './register-store.style';
@@ -40,7 +41,8 @@ class RegisterStore extends Component {
             array: [],
             catArray: [],
             access_token: '',
-            isLoader: false
+            isLoader: false,
+            base64: ''
     }
     constructor(){
         super()
@@ -69,6 +71,7 @@ class RegisterStore extends Component {
 
   getCategory = async () => {
       const {access_token} = this.state
+      console.log("Access Token: ", access_token)
       await categoryStore(JSON.parse(access_token))
         .then(response => {
             console.log("Cat Res: ", response)
@@ -85,7 +88,7 @@ class RegisterStore extends Component {
   }
 
 submit = async () => {
-    const {storeName, storeNumber, storeAddress, addIntroduction, fromWeekD, toWeekD, access_token} = this.state;
+    const {storeName, storeNumber, storeAddress, addIntroduction, fromWeekD, toWeekD, access_token, base64} = this.state;
     this.setState({ isLoader: true, isPickerVisible: false })
     let arr = [];
     week_days.map(day => {
@@ -96,7 +99,8 @@ submit = async () => {
         BHT_CustomDate: ''
         })
     })
-    let data = JSON.stringify({
+    if (base64.length === 0){
+        let data = JSON.stringify({
         Type: 1,
         Buss_Name: storeName,
         Buss_Number: storeNumber,
@@ -124,6 +128,42 @@ submit = async () => {
             this.showMessage("Your store is successfully registered")
             })
         .catch(error => console.log("Error: ", error))
+    }else {
+        let data = JSON.stringify({
+        Type: 1,
+        Buss_Name: storeName,
+        Buss_Number: storeNumber,
+        Buss_Address: storeAddress,
+        Buss_Description: addIntroduction,
+        BusinessHoursTransMaster_DTO: JSON.stringify(arr),
+        Buss_City: '',
+        Buss_Country: '',
+        Buss_Zip: '',
+        Buss_Description: '',
+        Buss_UserId: '',
+        Buss_Image_Path: '',
+        Buss_CatId: '',
+        Buss_TypeOfBuss: '',
+        Buss_SellType: '',
+        Buss_Lat: '',
+        Buss_Long: '',
+        UserID: '',
+        ContentType  : 1,
+        IPLNO : 'Images',
+        Image: "data:image/png;base64, " + base64
+    })
+    console.log("Data: ", data, access_token);
+    await registerStoreImage(data, JSON.parse(access_token))
+        .then(response => {
+            console.log("Res: ", response)
+            this.setState({ isLoader: false })
+            this.showMessage("Your store is successfully registered")
+            })
+        .catch(error => {
+            console.log("Error: ", error)
+            this.setState({ isLoader: false })
+        })
+    }
 }
 
 showMessage = (message) => {
@@ -185,11 +225,22 @@ weekends = () => (
 )
 
 uploadImage = () => (
-    <TouchableOpacity style={styles.uploadImageView}>
+    <TouchableOpacity style={styles.uploadImageView} onPress={() => this.pickImage()}>
         <Icon name="upload" size={30}/>
         <Text style={styles.uploadImageTxt}> Upload an Image </Text>
     </TouchableOpacity>
 )
+
+pickImage = () => {
+    ImagePicker.openPicker({
+    width: 300,
+    height: 400,
+    cropping: false,
+    includeBase64: true
+    }).then(images => {
+        this.setState({ base64: images.data })
+    });
+}
 
 dateTimePicker = () => (
     <View>

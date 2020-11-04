@@ -10,7 +10,7 @@ const RatingProgress = ({list}) => (
     <View style={styles.container}>
         <FlatList
             data={list}
-            renderItem={(item, id) => renderRatingProgress(item)}
+            renderItem={(item) => renderRatingProgress(item)}
             />
     </View>
 )

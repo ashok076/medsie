@@ -3,14 +3,14 @@ import {StyleSheet} from 'react-native'
 import {Color} from '../../assets/color/color.assets'
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: Color.backGroundColor,
+  container: {
+    flex: 1,
+    backgroundColor: Color.backGroundColor,
     },
-    innerContainer: {
-      padding: 10,
-        backgroundColor: Color.backGroundColor,
-        marginTop: 100
+  innerContainer: {
+    padding: 10,
+    backgroundColor: Color.backGroundColor,
+    marginTop: 85,
     },
   inputContainer: {
     paddingTop: 15,
@@ -56,13 +56,26 @@ const styles = StyleSheet.create({
   },
   title: {
       fontSize: 22,
-      width: "75%",
+      width: "100%",
       marginTop: 15,
       fontFamily: 'Asap-SemiBold',
+      textAlign: 'center',
   },
   toasttxt: {
     fontFamily: 'Asap-Regular',
-  }
+  },
+  headerView: {
+    height: 60,
+    width: '100%',
+    alignItems: 'center',
+    flexDirection: 'row',
+    padding: 10,
+    justifyContent: 'center',
+  },
+  skip: {
+    fontFamily: 'Asap-Regular',
+    marginTop: 10
+  },
 })
 
 export default styles
