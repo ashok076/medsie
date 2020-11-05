@@ -4,8 +4,7 @@ import {Color} from '../../assets/color/color.assets'
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor: Color.backGroundColor,
-        padding: 5
+      backgroundColor: Color.backGroundColor,
     },
   inputContainer: {
     paddingTop: 20,
@@ -52,11 +51,18 @@ const styles = StyleSheet.create({
   },
   contain: {
     backgroundColor: 'white',
-        padding: 10
   },
   toasttxt: {
     fontFamily: 'Asap-Regular',
-  }
+  },
+  imageView: {
+    width: 200, 
+    height: 200,
+    alignSelf: 'center'
+    },
+  bodycontainer: {
+    padding: 10
+    }
 })
 
 export default styles

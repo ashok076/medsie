@@ -1,0 +1,120 @@
+
+App Thinning Size Report for All Variants of medsie
+
+Variant: medsie-06BA181E-2224-4C44-8AAA-333711AA1CD6.ipa
+Supported variant descriptors: [device: iPhone11,8, os-version: 12.2] and [device: iPhone11,8, os-version: 12.0]
+App + On Demand Resources size: 3.8 MB compressed, 10.1 MB uncompressed
+App size: 3.8 MB compressed, 10.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie-08CE9BC3-C30B-4698-9477-45AE67EA8DAE.ipa
+Supported variant descriptors: [device: iPod9,1, os-version: 12.2], [device: iPod7,1, os-version: 12.2], [device: iPhone6,2, os-version: 12.0], [device: iPhone8,1, os-version: 12.0], [device: iPhone7,2, os-version: 12.2], [device: iPhone7,2, os-version: 12.0], [device: iPhone6,1, os-version: 12.2], [device: iPhone8,4, os-version: 12.2], [device: iPhone6,2, os-version: 12.2], [device: iPod7,1, os-version: 10.0], [device: iPhone7,2, os-version: 10.0], [device: iPhone6,1, os-version: 12.0], [device: iPod7,1, os-version: 12.0], [device: iPhone6,1, os-version: 10.0], [device: iPhone8,1, os-version: 10.0], [device: iPhone8,1, os-version: 12.2], [device: iPhone6,2, os-version: 10.0], [device: iPhone8,4, os-version: 10.0], and [device: iPhone8,4, os-version: 12.0]
+App + On Demand Resources size: 3.8 MB compressed, 10.1 MB uncompressed
+App size: 3.8 MB compressed, 10.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie-16546FD9-5B6D-4753-BB6B-A2F3C5A6BCCF.ipa
+Supported variant descriptors: [device: iPod9,1, os-version: 14.0], [device: iPhone8,4, os-version: 13.0], [device: iPod9,1, os-version: 13.0], [device: iPhone8,1, os-version: 13.0], [device: iPhone8,4, os-version: 14.0], and [device: iPhone8,1, os-version: 14.0]
+App + On Demand Resources size: 3.8 MB compressed, 10.1 MB uncompressed
+App size: 3.8 MB compressed, 10.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie-22E294D4-CEEA-435B-9677-C6C546415B97.ipa
+Supported variant descriptors: [device: iPad6,3, os-version: 13.0], [device: iPad8,10, os-version: 14.0], [device: iPad11,1, os-version: 14.0], [device: iPad8,3, os-version: 13.0], [device: iPad8,1, os-version: 13.0], [device: iPad11,4, os-version: 13.0], [device: iPad8,6, os-version: 13.0], [device: iPad11,2, os-version: 13.0], [device: iPad8,7, os-version: 14.0], [device: iPad11,1, os-version: 13.0], [device: iPad7,3, os-version: 14.0], [device: iPad8,11, os-version: 14.0], [device: iPad6,3, os-version: 14.0], [device: iPad8,5, os-version: 13.0], [device: iPad6,4, os-version: 14.0], [device: iPad7,3, os-version: 13.0], [device: iPad7,1, os-version: 13.0], [device: iPad8,9, os-version: 14.0], [device: iPad11,4, os-version: 14.0], [device: iPad8,12, os-version: 13.0], [device: iPad8,1, os-version: 14.0], [device: iPad7,1, os-version: 14.0], [device: iPad8,9, os-version: 13.0], [device: iPad7,4, os-version: 14.0], [device: iPad8,2, os-version: 13.0], [device: iPad8,7, os-version: 13.0], [device: iPad8,8, os-version: 13.0], [device: MacFamily20,1, os-version: 14.0], [device: iPad8,8, os-version: 14.0], [device: iPad8,4, os-version: 14.0], [device: iPad11,2, os-version: 14.0], [device: iPad8,10, os-version: 13.0], [device: iPad7,4, os-version: 13.0], [device: iPad11,3, os-version: 13.0], [device: iPad7,2, os-version: 13.0], [device: iPad8,6, os-version: 14.0], [device: iPad8,11, os-version: 13.0], [device: iPad6,4, os-version: 13.0], [device: iPad7,2, os-version: 14.0], [device: iPad8,5, os-version: 14.0], [device: iPad8,3, os-version: 14.0], [device: iPad8,2, os-version: 14.0], [device: iPad8,12, os-version: 14.0], [device: iPad8,4, os-version: 13.0], [device: iPad13,1, os-version: 14.0], [device: iPad11,3, os-version: 14.0], and [device: iPad13,2, os-version: 14.0]
+App + On Demand Resources size: 3.8 MB compressed, 10.1 MB uncompressed
+App size: 3.8 MB compressed, 10.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie-24C5F364-7DE3-4696-A975-89B9DE0AF83F.ipa
+Supported variant descriptors: [device: iPad6,8, os-version: 12.2], [device: iPad5,4, os-version: 10.0], [device: iPad5,3, os-version: 12.0], [device: iPad7,6, os-version: 12.2], [device: iPad5,3, os-version: 10.0], [device: iPad4,1, os-version: 10.0], [device: iPad5,2, os-version: 12.0], [device: iPad6,7, os-version: 10.0], [device: iPad4,8, os-version: 10.0], [device: iPad6,7, os-version: 12.0], [device: iPad4,8, os-version: 12.0], [device: iPad6,8, os-version: 12.0], [device: iPad7,5, os-version: 12.2], [device: iPad5,4, os-version: 12.2], [device: iPad4,5, os-version: 12.2], [device: iPad5,4, os-version: 12.0], [device: iPad6,11, os-version: 10.0], [device: iPad4,9, os-version: 12.2], [device: iPad7,6, os-version: 11.0], [device: iPad4,5, os-version: 10.0], [device: iPad4,5, os-version: 12.0], [device: iPad4,7, os-version: 12.2], [device: iPad7,6, os-version: 12.0], [device: iPad4,8, os-version: 12.2], [device: iPad4,4, os-version: 12.0], [device: iPad4,2, os-version: 12.0], [device: iPad4,4, os-version: 12.2], [device: iPad6,12, os-version: 10.0], [device: iPad4,4, os-version: 10.0], [device: iPad4,9, os-version: 12.0], [device: iPad5,2, os-version: 10.0], [device: iPad6,11, os-version: 12.0], [device: iPad4,3, os-version: 10.0], [device: iPad6,7, os-version: 12.2], [device: iPad6,8, os-version: 10.0], [device: iPad5,1, os-version: 12.0], [device: iPad5,1, os-version: 10.0], [device: iPad4,7, os-version: 12.0], [device: iPad4,3, os-version: 12.0], [device: iPad4,1, os-version: 12.2], [device: iPad5,2, os-version: 12.2], [device: iPad4,6, os-version: 12.0], [device: iPad4,2, os-version: 12.2], [device: iPad4,1, os-version: 12.0], [device: iPad4,6, os-version: 12.2], [device: iPad5,3, os-version: 12.2], [device: iPad6,11, os-version: 12.2], [device: iPad5,1, os-version: 12.2], [device: iPad4,3, os-version: 12.2], [device: iPad4,6, os-version: 10.0], [device: iPad4,9, os-version: 10.0], [device: iPad7,5, os-version: 11.0], [device: iPad6,12, os-version: 12.0], [device: iPad4,2, os-version: 10.0], [device: iPad6,12, os-version: 12.2], [device: iPad4,7, os-version: 10.0], and [device: iPad7,5, os-version: 12.0]
+App + On Demand Resources size: 3.8 MB compressed, 10.1 MB uncompressed
+App size: 3.8 MB compressed, 10.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie-2C2A901A-346F-4583-8B61-B14A9FE683B5.ipa
+Supported variant descriptors: [device: iPad6,3, os-version: 12.0], [device: iPad7,4, os-version: 12.0], [device: iPad8,3, os-version: 12.2], [device: iPad11,4, os-version: 12.2], [device: iPad8,2, os-version: 12.0], [device: iPad8,4, os-version: 12.0], [device: iPad8,3, os-version: 12.0], [device: iPad8,7, os-version: 12.0], [device: iPad8,1, os-version: 12.0], [device: iPad6,3, os-version: 10.0], [device: iPad7,1, os-version: 12.0], [device: iPad7,3, os-version: 12.0], [device: iPad8,4, os-version: 12.2], [device: iPad8,6, os-version: 12.0], [device: iPad6,4, os-version: 12.0], [device: iPad6,4, os-version: 12.2], [device: iPad11,3, os-version: 12.2], [device: iPad8,8, os-version: 12.2], [device: iPad8,1, os-version: 12.2], [device: iPad6,3, os-version: 12.2], [device: iPad8,2, os-version: 12.2], [device: iPad8,6, os-version: 12.2], [device: iPad7,2, os-version: 10.0], [device: iPad8,5, os-version: 12.0], [device: iPad7,3, os-version: 12.2], [device: iPad7,1, os-version: 12.2], [device: iPad7,4, os-version: 12.2], [device: iPad7,2, os-version: 12.2], [device: iPad7,4, os-version: 10.0], [device: iPad8,7, os-version: 12.2], [device: iPad7,3, os-version: 10.0], [device: iPad11,1, os-version: 12.2], [device: iPad11,2, os-version: 12.2], [device: iPad6,4, os-version: 10.0], [device: iPad7,2, os-version: 12.0], [device: iPad8,8, os-version: 12.0], [device: iPad7,1, os-version: 10.0], and [device: iPad8,5, os-version: 12.2]
+App + On Demand Resources size: 3.8 MB compressed, 10.1 MB uncompressed
+App size: 3.8 MB compressed, 10.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie-5CB005A0-136E-443F-B65F-57DC0FDFC869.ipa
+Supported variant descriptors: [device: iPhone8,2, os-version: 10.0], [device: iPhone7,1, os-version: 12.2], [device: iPhone8,2, os-version: 12.2], [device: iPhone7,1, os-version: 10.0], [device: iPhone7,1, os-version: 12.0], and [device: iPhone8,2, os-version: 12.0]
+App + On Demand Resources size: 3.8 MB compressed, 10.1 MB uncompressed
+App size: 3.8 MB compressed, 10.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie-67D790DC-97E3-4EF6-AC78-4B55F68038EE.ipa
+Supported variant descriptors: [device: iPad5,2, os-version: 13.0], [device: iPad7,6, os-version: 13.0], [device: iPad7,12, os-version: 14.0], [device: iPad7,6, os-version: 14.0], [device: iPad11,6, os-version: 14.0], [device: iPad6,11, os-version: 14.0], [device: iPad5,4, os-version: 14.0], [device: iPad7,5, os-version: 14.0], [device: iPad11,7, os-version: 14.0], [device: iPad5,1, os-version: 13.0], [device: iPad6,12, os-version: 13.0], [device: iPad6,7, os-version: 14.0], [device: iPad6,12, os-version: 14.0], [device: iPad6,11, os-version: 13.0], [device: iPad5,3, os-version: 13.0], [device: iPad6,7, os-version: 13.0], [device: iPad5,4, os-version: 13.0], [device: iPad6,8, os-version: 14.0], [device: iPad7,12, os-version: 13.0], [device: iPad7,11, os-version: 13.0], [device: iPad5,2, os-version: 14.0], [device: iPad5,3, os-version: 14.0], [device: iPad5,1, os-version: 14.0], [device: iPad7,11, os-version: 14.0], [device: iPad7,5, os-version: 13.0], and [device: iPad6,8, os-version: 13.0]
+App + On Demand Resources size: 3.8 MB compressed, 10.1 MB uncompressed
+App size: 3.8 MB compressed, 10.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie-7950F45A-042E-4840-B4FA-A0351D373D3A.ipa
+Supported variant descriptors: [device: iPhone10,4, os-version: 12.2], [device: iPhone9,1, os-version: 12.0], [device: iPhone10,1, os-version: 12.0], [device: iPhone10,1, os-version: 12.2], [device: iPhone9,3, os-version: 10.0], [device: iPhone9,1, os-version: 10.0], [device: iPhone9,3, os-version: 12.2], [device: iPhone9,3, os-version: 12.0], [device: iPhone9,1, os-version: 12.2], [device: iPhone10,1, os-version: 11.0], [device: iPhone10,4, os-version: 11.0], and [device: iPhone10,4, os-version: 12.0]
+App + On Demand Resources size: 3.8 MB compressed, 10.1 MB uncompressed
+App size: 3.8 MB compressed, 10.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie-914CD547-5A4F-420C-8F4F-1F1B9E6348F4.ipa
+Supported variant descriptors: [device: iPhone5,3, os-version: 10.0], [device: iPhone5,2, os-version: 10.0], [device: iPhone5,1, os-version: 10.0], and [device: iPhone5,4, os-version: 10.0]
+App + On Demand Resources size: 4 MB compressed, 9.9 MB uncompressed
+App size: 4 MB compressed, 9.9 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie-98900E52-164B-4C60-93AE-D2286598BCC1.ipa
+Supported variant descriptors: [device: iPhone11,8, os-version: 13.0], [device: iPhone11,8, os-version: 14.0], [device: iPhone12,1, os-version: 13.0], and [device: iPhone12,1, os-version: 14.0]
+App + On Demand Resources size: 3.8 MB compressed, 10.1 MB uncompressed
+App size: 3.8 MB compressed, 10.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie-A83B86A0-1977-495E-BD07-15AC1A305181.ipa
+Supported variant descriptors: [device: iPhone8,2, os-version: 13.0] and [device: iPhone8,2, os-version: 14.0]
+App + On Demand Resources size: 3.8 MB compressed, 10.1 MB uncompressed
+App size: 3.8 MB compressed, 10.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie-A9BC55CC-25E1-46D0-8FC4-6005F0C32F9E.ipa
+Supported variant descriptors: [device: iPhone10,4, os-version: 13.0], [device: iPhone9,1, os-version: 14.0], [device: iPhone10,4, os-version: 14.0], [device: iPhone12,8, os-version: 14.0], [device: iPhone10,1, os-version: 13.0], [device: iPhone12,8, os-version: 13.0], [device: iPhone9,1, os-version: 13.0], [device: iPhone9,3, os-version: 13.0], [device: iPhone9,3, os-version: 14.0], and [device: iPhone10,1, os-version: 14.0]
+App + On Demand Resources size: 3.8 MB compressed, 10.1 MB uncompressed
+App size: 3.8 MB compressed, 10.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie-C4FC511A-92FE-4FE3-85BD-0619B2E92379.ipa
+Supported variant descriptors: [device: iPad3,5, os-version: 10.0], [device: iPad3,6, os-version: 10.0], and [device: iPad3,4, os-version: 10.0]
+App + On Demand Resources size: 4 MB compressed, 9.9 MB uncompressed
+App size: 4 MB compressed, 9.9 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie-F84A7B5C-876A-4FCC-98FE-05E3A0C821EA.ipa
+Supported variant descriptors: [device: iPhone10,5, os-version: 12.2], [device: iPhone10,5, os-version: 12.0], [device: iPhone9,2, os-version: 10.0], [device: iPhone10,6, os-version: 11.0], [device: iPhone10,3, os-version: 11.0], [device: iPhone9,2, os-version: 12.0], [device: iPhone10,2, os-version: 12.0], [device: iPhone10,6, os-version: 12.0], [device: iPhone11,6, os-version: 12.2], [device: iPhone9,2, os-version: 12.2], [device: iPhone10,2, os-version: 11.0], [device: iPhone10,2, os-version: 12.2], [device: iPhone10,6, os-version: 12.2], [device: iPhone9,4, os-version: 12.2], [device: iPhone10,5, os-version: 11.0], [device: iPhone9,4, os-version: 12.0], [device: iPhone9,4, os-version: 10.0], [device: iPhone10,3, os-version: 12.0], [device: iPhone11,6, os-version: 12.0], [device: iPhone11,2, os-version: 12.2], [device: iPhone11,4, os-version: 12.2], [device: iPhone11,2, os-version: 12.0], [device: iPhone10,3, os-version: 12.2], and [device: iPhone11,4, os-version: 12.0]
+App + On Demand Resources size: 3.8 MB compressed, 10.1 MB uncompressed
+App size: 3.8 MB compressed, 10.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie-FE89261F-024F-4700-8799-BD3E00A5827C.ipa
+Supported variant descriptors: [device: iPhone13,2, os-version: 14.0], [device: iPhone10,6, os-version: 13.0], [device: iPhone10,5, os-version: 13.0], [device: iPhone12,3, os-version: 13.0], [device: iPhone13,1, os-version: 14.0], [device: iPhone11,2, os-version: 14.0], [device: iPhone10,3, os-version: 14.0], [device: iPhone12,3, os-version: 14.0], [device: iPhone10,3, os-version: 13.0], [device: iPhone12,5, os-version: 14.0], [device: iPhone13,3, os-version: 14.0], [device: iPhone10,6, os-version: 14.0], [device: iPhone11,6, os-version: 13.0], [device: iPhone10,5, os-version: 14.0], [device: iPhone11,6, os-version: 14.0], [device: iPhone9,4, os-version: 14.0], [device: iPhone9,2, os-version: 14.0], [device: iPhone11,2, os-version: 13.0], [device: iPhone11,4, os-version: 13.0], [device: iPhone10,2, os-version: 13.0], [device: iPhone13,4, os-version: 14.0], [device: iPhone10,2, os-version: 14.0], [device: iPhone12,5, os-version: 13.0], [device: iPhone9,2, os-version: 13.0], [device: iPhone11,4, os-version: 14.0], and [device: iPhone9,4, os-version: 13.0]
+App + On Demand Resources size: 3.8 MB compressed, 10.1 MB uncompressed
+App size: 3.8 MB compressed, 10.1 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed
+
+
+Variant: medsie.ipa
+Supported variant descriptors: Universal
+App + On Demand Resources size: 5.4 MB compressed, 13.3 MB uncompressed
+App size: 5.4 MB compressed, 13.3 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed

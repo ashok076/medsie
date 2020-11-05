@@ -59,6 +59,7 @@ export const registerStore = async (data, access_token) => {
 }
 
 export const categoryStore = async (access_token) => {
+    console.log("Access+++", access_token)
     return axios(API.CATEGORY_STORE, {
         method: 'POST',
         headers: {
@@ -94,7 +95,7 @@ export const registerStoreImage = async (data, access_token) => {
     return axios('https://us-central1-avgimaproject.cloudfunctions.net/Medsie/upload', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + access_token
         },
         data

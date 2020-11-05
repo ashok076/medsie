@@ -28,7 +28,9 @@ class Login extends Component {
 submit  = async () => {
     const {emailid, password, firstname} = this.state;
     const {navigation} = this.props;
+    this.setState({ isLoader: true })
     if (this.validation()){
+        this.setState({ isLoader: true })
             let data = qs.stringify({
                 'grant_type': 'password',
                 'username': emailid,

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, SafeAreaView, ScrollView, Text, TouchableOpacity} from 'react-native';
+import {View, SafeAreaView, ScrollView, Text, TouchableOpacity, Platform, Image} from 'react-native';
 import { Toast } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/Feather';
@@ -42,7 +42,9 @@ class RegisterStore extends Component {
             catArray: [],
             access_token: '',
             isLoader: false,
-            base64: ''
+            base64: '',
+            fileName: 'image',
+            imagePath: ''
     }
     constructor(){
         super()
@@ -88,7 +90,7 @@ class RegisterStore extends Component {
   }
 
 submit = async () => {
-    const {storeName, storeNumber, storeAddress, addIntroduction, fromWeekD, toWeekD, access_token, base64} = this.state;
+    const {storeName, storeNumber, storeAddress, addIntroduction, fromWeekD, toWeekD, access_token, base64, fileName} = this.state;
     this.setState({ isLoader: true, isPickerVisible: false })
     let arr = [];
     week_days.map(day => {
@@ -147,12 +149,12 @@ submit = async () => {
         Buss_SellType: '',
         Buss_Lat: '',
         Buss_Long: '',
-        UserID: '',
         ContentType  : 1,
         IPLNO : 'Images',
-        Image: "data:image/png;base64, " + base64
+        Image: "data:image/png;base64, " + base64,
+        Client_Result_Photo_FileName: fileName
     })
-    console.log("Data: ", data, access_token);
+    console.log("Data: ", data);
     await registerStoreImage(data, JSON.parse(access_token))
         .then(response => {
             console.log("Res: ", response)
@@ -225,10 +227,16 @@ weekends = () => (
 )
 
 uploadImage = () => (
-    <TouchableOpacity style={styles.uploadImageView} onPress={() => this.pickImage()}>
+    <View>
+        {this.state.imagePath.length === 0 ? (
+            <TouchableOpacity style={styles.uploadImageView} onPress={() => this.pickImage()}>
         <Icon name="upload" size={30}/>
         <Text style={styles.uploadImageTxt}> Upload an Image </Text>
     </TouchableOpacity>
+        ): (
+            <Image source = {{uri: this.state.imagePath}} style = {styles.imageView}/>
+        )}
+    </View>
 )
 
 pickImage = () => {
@@ -238,7 +246,7 @@ pickImage = () => {
     cropping: false,
     includeBase64: true
     }).then(images => {
-        this.setState({ base64: images.data })
+        this.setState({ base64: images.data, fileName: Platform.OS === 'ios' ? images.filename : 'images' + new Date(), imagePath: images.path })
     });
 }
 
