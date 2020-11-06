@@ -11,7 +11,6 @@ const ShowMapsTitle = ({title, onPress}) => (
             <View>
                 <View style={styles.titleView}>
                     <Text style={styles.title}>{title}</Text>
-                    <NoBackgroundButton title="Show Maps" onPress={onPress}/>
                 </View>
             </View>
 )

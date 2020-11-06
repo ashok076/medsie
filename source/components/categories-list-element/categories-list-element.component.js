@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity, Image} from 'react-native';
 import {Text, Caption, Card, Title} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Stars from 'react-native-stars';
@@ -10,12 +10,12 @@ import StarOutline from '../../assets/svg-files/star-outline.svg'
 
 import styles from './categories-list-element.style';
 
-const CategoriesListElement = ({item, key}) =>  (
-            <View style={styles.cardView} key={key}>
+const CategoriesListElement = ({item, key, navigation}) =>  (
+            <TouchableOpacity style={styles.cardView} key={key} onPress={() => navigation.navigate('ListPage')}>
                 <Card style={styles.card}>
-                    <View style={[styles.image, {backgroundColor: Color.purpleishBlue}]}/>
+                    <Image style={styles.image} source={{uri: item.item.Buss_Image_Path}}/>
                     <View style={styles.body}> 
-                        <Title style={styles.title}>Title</Title>
+                        <Title style={styles.title}>{item.item.Buss_Name}</Title>
                         <View style={styles.starView}>
                         <Stars
                             display={4}
@@ -25,14 +25,14 @@ const CategoriesListElement = ({item, key}) =>  (
                             fullStar= {<Star width={12} height={12}/>}
                             emptyStar= {<StarOutline width={12} height={12}/>}/>
                         </View>
-                        <Caption style={styles.caption}>Sub Title</Caption>
+                        <Caption style={styles.caption}>{item.item.Buss_City}, {item.item.Buss_Country}</Caption>
                         <View style={styles.horizontalView}>
                             <Icon name="place" color={Color.purpleishBlue} size={17} />
                             <Text style={styles.place}>Place</Text>
                         </View>
                     </View>
                 </Card>
-            </View>
+            </TouchableOpacity>
     
 )
 

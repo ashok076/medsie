@@ -10,6 +10,7 @@ import Button from '../../components/button/button.component';
 import TouchText from '../../components/touch-text/touch-text.component';
 import Loader from '../../components/loader/loader.component'
 import {login} from '../../configure/api/api.configure'
+import MedsieLogo from "../../assets/svg-files/medsie_logo.svg";
 
 import styles from './login.style'
 
@@ -24,6 +25,35 @@ class Login extends Component {
             isLoader: false,
         }
     }
+
+  componentDidMount() {
+    const {navigation, route} = this.props;
+    navigation.addListener('focus', () => {
+      this.setState({ isLoader: true })
+      this.getAccessToken();
+    });
+  }
+
+    getAccessToken = async () => {
+        const {navigation} = this.props;
+      try {
+        const value = await AsyncStorage.multiGet(['access_token', 'session']);
+        const access_token = JSON.parse(value[0][1]);
+        const session = JSON.parse(value[1][1]);
+        if (access_token !== null || access_token !== undefined || access_token !== ''){
+            if (session){
+                navigation.reset({
+                    index: 0,
+                    routes: [{name: 'Home'}],
+                });
+            }
+        }
+    } catch (error) {
+        console.log(error)
+        this.setState({ isLoader: false })
+    }
+    this.setState({ isLoader: false })
+  }
 
 submit  = async () => {
     const {emailid, password, firstname} = this.state;
@@ -50,8 +80,9 @@ submit  = async () => {
         }
 }
 
-home = () => {
+home = async () => {
     const {navigation} = this.props;
+    await AsyncStorage.setItem('session', JSON.stringify(true));
     navigation.reset({
         index: 0,
         routes: [{name: 'Home'}],
@@ -63,7 +94,9 @@ saveAccessToken = async () => {
     if (access_token !== null || access_token !== undefined || access_token !== ''){
         try {
             console.log("Store access: ", access_token)
-            await AsyncStorage.setItem('access_token', JSON.stringify(access_token));
+            const token = ['access_token', JSON.stringify(access_token)];
+            const session = ['session', JSON.stringify(true)]
+            await AsyncStorage.multiSet([token, session]);
         } catch (error) {
             console.log("Async Access token error", access_token);
             alert(error)
@@ -102,7 +135,7 @@ navigate = (page) => {
 
     header = () => (
 <View style={styles.headerView}>
-    <Image style={styles.logo} source={require('../../assets/png-images/medsie_logo.png')}/>
+    <MedsieLogo style={styles.logo} height={170} width={170}/>
   </View>
     )
 

@@ -65,7 +65,9 @@ saveAccessToken = async () => {
     const {access_token} = this.state;
     if (access_token !== null || access_token !== undefined || access_token !== ''){
         try {
-            await AsyncStorage.setItem('access_token', JSON.stringify(access_token));
+            const token = ['access_token', JSON.stringify(access_token)];
+            const session = ['session', JSON.stringify(true)]
+            await AsyncStorage.multiSet([token, session]);
         } catch (error) {
             console.log("Async Access token error", access_token);
             alert(error)

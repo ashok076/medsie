@@ -10,6 +10,7 @@ import {
   Caption,
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import Shops from '../../assets/svg-files/shops.svg';
 import MedicalShops from '../../assets/svg-files/medical-shops.svg';
@@ -20,9 +21,32 @@ import Events from '../../assets/svg-files/event.svg';
 
 import styles from './drawer-content.style';
 
-const DrawerComponent = ({navigation}) => {
-  let name = 'name';
-  return (
+class DrawerComponent extends Component {
+  constructor(){
+    super()
+    this.state = {
+      show: false
+    }
+  }
+
+    componentDidMount() {
+    const {navigation, route} = this.props;
+    navigation.addListener('focus', () => {
+      this.getAccessToken()
+    });
+  }
+
+    getAccessToken = async () => {
+      const access_token = await AsyncStorage.getItem('access_token');
+      if (access_token.length !== 0){
+        this.setState({ show: true }, () => console.log("Show: ", this.state.show))
+      }
+  }
+
+  render(){
+    const {navigation} = this.props;
+    const {show} = this.state;
+    return (
     <View style={styles.drawerContent}>
       <DrawerContentScrollView>
         <View style={styles.drawerContent}>
@@ -69,16 +93,20 @@ const DrawerComponent = ({navigation}) => {
           />
         </Drawer.Section>
         <Drawer.Section style={styles.drawerSection}>
-          <DrawerItem
-            label="Login"
-            onPress={() => navigation.navigate('Home')}
-            labelStyle={styles.labelStyle}
-          />
-          <DrawerItem
-            label="Register"
-            onPress={() => navigation.navigate('Home')}
-            labelStyle={styles.labelStyle}
-          />
+          {!show && (
+            <DrawerItem
+              label="Login"
+              onPress={() => navigation.navigate('Home')}
+              labelStyle={styles.labelStyle}
+            />
+          )}
+          {!show && (
+            <DrawerItem
+              label="Register"
+              onPress={() => navigation.navigate('Home')}
+              labelStyle={styles.labelStyle}
+            />
+          )}
           <DrawerItem
             label="List a store"
             onPress={() => navigation.navigate('RegisterStore', {
@@ -118,6 +146,7 @@ const DrawerComponent = ({navigation}) => {
       </Drawer.Section>
     </View>
   );
+  }
 };
 
 export default DrawerComponent;

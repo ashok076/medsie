@@ -5,11 +5,11 @@ import CategoriesListElement from '../categories-list-element/categories-list-el
 
 import styles from './categories-list.style';
 
-const CategoriesList = ({list}) =>  (
+const CategoriesList = ({list, navigation}) =>  (
             <View style={styles.categoryList}>
                     <FlatList
                         data={list}
-                        renderItem={(item, index) => <CategoriesListElement item={item} key={index}/>}
+                        renderItem={(item, index) => <CategoriesListElement item={item} key={index} navigation={navigation}/>}
                         keyExtractor={(item, index) => item.id}
                         horizontal={true}
                         showsHorizontalScrollIndicator={false}

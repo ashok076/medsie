@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
-import {View, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity, FlatList} from 'react-native';
 import {Text} from 'react-native-paper'
 
 import CategoriesList from '../categories-list/categories-list.component';
 import ShowMapsTitle from '../show-maps-title/show-map-title.component';
+import  {getBusinessData, getHomeData} from '../../configure/api/api.configure.js'
 
 import styles from './categories.style';
 
@@ -11,42 +12,32 @@ class Categories extends Component {
     constructor(){
         super();
         this.state = {
-            array: [{color: 'purple'}, {color: 'pink'}, {color: 'purple'}, {color: 'pink'}, {color: 'purple'}, {color: 'pink'}, {color: 'purple'}],
+            array: []
         }
     }
 
-    recreationalShops = (navigation) => (
-        <View>
-            <ShowMapsTitle title="Recreational Shops" onPress={() => navigation.navigate('ShowMaps')}/>
-            <CategoriesList list={this.state.array}/>
-        </View>
-    ) 
+      componentDidMount() {
+        const {navigation, route} = this.props;
+            navigation.addListener('focus', () => {
+                this.homeData();
+            });
+  }
 
-    medicalShops = (navigation) => (
-        <View>
-            <ShowMapsTitle title="Medical Shops" onPress={() => navigation.navigate('ShowMaps')}/>
-            <CategoriesList list={this.state.array}/>
-        </View>
-    )
+    homeData = async () => {
+        const data = JSON.stringify({ Type: 1 })
+        await getHomeData(data)
+        .then(response => {
+            this.setState({ array: response[1] })
+        })
+        .catch(error => console.log(error))
+    }
 
-    deliveries = (navigation) => (
+    category = (navigation, item) => (
         <View>
-            <ShowMapsTitle title="Deliveries" onPress={() => navigation.navigate('ShowMaps')}/>
-            <CategoriesList list={this.state.array}/>
-        </View>
-    )
-
-    doctors = (navigation) => (
-        <View>
-            <ShowMapsTitle title="Doctors" onPress={() => navigation.navigate('ShowMaps')}/>
-            <CategoriesList list={this.state.array}/>
-        </View>
-    )
-
-    events = (navigation) => (
-        <View>
-            <ShowMapsTitle title="Events" onPress={() => navigation.navigate('ShowMaps')}/>
-            <CategoriesList list={this.state.array}/>
+            <ShowMapsTitle title={item.item.Cat_Name}/>
+            <View style={styles.gap}/>
+            <CategoriesList list={item.item.BusinessMaster_Home} navigation={navigation}/>
+            <View style={styles.gap}/>
         </View>
     )
 
@@ -55,16 +46,12 @@ class Categories extends Component {
         const {navigation} = this.props;
         return (
             <View>
-                <View style={styles.gap}/>
-                {this.recreationalShops(navigation)}
-                <View style={styles.gap}/>
-                {/* {this.medicalShops(navigation)}
-                <View style={styles.gap}/>
-                {this.deliveries(navigation)}
-                <View style={styles.gap}/>
-                {this.doctors(navigation)}
-                <View style={styles.gap}/>
-                {this.events(navigation)} */}
+                <FlatList
+                    data={array}
+                    renderItem={(item, index) => this.category(navigation, item)}
+                    keyExtractor={(item, index) => item.id}
+                    showsHorizontalScrollIndicator={false}
+                    />
             </View>
         )
     }

@@ -104,3 +104,30 @@ export const registerStoreImage = async (data, access_token) => {
         throw error;
     })
 }
+
+export const getBusinessData = async (data, access_token) => {
+    return axios(API.GET_BUSINESS_DETAILS, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + access_token
+        },
+        data
+    }).then(response => response.data)
+    .catch(error => {
+        throw error;
+    })
+}
+
+export const getHomeData = async (data) => {
+    return axios(API.HOME_PAGE, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        data
+    }).then(response => response.data)
+    .catch(error => {
+        throw error;
+    })
+}

@@ -5,5 +5,7 @@ export const API = {
     REGISTRATION_API : BASE_URL + "//token",
     REGISTER_STORE: BASE_URL + "api/Medsie/PostBusinessMasterData",
     CATEGORY_STORE: BASE_URL + "api/Medsie/GetcategoryMasterData",
-    ACCOUNT_SETTING: BASE_URL + "api/Medsie/GetProfileData"
+    ACCOUNT_SETTING: BASE_URL + "api/Medsie/GetProfileData",
+    HOME_PAGE: BASE_URL + "api/Medsie/GetHomeDetails",
+    GET_BUSINESS_DETAILS: BASE_URL + "api/Medsie/GetBusinessMasterData"
 }
