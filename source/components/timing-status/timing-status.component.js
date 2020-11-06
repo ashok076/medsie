@@ -27,13 +27,13 @@ const list = [{
     time: '10:00 AM - 10:00 PM'
 }]
 
-const TimingStatus  = () => (
+const TimingStatus  = ({ item }) => (
             <View style={styles.container}>
             <Title style={styles.close}>CLOSED NOW </Title>
                 <View>
                     <FlatList
-                        data={list}
-                        renderItem={(item) => renderTime(item)}
+                        data={item.businessHoursTransMaster_DTOs}
+                        renderItem={(i) => renderTime(i)}
                         />
                 </View>
             </View>
@@ -42,10 +42,10 @@ const TimingStatus  = () => (
 const renderTime = (item) => (
     <View style={[styles.row, styles.viewMargin]}>
         <View style={styles.rowContainer}>
-            <Text style={styles.days}>{item.item.days}</Text>
+            <Text style={styles.days}>{item.item.BHT_Weekdays}</Text>
         </View>
         <View style={styles.rowContainer}>
-            <Text style={styles.time}>{item.item.time}</Text>
+            <Text style={styles.time}>{item.item.BHT_FromTime} - {item.item.BHT_ToTime}</Text>
         </View>
     </View>
 )

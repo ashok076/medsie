@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {View, Text, SafeAreaView} from "react-native";
 import { Modalize } from 'react-native-modalize';
 
-import Listing from '../../pages/listing/listing.page';
 import Header from '../../components/header/header.component';
 
 import styles from './show-maps.style'
@@ -61,7 +60,6 @@ renderContent = () => (
                 modalStyle={styles.modalizeContent}
                 handleStyle={styles.handle}
                 rootStyle={styles.modalize}>
-                    <Listing />
                     {/* {this.renderContent()} */}
                 </Modalize>
             </SafeAreaView>

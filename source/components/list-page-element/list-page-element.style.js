@@ -6,12 +6,12 @@ const height = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
     card: {
-        width: width / 2.8,
-        marginRight: 10,
+        width: width ,
+        marginTop: 13,
         borderRadius: 5,
     },
     image: {
-        height: 120
+        height: 170
     },
     cardView: {
         padding: 5
@@ -21,20 +21,24 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgb(245, 245, 245)',
     },
     horizontalView: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginTop: 10
     },
     ratingView: {
-        height: '10%'
     },
     title: {
         fontFamily: 'Asap-Regular',
-        fontSize: 16
+        fontSize: 24,
+        marginTop: 10
     },
     caption: {
         fontFamily: 'Asap-Regular',
+        fontSize: 16,
+        marginTop: 10
     },
     place: {
         fontFamily: 'Asap-Regular',
+        fontSize: 17
     },
     starView: {
         alignItems: 'flex-start'

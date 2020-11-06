@@ -44,7 +44,9 @@ class RegisterStore extends Component {
             isLoader: false,
             base64: '',
             fileName: 'image',
-            imagePath: ''
+            imagePath: '',
+            catId: 0,
+            sellId: 0
     }
     constructor(){
         super()
@@ -90,8 +92,9 @@ class RegisterStore extends Component {
   }
 
 submit = async () => {
-    const {storeName, storeNumber, storeAddress, addIntroduction, fromWeekD, toWeekD, access_token, base64, fileName} = this.state;
+    const {storeName, storeNumber, storeAddress, addIntroduction, fromWeekD, toWeekD, access_token, base64, fileName, catId, sellId} = this.state;
     this.setState({ isLoader: true, isPickerVisible: false })
+    console.log("Id: ", catId)
     let arr = [];
     week_days.map(day => {
         arr.push({
@@ -101,7 +104,8 @@ submit = async () => {
         BHT_CustomDate: ''
         })
     })
-    if (base64.length === 0){
+    if (catId !== 0){
+        if (base64.length === 0){
         let data = JSON.stringify({
         Type: 1,
         Buss_Name: storeName,
@@ -115,9 +119,9 @@ submit = async () => {
         Buss_Description: '',
         Buss_UserId: '',
         Buss_Image_Path: '',
-        Buss_CatId: '',
+        Buss_CatId: catId,
         Buss_TypeOfBuss: '',
-        Buss_SellType: '',
+        Buss_SellType: sellId,
         Buss_Lat: '',
         Buss_Long: '',
         UserID: ''
@@ -144,9 +148,9 @@ submit = async () => {
         Buss_Description: '',
         Buss_UserId: '',
         Buss_Image_Path: '',
-        Buss_CatId: '',
+        Buss_CatId: catId,
         Buss_TypeOfBuss: '',
-        Buss_SellType: '',
+        Buss_SellType: sellId,
         Buss_Lat: '',
         Buss_Long: '',
         ContentType  : 1,
@@ -165,6 +169,10 @@ submit = async () => {
             console.log("Error: ", error)
             this.setState({ isLoader: false })
         })
+    }
+    } else {
+        this.showMessage('Category is an mandtory field')
+        this.setState({ isLoader: false })
     }
 }
 
@@ -264,7 +272,7 @@ dateTimePicker = () => (
     render(){
         const {navigation, route} = this.props;
         const {showDrawer} = route.params;
-        const {storeName, storeNumber, storeAddress, addIntroduction, modal, array, businessCategory, sellingType, key, catArray, isLoader} = this.state;
+        const {storeName, storeNumber, storeAddress, addIntroduction, modal, array, businessCategory, sellingType, key, catArray, isLoader, pkid} = this.state;
         console.log("Sell: ", catArray)
         return (
             <SafeAreaView style={styles.contain}>
@@ -293,14 +301,14 @@ dateTimePicker = () => (
                     <View style={styles.inputContainer}>
                         <ModalPicker
                             placeHolder="Enter business category"
-                            onPress={() => this.setState({ modal: true, array: catArray, key: 'businessCategory' })}
+                            onPress={() => this.setState({ modal: true, array: catArray, key: 'businessCategory', pkid: 'catId' })}
                             value={businessCategory}
                         />
                     </View>
                     <View style={styles.inputContainer}>
                         <ModalPicker
                             placeHolder="Enter selling type"
-                            onPress={() => this.setState({ modal: true, array: selling_type, key: 'sellingType' })}
+                            onPress={() => this.setState({ modal: true, array: selling_type, key: 'sellingType', pkid: 'sellId' })}
                             value={sellingType}
                         />
                     </View>
@@ -335,6 +343,7 @@ dateTimePicker = () => (
                         changeModalVisibility={this.changeModalVisibility}
                         changeState={this.changeState}
                         id={key}
+                        pkid={pkid}
                     />
                     <Loader isLoader={isLoader}/>
                 </View>

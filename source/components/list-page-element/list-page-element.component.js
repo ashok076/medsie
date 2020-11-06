@@ -8,26 +8,26 @@ import {Color} from '../../assets/color/color.assets'
 import Star from '../../assets/svg-files/starfilled.svg'
 import StarOutline from '../../assets/svg-files/star-outline.svg'
 
-import styles from './categories-list-element.style';
+import styles from './list-page-element.style';
 
-const CategoriesListElement = ({item, key, navigation}) =>  (
-            <TouchableOpacity style={styles.cardView} key={key} onPress={() => navigation.navigate('Listing', {id: item.item.Buss_PkId})}>
+const ListPageElement = ({item, key, navigation}) =>  (
+            <TouchableOpacity style={styles.cardView} key={key}>
                 <Card style={styles.card}>
                     <Image style={styles.image} source={{uri: item.item.Buss_Image_Path}}/>
                     <View style={styles.body}> 
-                        <Title style={styles.title}>{item.item.Buss_Name}</Title>
+                        <Title style={styles.title}>Title</Title>
                         <View style={styles.starView}>
                         <Stars
                             display={4}
                             spacing={1}
                             count={5}
                             starSize={40}
-                            fullStar= {<Star width={12} height={12}/>}
-                            emptyStar= {<StarOutline width={12} height={12}/>}/>
+                            fullStar= {<Star width={30} height={30}/>}
+                            emptyStar= {<StarOutline width={30} height={30}/>}/>
                         </View>
-                        <Caption style={styles.caption}>{item.item.Buss_City}, {item.item.Buss_Country}</Caption>
+                        <Caption style={styles.caption}>City, Country</Caption>
                         <View style={styles.horizontalView}>
-                            <Icon name="place" color={Color.purpleishBlue} size={17} />
+                            <Icon name="place" color={Color.purpleishBlue} size={24} />
                             <Text style={styles.place}>Place</Text>
                         </View>
                     </View>
@@ -36,4 +36,4 @@ const CategoriesListElement = ({item, key, navigation}) =>  (
     
 )
 
-export default CategoriesListElement
+export default ListPageElement

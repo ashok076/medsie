@@ -7,13 +7,13 @@ import {Color} from '../../assets/color/color.assets'
 
 import styles from './company-card.style';
 
-const CompanyCard  = ({title, location, time, image}) => (
+const CompanyCard  = ({item}) => (
                 <View style={[styles.row, styles.container]}>
                     <View style={{height: '100%', width: '25%', backgroundColor: Color.purpleishBlue}}/>
                     <View style={styles.info}>
-                        <Title style={styles.title}>Title</Title>
+                        <Title style={styles.title}>{item.Buss_Name}</Title>
                         <View style={[styles.row]}>
-                            <Caption style={styles.caption}>Location</Caption>
+                            <Caption style={styles.caption}>{item.Buss_City}, {item.Buss_Country}</Caption>
                             <Icon name="place" color={Color.purpleishBlue} size={17} style={styles.icon}/>
                             <Caption style={styles.min}>Place</Caption>
                         </View>

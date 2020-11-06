@@ -23,8 +23,9 @@ class ModalList extends Component {
   );
 
   addValue = (item) => {
-    const {id, changeState} = this.props;
+    const {id, changeState, pkid} = this.props;
     changeState(id, item.type);
+    changeState(pkid, item.id);
     this.closeModal();
   };
 

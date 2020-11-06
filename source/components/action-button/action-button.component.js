@@ -15,11 +15,11 @@ const ActionButtons  = () => (
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.icon}>
                     <Car height={45} width={45}/>
-                    <Text style={styles.label}>Direction</Text>
+                    <Text style={styles.label}>Review</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.icon}>
                     <Location height={45} width={45}/>
-                    <Text style={styles.label}>Review</Text>
+                    <Text style={styles.label}>Direction</Text>
                 </TouchableOpacity>
             </View>
         )
