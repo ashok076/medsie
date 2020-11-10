@@ -40,7 +40,8 @@ class Login extends Component {
         const value = await AsyncStorage.multiGet(['access_token', 'session']);
         const access_token = JSON.parse(value[0][1]);
         const session = JSON.parse(value[1][1]);
-        if (access_token !== null || access_token !== undefined || access_token !== ''){
+        if (access_token !== null && access_token !== undefined && access_token !== ''){
+            console.log("Access Token: ", access_token)
             if (session){
                 navigation.reset({
                     index: 0,

@@ -15,7 +15,7 @@ const ListPageElement = ({item, key, navigation}) =>  (
                 <Card style={styles.card}>
                     <Image style={styles.image} source={{uri: item.item.Buss_Image_Path}}/>
                     <View style={styles.body}> 
-                        <Title style={styles.title}>Title</Title>
+                        <Title style={styles.title}>{item.item.Buss_Name}</Title>
                         <View style={styles.starView}>
                         <Stars
                             display={4}
@@ -25,7 +25,7 @@ const ListPageElement = ({item, key, navigation}) =>  (
                             fullStar= {<Star width={30} height={30}/>}
                             emptyStar= {<StarOutline width={30} height={30}/>}/>
                         </View>
-                        <Caption style={styles.caption}>City, Country</Caption>
+                        <Caption style={styles.caption}>{item.item.Buss_City}, {item.item.Buss_Country}</Caption>
                         <View style={styles.horizontalView}>
                             <Icon name="place" color={Color.purpleishBlue} size={24} />
                             <Text style={styles.place}>Place</Text>

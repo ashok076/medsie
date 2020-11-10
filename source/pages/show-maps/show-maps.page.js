@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {View, Text, SafeAreaView} from "react-native";
 import { Modalize } from 'react-native-modalize';
+import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps'
 
 import Header from '../../components/header/header.component';
 
@@ -11,57 +12,33 @@ class ShowMaps extends Component{
         super()
     }
 
-renderContent = () => (
-<View>
-    <View style={styles.content}>
-      <Text style={styles.contentSubheading}>{'Introduction'.toUpperCase()}</Text>
-      <Text style={styles.contentHeading}>Always open modal!</Text>
-      <Text style={styles.contentDescription}>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-      praesentium voluptatum deleniti atque corrupti quos dolores et quas
-      molestias excepturi sint occaecati cupiditate non provident, similique
-      sunt in culpa qui officia deserunt mollitia animi, id est laborum et
-      dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
-      Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-      impedit quo minus id quod maxime placeat facere possimus, omnis voluptas
-      assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut
-      officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates
-      repudiandae sint et molestiae non recusandae. Itaque earum rerum hic
-      tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-      consequatur aut perferendis doloribus asperiores repellat. At vero eos et
-      accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-      voluptatum deleniti atque corrupti quos dolores et quas molestias
-      excepturi sint occaecati cupiditate non provident, similique sunt in culpa
-      qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et
-      harum quidem rerum facilis est et expedita distinctio. Nam libero tempore,
-      cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod
-      maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-      repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum
-      necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-      molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente
-      delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut
-      perferendis doloribus asperiores repellat.</Text>
-    </View>
-</View>
-  );
+    marker = () => {
+        const {route} = this.props;
+        return route.params.data.map(marker => (
+            <Marker
+              coordinate={{
+                latitude: marker.Buss_Lat ? parseFloat(marker.Buss_Lat) : 0,
+                longitude: marker.Buss_Long ? parseFloat(marker.Buss_Long) : 0,
+              }}
+            />
+        ))
+    }
 
     render(){
         const {navigation, route} = this.props;
         return(
             <SafeAreaView style={styles.container}>
-            <View>
-                <Header navigation={navigation}/>
-                <View style={{width: '100%', height: '100%', backgroundColor: '#add8e6'}}/>
-            </View>
-            <Modalize
-                modalStyle={styles.contentModal}
-                alwaysOpen={180}
-                modalTopOffset={0}
-                handlePosition="inside"
-                modalStyle={styles.modalizeContent}
-                handleStyle={styles.handle}
-                rootStyle={styles.modalize}>
-                    {/* {this.renderContent()} */}
-                </Modalize>
+                <MapView 
+                provider={PROVIDER_GOOGLE}
+                initialRegion={{
+                    latitude: 37.78825,
+                    longitude: -122.4324,
+                    latitudeDelta: 50,
+                    longitudeDelta: 50,
+                }}
+                style={{height: '100%'}}>
+                    {this.marker()}
+                </MapView>
             </SafeAreaView>
         )
     }

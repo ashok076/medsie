@@ -137,7 +137,7 @@ navigate = async () => {
             <SafeAreaView style={styles.container}>
                 <ScrollView keyboardShouldPersistTaps='handled'>
                 <View style={styles.innerContainer}>
-                    <BackHeader title="Back to login" navigation={navigation}/>
+                    <BackHeader title="Back" navigation={navigation}/>
                     <Text style={styles.loginText}>CREATE AN ACCOUNT</Text>
                     <View style={styles.inputContainer}>
                         <InputText

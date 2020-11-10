@@ -1,5 +1,7 @@
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+rn_path = '../node_modules/react-native'
+rn_maps_path = '../node_modules/react-native-maps'
 
 platform :ios, '10.0'
 
@@ -7,6 +9,12 @@ target 'medsie' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
+
+
+    # react-native-maps dependencies
+    pod 'react-native-google-maps', :path => '../node_modules/react-native-maps'
+    pod 'GoogleMaps'  # Uncomment this line if you want to support GoogleMaps on iOS
+    pod 'Google-Maps-iOS-Utils' # Uncomment this line if you want to support GoogleMaps on iOS
 
 
   target 'medsieTests' do

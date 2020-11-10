@@ -7,7 +7,8 @@ import Header from '../../components/header/header.component'
 import InputText from '../../components/input-text/input-text.component'
 import InputTextIcon from '../../components/input-text-icon/input-text-icon.component';
 import Button from '../../components/button/button.component';
-import {accountSettings} from '../../configure/api/api.configure'
+import EditStoreSettings from '../../components/edit-store-settings/edit-store-settings.component'
+import {accountSettings} from '../../configure/api/api.configure';
 
 import styles from './account-settings.style';
 
@@ -20,7 +21,8 @@ class AccountSettings extends Component{
             name: '',
             phone: '',
             dob: '',
-            access_token: ''
+            access_token: '',
+            bussinessData: []
     }
     constructor(){
         super();
@@ -64,7 +66,8 @@ class AccountSettings extends Component{
             emailid: response.User_Email,
             password: response.User_Password,
             phone: response.User_Phone,
-            isLoader: false
+            isLoader: false,
+            bussinessData: response.BusinessMaster_DTO
         })
 }
 
@@ -77,7 +80,7 @@ class AccountSettings extends Component{
 
     render(){
         const {navigation} = this.props;
-        const {isShowPassword, emailid, password, isLoader, phone, dob, name} = this.state;
+        const {isShowPassword, emailid, password, isLoader, phone, dob, name, bussinessData} = this.state;
         return(
             <SafeAreaView style={styles.container}>
                 <Header navigation={navigation}/>
@@ -128,8 +131,9 @@ class AccountSettings extends Component{
                         />
                         </View>
                     <View style={styles.buttonContainer}>
-                        <Button title="Edit Settings" onPress={() => this.submit()}/>
+                        <Button title="Edit Settings" />
                     </View>
+                    <EditStoreSettings data={bussinessData} navigation={navigation}/>
                 </View>
                 </ScrollView>
             </SafeAreaView>

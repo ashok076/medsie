@@ -4,7 +4,7 @@ import {Text} from 'react-native-paper'
 
 import CategoriesList from '../categories-list/categories-list.component';
 import ShowMapsTitle from '../show-maps-title/show-map-title.component';
-import  {getBusinessData, getHomeData} from '../../configure/api/api.configure.js'
+import {getBusinessData, getHomeData} from '../../configure/api/api.configure'
 
 import styles from './categories.style';
 

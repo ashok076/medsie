@@ -7,6 +7,7 @@ import Registration from '../../pages/registration/registration.page';
 import ListPage from '../../pages/list-page/list-page.page.js';
 import Listing from '../../pages/listing/listing.page';
 import RegisterStore from '../../pages/register-store/register-store.page';
+import EditStore from '../../pages/edit-store/edit-store.page.js';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ const MainStackNavigator = () => (
     <Stack.Screen name="RegisterStore" component={RegisterStore} />
     <Stack.Screen name="ListPage" component={ListPage} />
     <Stack.Screen name="Listing" component={Listing} />
+    <Stack.Screen name="EditStore" component={EditStore} />
   </Stack.Navigator>
 );
 

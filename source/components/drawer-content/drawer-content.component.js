@@ -7,7 +7,7 @@ import {
   Text,
   TouchableRipple,
   Avatar,
-  Caption,
+  Caption
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -42,6 +42,29 @@ class DrawerComponent extends Component {
         this.setState({ show: true }, () => console.log("Show: ", this.state.show))
       }
   }
+
+logout = (navigation) =>
+  Alert.alert(
+    'Logout',
+    'Are you sure you want to logout?',
+    [
+      {text: 'LOGOUT', onPress: () => this.signout(navigation)},
+      {text: 'CANCEL'},
+    ],
+    {cancelable: false},
+  );
+
+signout = async (navigation) => {
+  try {
+    await AsyncStorage.clear()
+  } catch(e) {
+    // clear error
+  }
+  navigation.reset({
+    index: 0,
+    routes: [{name: 'Login'}],
+  })
+}; 
 
   render(){
     const {navigation} = this.props;
@@ -96,14 +119,14 @@ class DrawerComponent extends Component {
           {!show && (
             <DrawerItem
               label="Login"
-              onPress={() => navigation.navigate('Home')}
+              onPress={() => navigation.navigate('Login')}
               labelStyle={styles.labelStyle}
             />
           )}
           {!show && (
             <DrawerItem
               label="Register"
-              onPress={() => navigation.navigate('Home')}
+              onPress={() => navigation.navigate('Registration')}
               labelStyle={styles.labelStyle}
             />
           )}
@@ -126,7 +149,6 @@ class DrawerComponent extends Component {
           />
           <DrawerItem
             label="About Medsie"
-            onPress={() => navigation.navigate('Home')}
             labelStyle={styles.labelStyle}
           />
         </Drawer.Section>
@@ -142,6 +164,7 @@ class DrawerComponent extends Component {
             navigation.closeDrawer();
           }}
             labelStyle={styles.labelStyle}
+            onPress={() => this.logout(navigation)}
         />
       </Drawer.Section>
     </View>
