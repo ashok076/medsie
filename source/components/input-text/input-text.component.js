@@ -3,7 +3,7 @@ import {View, TextInput, Text} from 'react-native';
 
 import styles from './input-text.style'
 
-const InputText = ({ value, keyboardType, onChangeText, placeHolder }) => (
+const InputText = ({ value, keyboardType, onChangeText, placeHolder, editable }) => (
     <View>
         <Text style={styles.placeholder}>{placeHolder}</Text>
         <View style={styles.editTextView}> 
@@ -13,6 +13,7 @@ const InputText = ({ value, keyboardType, onChangeText, placeHolder }) => (
                 onChangeText={onChangeText}
                 value={value}
                 keyboardType={keyboardType}
+                editable={editable}
         />
         </View>
     </View>

@@ -11,7 +11,7 @@ import StarOutline from '../../assets/svg-files/star-outline.svg'
 import styles from './list-page-element.style';
 
 const ListPageElement = ({item, key, navigation}) =>  (
-            <TouchableOpacity style={styles.cardView} key={key}>
+            <TouchableOpacity style={styles.cardView} key={key} onPress={() => navigation.navigate('Listing', {id: item.item.Buss_PkId})}>
                 <Card style={styles.card}>
                     <Image style={styles.image} source={{uri: item.item.Buss_Image_Path}}/>
                     <View style={styles.body}> 

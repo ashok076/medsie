@@ -2,12 +2,14 @@ import React, {Component} from 'react';
 import {View, TouchableOpacity, ScrollView, SafeAreaView} from 'react-native';
 import { Toast } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 import {Text} from 'react-native-paper'
 import { format } from "date-fns";
 
 import Header from '../../components/header/header.component'
 import InputText from '../../components/input-text/input-text.component'
 import InputTextIcon from '../../components/input-text-icon/input-text-icon.component';
+import ModalPicker from '../../components/modal-picker/modal-picker.component'
 import Button from '../../components/button/button.component';
 import EditStoreSettings from '../../components/edit-store-settings/edit-store-settings.component'
 import {accountSettings, updateUserProfile} from '../../configure/api/api.configure';
@@ -24,7 +26,8 @@ class AccountSettings extends Component{
             phone: '',
             dob: '',
             access_token: '',
-            bussinessData: []
+            bussinessData: [],
+            birthdayPicker: false
     }
     constructor(){
         super();
@@ -68,7 +71,7 @@ class AccountSettings extends Component{
             emailid: response.User_Email,
             password: response.User_Password,
             phone: response.User_Phone,
-            dob: response.User_DOB ? response.User_DOB.replace('T00:00:00', '').trim() : '',
+            dob: response.User_DOB ? this.dateFormatter(new Date(Date.parse(response.User_DOB))) : '',
             isLoader: false,
             bussinessData: response.BusinessMaster_DTO
         })
@@ -145,6 +148,28 @@ class AccountSettings extends Component{
     })
 }
 
+onDateTimeChange = (selectedDate) => {
+    console.log("Event: ", selectedDate)
+    let dateTime = this.dateFormatter(selectedDate)
+    this.setState({ dob: dateTime })
+    this.setState({ birthdayPicker: false })
+}
+
+dateFormatter = (date) => {
+    return format(date, "MM-dd-yyyy");
+}
+
+dateTimePicker = () => (
+    <View>
+        {this.state.birthdayPicker && <DateTimePickerModal
+            isVisible={this.state.birthdayPicker !== null}
+            mode={'date'}
+            onConfirm={this.onDateTimeChange}
+            onCancel={ () => this.setState({ birthdayPicker: false }) }
+        />}
+    </View>
+)
+
     render(){
         const {navigation} = this.props;
         const {isShowPassword, emailid, password, isLoader, phone, dob, name, bussinessData} = this.state;
@@ -171,6 +196,7 @@ class AccountSettings extends Component{
                             value={emailid}
                             keyboardType="email-address"
                             onChangeText={(emailid) => this.setState({ emailid })}
+                            editable={false}
                         />
                         </View>
                     <View style={styles.inputContainer}>
@@ -190,17 +216,17 @@ class AccountSettings extends Component{
                         />
                     </View>
                     <View style={styles.inputContainer}>
-                        <InputText
-                            placeHolder="Date of birth"
+                        <ModalPicker
+                            placeHolder="Date Of Birth"
+                            onPress={() => this.setState({ birthdayPicker: true })}
                             value={dob}
-                            keyboardType="default"
-                            onChangeText={(dob) => this.setState({ dob })}
                         />
                         </View>
                     <View style={styles.buttonContainer}>
                         <Button title="Edit Settings" onPress={() => this.update()}/>
                     </View>
                     <EditStoreSettings data={bussinessData} navigation={navigation}/>
+                    {this.dateTimePicker()}
                 </View>
                 </ScrollView>
             </SafeAreaView>
