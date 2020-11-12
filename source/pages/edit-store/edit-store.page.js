@@ -17,7 +17,7 @@ import NoBackgroundButton from '../../components/no-background-button/no-backgro
 import ModalPicker from '../../components/modal-picker/modal-picker.component'
 import ModalList from '../../components/modal-list/modal-list.component';
 import Loader from '../../components/loader/loader.component';
-import {registerStore, categoryStore, registerStoreImage} from '../../configure/api/api.configure';
+import {registerStore, categoryStore, registerStoreImage, getBusinessData} from '../../configure/api/api.configure';
 import {selling_type, week_days, week_ends} from './edit-store.list';
 
 import styles from './edit-store.style';
@@ -87,13 +87,22 @@ class EditStore extends Component {
                     type: val.Cat_Name
                 })
             )
-            this.setState({ catArray: arr }, () => this.getData())
+            this.setState({ catArray: arr }, () => this.getBusinessData())
             })
         .catch(error => console.log("Error: ", error))
   }
 
-  getData = async () => {
-      const {data} = this.props.route.params;
+    getBusinessData = async() => {
+        const {data} = this.props.route.params;
+        let apidata = JSON.stringify({
+            Type: 3,
+            Buss_PkId: data.Buss_PkId
+        })
+        await getBusinessData(apidata)
+        .then(response => this.getData(response[0][0]))
+    }
+
+  getData = async (data) => {
       console.log("Data: ", data)
       this.setState({
           storeName: data.Buss_Name,

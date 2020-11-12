@@ -31,7 +31,7 @@ const store = (navigation, item) => (
         </View>
     </Card>
 )
-
+  
 const navigate = (navigation, item) => {
     navigation.navigate('EditStore', {data: item.item})
 }

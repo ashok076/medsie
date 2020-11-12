@@ -56,7 +56,7 @@ class AccountSettings extends Component{
       const {access_token} = this.state;
       await accountSettings(JSON.parse(access_token))
         .then(response => {
-            console.log("Res: ", response)
+            console.log("Res: ", JSON.stringify(response))
             this.addViewData(response[0][0])
             })
         .catch(error => console.log("Error: ", error))
@@ -68,7 +68,7 @@ class AccountSettings extends Component{
             emailid: response.User_Email,
             password: response.User_Password,
             phone: response.User_Phone,
-            dob: response.User_DOB ? response.User_DOBreplace('T00:00:00', '').trim() : '',
+            dob: response.User_DOB ? response.User_DOB.replace('T00:00:00', '').trim() : '',
             isLoader: false,
             bussinessData: response.BusinessMaster_DTO
         })
