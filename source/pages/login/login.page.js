@@ -74,9 +74,9 @@ submit  = async () => {
                 this.home()
                 this.setState({access_token: res.access_token, isLoader: false }, () => this.saveAccessToken())
             }).catch(error => {
-                console.log("error", error)
+                console.log("error", error.response.data.error_description)
                 this.setState({ isLoader: false })
-                alert(error)
+                this.showMessage(error.response.data.error_description)
             })
         }
 }
@@ -122,11 +122,13 @@ saveAccessToken = async () => {
     }
 
 showMessage = (message) => {
-    Toast.show({
+    if (message !== '' && message !== null && message !== undefined){
+        Toast.show({
         text: message,
         style: styles.toasttxt,
         duration: 5000
     })
+  }
 }
 
 navigate = (page) => {

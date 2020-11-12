@@ -166,6 +166,7 @@ submit = async () => {
         .catch(error => {
             console.log("Error: ", error)
             this.setState({ isLoader: false })
+            this.showMessage(error.response.data.error_description)
         })
     }
     } else {
@@ -175,10 +176,13 @@ submit = async () => {
 }
 
 showMessage = (message) => {
-    Toast.show({
+    if (message !== '' && message !== null && message !== undefined){
+        Toast.show({
         text: message,
-        style: styles.toasttxt
+        style: styles.toasttxt,
+        duration: 5000
     })
+    }
 }
 
 onDateTimeChange = (selectedDate) => {

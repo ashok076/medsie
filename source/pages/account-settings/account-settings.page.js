@@ -166,6 +166,7 @@ dateTimePicker = () => (
             mode={'date'}
             onConfirm={this.onDateTimeChange}
             onCancel={ () => this.setState({ birthdayPicker: false }) }
+            maximumDate={new Date(Date.now())}
         />}
     </View>
 )

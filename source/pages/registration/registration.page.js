@@ -53,7 +53,7 @@ submit  = async () => {
                 });
             }).catch(error => {
                 this.setState({ isLoader: false })
-                alert(error)
+                this.showMessage(error.response.data.error_description)
             })
         }
     }
@@ -67,8 +67,7 @@ saveAccessToken = async () => {
             const session = ['session', JSON.stringify(true)]
             await AsyncStorage.multiSet([token, session]);
         } catch (error) {
-            console.log("Async Access token error", access_token);
-            alert(error)
+            console.log("Async Access token error", error);
         }
     }
 }
@@ -106,10 +105,13 @@ saveAccessToken = async () => {
     }
 
 showMessage = (message) => {
-    Toast.show({
+    if (message !== '' && message !== null && message !== undefined){
+        Toast.show({
         text: message,
-        style: styles.toasttxt
+        style: styles.toasttxt,
+        duration: 5000
     })
+    }
 }
 
 navigate = async () => {
