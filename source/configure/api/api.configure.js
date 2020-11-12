@@ -79,7 +79,7 @@ export const accountSettings = async (access_token) => {
     return axios(API.ACCOUNT_SETTING, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + access_token
         },
         data: JSON.stringify({
@@ -125,6 +125,30 @@ export const getHomeData = async (data) => {
             'Content-Type': 'application/json',
         },
         data
+    }).then(response => response.data)
+    .catch(error => {
+        throw error;
+    })
+}
+
+export const updateUserProfile = async (data, access_token) => {
+    console.log("Data: ", data, access_token)
+    return axios(API.UPDATE_USER_DETAILS, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + access_token
+        },
+        data
+    }).then(response => response.data)
+    .catch(error => {
+        throw error;
+    })
+}
+
+export const checkServer = async () => {
+    return axios(API.CHECK_SERVER, {
+        method: 'POST',
     }).then(response => response.data)
     .catch(error => {
         throw error;

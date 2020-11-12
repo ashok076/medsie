@@ -36,7 +36,7 @@ class Listing extends Component {
       })
       await getBusinessData(data)
       .then(response => {
-          console.log(response)
+          console.log(response, data)
           this.setState({ item: response[0][0] })
       })
       .catch(error => console.log("Error: ", error))

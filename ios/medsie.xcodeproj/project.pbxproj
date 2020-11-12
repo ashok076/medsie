@@ -23,6 +23,9 @@
 		2DCD954D1E0B4F2C00145EB5 /* medsieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* medsieTests.m */; };
 		368F7482F60581AAB4567ED0 /* libPods-medsie-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A41BA20A8759B6D211D43E2B /* libPods-medsie-tvOSTests.a */; };
 		417C1C587E854DF99345F65C /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C2C643365184959992F2E0C /* MaterialIcons.ttf */; };
+		4182ADA1255AAF36006BEC0B /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4182AD9F255AAF34006BEC0B /* GoogleMaps.bundle */; };
+		4182ADA2255AAF36006BEC0B /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4182ADA0255AAF36006BEC0B /* GoogleMaps.framework */; };
+		4182ADA7255AAF75006BEC0B /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4182AD9F255AAF34006BEC0B /* GoogleMaps.bundle */; };
 		45357686CFAB4E5C8A032FD5 /* Asap-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55802217035A4DC5B5D76C5D /* Asap-SemiBold.ttf */; };
 		4E0FA6804FE3D3D5F872E2F6 /* libPods-medsie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8112CF8634F04543A2F376E3 /* libPods-medsie.a */; };
 		6A39330CBAC34CB580CE0A10 /* Asap-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE350BDD76BF49279FC5C3E0 /* Asap-Medium.ttf */; };
@@ -86,6 +89,8 @@
 		36B63A01C95CB52048894D9A /* libPods-medsie-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-medsie-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3723A2838DFC4C1783B85733 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		3EF87A9128A044D683377BAA /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		4182AD9F255AAF34006BEC0B /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
+		4182ADA0255AAF36006BEC0B /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		55802217035A4DC5B5D76C5D /* Asap-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Asap-SemiBold.ttf"; path = "../assets/fonts/Asap-SemiBold.ttf"; sourceTree = "<group>"; };
 		611EC40F413F434EA1402BFC /* Asap-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Asap-MediumItalic.ttf"; path = "../assets/fonts/Asap-MediumItalic.ttf"; sourceTree = "<group>"; };
 		6673CF74D9541261C8643FF9 /* Pods-medsie-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-medsie-tvOS/Pods-medsie-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4182ADA2255AAF36006BEC0B /* GoogleMaps.framework in Frameworks */,
 				368F7482F60581AAB4567ED0 /* libPods-medsie-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,6 +208,8 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4182AD9F255AAF34006BEC0B /* GoogleMaps.bundle */,
+				4182ADA0255AAF36006BEC0B /* GoogleMaps.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				8112CF8634F04543A2F376E3 /* libPods-medsie.a */,
@@ -419,6 +427,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4182ADA7255AAF75006BEC0B /* GoogleMaps.bundle in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				2849C1CADD5A40738CAE4DB2 /* Asap-Bold.ttf in Resources */,
@@ -460,6 +469,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4182ADA1255AAF36006BEC0B /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +556,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-medsie-medsieTests/Pods-medsie-medsieTests-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
@@ -569,6 +580,7 @@
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QBImagePicker.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
@@ -885,6 +897,10 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "medsie-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -912,6 +928,10 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "medsie-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

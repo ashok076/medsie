@@ -15,7 +15,7 @@ const CategoriesListElement = ({item, key, navigation}) =>  (
                 <Card style={styles.card}>
                     <Image style={styles.image} source={{uri: item.item.Buss_Image_Path}}/>
                     <View style={styles.body}> 
-                        <Title style={styles.title}>{item.item.Buss_Name}</Title>
+                        <Title style={styles.title}>{ ((item.item.Buss_Name).length > 20) ? (((item.item.Buss_Name).substring(0,20-3)) + '...') : item.item.Buss_Name }</Title>
                         <View style={styles.starView}>
                         <Stars
                             display={4}

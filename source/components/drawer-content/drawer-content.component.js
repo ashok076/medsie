@@ -87,7 +87,7 @@ signout = async (navigation) => {
               <MedicalShops width={size} height={size} />
             )}
             label="Medical Shops"
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.navigate('ListPage', { type: 'Medical Shops' })}
             labelStyle={styles.labelStyle}
           />
           <DrawerItem
@@ -95,7 +95,7 @@ signout = async (navigation) => {
               <Deliveries width={size} height={size} />
             )}
             label="Deliveries"
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.navigate('ListPage', { type: 'Delivery' })}
             labelStyle={styles.labelStyle}
           />
           <DrawerItem
@@ -111,7 +111,7 @@ signout = async (navigation) => {
               <Events width={size} height={size} />
             )}
             label="Events"
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.navigate('ListPage', { type: 'Events' })}
             labelStyle={styles.labelStyle}
           />
         </Drawer.Section>
@@ -130,18 +130,18 @@ signout = async (navigation) => {
               labelStyle={styles.labelStyle}
             />
           )}
-          <DrawerItem
+          {show && (<DrawerItem
             label="List a store"
             onPress={() => navigation.navigate('RegisterStore', {
             showDrawer: true
         })}
             labelStyle={styles.labelStyle}
-          />
-          <DrawerItem
+          />)}
+          {show && (<DrawerItem
             label="Settings"
             onPress={() => navigation.navigate('AccountSettings')}
             labelStyle={styles.labelStyle}
-          />
+          />)}
           <DrawerItem
             label="Privacy Policy"
             onPress={() => navigation.navigate('Home')}

@@ -31,11 +31,9 @@ class Registration extends Component {
     }
 
 submit  = async () => {
-    const {emailid, confirmpassword, firstname} = this.state;
+    const {emailid, confirmpassword, firstname, mobile} = this.state;
     const { navigation } = this.props
-    this.showMessage('Starting method...');
     if (this.validation()){
-        this.showMessage('Validation completed...')
         if (this.passwordCheck()){
         this.setState({ isLoader: true })
             let data = qs.stringify({
@@ -43,9 +41,9 @@ submit  = async () => {
                 'username': emailid,
                 'password': confirmpassword,
                 'ClientId': '2',
-                'FirstName': firstname
+                'FirstName': firstname,
+                'MobileNumber': mobile
             })
-            this.showMessage('API called...')
             await register(data).then(res => {
                 this.showMessage('Account created successfully')
                 this.setState({ isLoader: false, access_token: res.access_token },() => this.saveAccessToken())

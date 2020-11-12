@@ -46,7 +46,8 @@ class EditStore extends Component {
             fileName: 'image',
             imagePath: '',
             catId: 0,
-            sellId: 0
+            sellId: 0,
+            buspkid: 0
     }
     constructor(){
         super()
@@ -102,6 +103,7 @@ class EditStore extends Component {
           imagePath: data.Buss_Image_Path ? data.Buss_Image_Path : '',
           catId: data.Buss_CatId ? data.Buss_CatId : 0,
           sellId: data.Buss_SellType ? data.Buss_SellType : 0,
+          buspkid: data.Buss_PkId
       }, () => this.category())
   }
 
@@ -117,7 +119,7 @@ class EditStore extends Component {
   }
 
 submit = async () => {
-    const {storeName, storeNumber, storeAddress, addIntroduction, fromWeekD, toWeekD, access_token, base64, fileName, catId, sellId} = this.state;
+    const {storeName, storeNumber, storeAddress, buspkid, addIntroduction, fromWeekD, toWeekD, access_token, base64, fileName, catId, sellId} = this.state;
     this.setState({ isLoader: true, isPickerVisible: false })
     console.log("Id: ", catId)
     let arr = [];
@@ -149,7 +151,8 @@ submit = async () => {
         Buss_SellType: sellId,
         Buss_Lat: '',
         Buss_Long: '',
-        UserID: ''
+        UserID: '',
+        Buss_PkId: buspkid
     })
     console.log("Data: ", data);
     await registerStore(data, JSON.parse(access_token))
@@ -181,7 +184,8 @@ submit = async () => {
         ContentType  : 1,
         IPLNO : 'Images',
         Image: "data:image/png;base64, " + base64,
-        Client_Result_Photo_FileName: fileName
+        Client_Result_Photo_FileName: fileName,
+        Buss_PkId: buspkid
     })
     console.log("Data: ", data);
     await registerStoreImage(data, JSON.parse(access_token))
@@ -280,7 +284,9 @@ pickImage = () => {
     includeBase64: true
     }).then(images => {
         this.setState({ base64: images.data, fileName: Platform.OS === 'ios' ? images.filename : 'images' + new Date(), imagePath: images.path })
-    });
+    }).catch(error => {
+        console.log("Image Picker Error: ", error)
+    })
 }
 
 dateTimePicker = () => (

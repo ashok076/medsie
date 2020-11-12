@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import {View, TouchableOpacity, ScrollView, SafeAreaView} from 'react-native';
+import { Toast } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Text} from 'react-native-paper'
+import { format } from "date-fns";
 
 import Header from '../../components/header/header.component'
 import InputText from '../../components/input-text/input-text.component'
 import InputTextIcon from '../../components/input-text-icon/input-text-icon.component';
 import Button from '../../components/button/button.component';
 import EditStoreSettings from '../../components/edit-store-settings/edit-store-settings.component'
-import {accountSettings} from '../../configure/api/api.configure';
+import {accountSettings, updateUserProfile} from '../../configure/api/api.configure';
 
 import styles from './account-settings.style';
 
@@ -54,7 +56,7 @@ class AccountSettings extends Component{
       const {access_token} = this.state;
       await accountSettings(JSON.parse(access_token))
         .then(response => {
-            console.log("Res: ", response[0][0])
+            console.log("Res: ", response)
             this.addViewData(response[0][0])
             })
         .catch(error => console.log("Error: ", error))
@@ -66,6 +68,7 @@ class AccountSettings extends Component{
             emailid: response.User_Email,
             password: response.User_Password,
             phone: response.User_Phone,
+            dob: response.User_DOB ? response.User_DOBreplace('T00:00:00', '').trim() : '',
             isLoader: false,
             bussinessData: response.BusinessMaster_DTO
         })
@@ -77,6 +80,70 @@ class AccountSettings extends Component{
             showDrawer: false
         });
     }
+
+    update = async () => {
+    const {name, emailid, password, phone, dob, access_token} = this.state;
+    const {navigation} = this.props;
+    if (this.validation()){
+        this.setState({ isLoader: true })
+            let data = JSON.stringify({
+                'Type': 2,
+                'User_Name': name,
+                'User_Email': emailid,
+                'User_Password': password,
+                'User_Phone': phone,
+                'User_DOB': dob,
+                'User_Address' : '',
+                'User_City' : '',
+                'User_Country' : '',
+                'User_Zip' : '',
+                'User_Type' : '',
+                'User_Image_Path' : '',
+                'User_MacID' : '',
+                'User_IsVerified' : '',
+                'User_IsActive' : '',
+                'User_IsDelete' : ''
+            })
+            console.log("Response: ", access_token, data)
+            await updateUserProfile(data, JSON.parse(access_token)).then(res => {
+                console.log("Response: ", res, access_token, data)
+                this.showMessage('Update successfully');
+                navigation.goBack()
+            }).catch(error => {
+                this.setState({ isLoader: false })
+                alert(error)
+            })
+        }
+    }
+
+    validation = () => {
+        const {name, emailid, password, phone, dob} = this.state;
+        let cancel = false;
+        if (name.length === 0) {
+            cancel = true;
+        } if (emailid.length === 0) {
+            cancel = true;
+        } if (password.length === 0) {
+            cancel = true;
+        } if (phone.length === 0) {
+            cancel = true;
+        } if (dob.length === 0) {
+            cancel = true;
+        }
+        if (cancel){
+            this.showMessage('Fields can not be empty')
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    showMessage = (message) => {
+    Toast.show({
+        text: message,
+        style: styles.toasttxt
+    })
+}
 
     render(){
         const {navigation} = this.props;
@@ -131,7 +198,7 @@ class AccountSettings extends Component{
                         />
                         </View>
                     <View style={styles.buttonContainer}>
-                        <Button title="Edit Settings" />
+                        <Button title="Edit Settings" onPress={() => this.update()}/>
                     </View>
                     <EditStoreSettings data={bussinessData} navigation={navigation}/>
                 </View>

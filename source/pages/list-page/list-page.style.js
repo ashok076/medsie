@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
-        padding: 5
+        padding: 15
     },
     titleView: {
         flexDirection: 'row',
