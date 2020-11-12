@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
-import {Title, Caption, Paragraph, Image} from 'react-native-paper'
+import {View, Image} from 'react-native';
+import {Title, Caption, Paragraph} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {Color} from '../../assets/color/color.assets'
@@ -9,7 +9,7 @@ import styles from './company-card.style';
 
 const CompanyCard  = ({item}) => (
                 <View style={[styles.row, styles.container]}>
-                    <View style={{height: '100%', width: '25%', backgroundColor: Color.purpleishBlue}}/>
+                    <Image source = {{uri: item.Buss_Image_Path}} style = {styles.imageView}/>
                     <View style={styles.info}>
                         <Title style={styles.title}>{item.Buss_Name}</Title>
                         <View style={[styles.row]}>

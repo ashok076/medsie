@@ -27,7 +27,7 @@ class EditStore extends Component {
             storeName: '',
             storeNumber: '',
             storeAddress: '',
-            addIntroduction: '',
+            description: '',
             businessCategory: '',
             sellingType: '',
             isPickerVisible: false,
@@ -108,7 +108,7 @@ class EditStore extends Component {
           storeName: data.Buss_Name,
           storeNumber: data.Buss_Number,
           storeAddress: data.Buss_Address,
-          addIntroduction: data.Buss_Description,
+          description: data.Buss_Description,
           imagePath: data.Buss_Image_Path ? data.Buss_Image_Path : '',
           catId: data.Buss_CatId ? data.Buss_CatId : 0,
           sellId: data.Buss_SellType ? data.Buss_SellType : 0,
@@ -128,7 +128,7 @@ class EditStore extends Component {
   }
 
 submit = async () => {
-    const {storeName, storeNumber, storeAddress, buspkid, addIntroduction, fromWeekD, toWeekD, access_token, base64, fileName, catId, sellId} = this.state;
+    const {storeName, storeNumber, storeAddress, buspkid, description, fromWeekD, toWeekD, access_token, base64, fileName, catId, sellId} = this.state;
     this.setState({ isLoader: true, isPickerVisible: false })
     console.log("Id: ", catId)
     let arr = [];
@@ -147,12 +147,11 @@ submit = async () => {
         Buss_Name: storeName,
         Buss_Number: storeNumber,
         Buss_Address: storeAddress,
-        Buss_Description: addIntroduction,
+        Buss_Description: description,
         BusinessHoursTransMaster_DTO: JSON.stringify(arr),
         Buss_City: '',
         Buss_Country: '',
         Buss_Zip: '',
-        Buss_Description: '',
         Buss_UserId: '',
         Buss_Image_Path: '',
         Buss_CatId: catId,
@@ -177,12 +176,11 @@ submit = async () => {
         Buss_Name: storeName,
         Buss_Number: storeNumber,
         Buss_Address: storeAddress,
-        Buss_Description: addIntroduction,
+        Buss_Description: description,
         BusinessHoursTransMaster_DTO: JSON.stringify(arr),
         Buss_City: '',
         Buss_Country: '',
         Buss_Zip: '',
-        Buss_Description: '',
         Buss_UserId: '',
         Buss_Image_Path: '',
         Buss_CatId: catId,
@@ -312,7 +310,7 @@ dateTimePicker = () => (
     render(){
         const {navigation, route} = this.props;
         const {showDrawer} = route.params;
-        const {storeName, storeNumber, storeAddress, addIntroduction, modal, array, businessCategory, sellingType, key, catArray, isLoader, pkid} = this.state;
+        const {storeName, storeNumber, storeAddress, description, modal, array, businessCategory, sellingType, key, catArray, isLoader, pkid} = this.state;
         console.log("Sell: ", catArray)
         return (
             <SafeAreaView style={styles.contain}>
@@ -366,9 +364,9 @@ dateTimePicker = () => (
                         <MultilineInput
                             placeHolder="Add Introduction"
                             message="Not more than 500 words"
-                            value={addIntroduction}
+                            value={description}
                             keyboardType="default"
-                            onChangeText={(addIntroduction) => this.setState({ addIntroduction })}
+                            onChangeText={(description) => this.setState({ description }, () => console.log("Inro: ", description))}
                         />
                     </View>
                     {this.storeHours()}

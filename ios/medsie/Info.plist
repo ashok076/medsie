@@ -38,7 +38,12 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>We need access to your location to show you relevant search results. With  "Always" access.</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+	<string>tel</string>
+	<string>telprompt</string>
+	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Uploading business logo or photo</string>
 	<key>UIAppFonts</key>

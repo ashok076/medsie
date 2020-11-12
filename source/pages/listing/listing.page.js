@@ -45,14 +45,15 @@ class Listing extends Component {
     render(){
         const {item} = this.state;
         const {navigation} = this.props;
+        console.log("Ifo:" , JSON.stringify(item))
         return (
             <SafeAreaView style={styles.container}>
-                    <ScrollView>
+                    <ScrollView> 
                     <View style={styles.innerContainer}>
                         <View style={styles.main}>
                             <BackHeader title="Back" navigation={navigation}/>
                             <CompanyCard style={styles.main} item={item}/>
-                            <ActionButtons/>
+                            <ActionButtons item={item} />
                             <Introduction item={item}/>
                             <View style={styles.border}/>
                             <TimingStatus item={item}/>

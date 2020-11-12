@@ -33,7 +33,11 @@ const styles = StyleSheet.create({
     },
     icon: {
         marginLeft: 15
-    }
+    },
+  imageView: {
+    width: 100, 
+    height: 100,
+    },
 })
 
 export default styles
