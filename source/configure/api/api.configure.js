@@ -118,6 +118,19 @@ export const getBusinessData = async (data) => {
     })
 }
 
+export const getBusinessListData = async (data) => {
+    return axios(API.GET_BUSINESS_CATEGORY_LIST, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        data
+    }).then(response => response.data)
+    .catch(error => {
+        throw error;
+    })
+}
+
 export const getHomeData = async (data) => {
     return axios(API.HOME_PAGE, {
         method: 'POST',

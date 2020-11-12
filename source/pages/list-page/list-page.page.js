@@ -3,14 +3,14 @@ import {SafeAreaView, Text, View, TouchableOpacity} from 'react-native';
 
 import ListPageComponent from '../../components/list-page-component/list-page-component.component'
 import BackHeader from '../../components/back-header/back-header.component'
-import {getHomeData} from '../../configure/api/api.configure'
+import {getBusinessListData} from '../../configure/api/api.configure'
 
 import styles from './list-page.style'
 
 class ListPage extends Component {
     constructor(){
         super();
-        this.state = {
+        this.state = { 
             array: []
         }
     }
@@ -23,15 +23,16 @@ class ListPage extends Component {
   }
 
     homeData = async () => {
-        const { type } = this.props.route.params;
-        const data = JSON.stringify({ Type: 1 })
-        await getHomeData(data)
-        .then(response => {
-            response[1].map(val => {
-                if (type === val.Cat_Name) {
-                    this.setState({ array: val.BusinessMaster_Home }, () => console.log(JSON.stringify(this.state.array)))
-                }
+        const { id } = this.props.route.params;
+        const data = JSON.stringify({ 
+            "Type": 1,
+            "Buss_CatId": id,
+            "Buss_Lat": 19.1872294,
+            "Buss_Long": 72.8407473
             })
+        await getBusinessListData(data)
+        .then(response => {
+            this.setState({ array: response[0] }, () => console.log(JSON.stringify(this.state.array)))
         })
         .catch(error => console.log(error))
     }

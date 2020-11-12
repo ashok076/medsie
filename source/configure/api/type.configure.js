@@ -9,5 +9,6 @@ export const API = {
     HOME_PAGE: BASE_URL + "api/Medsie/GetHomeDetails",
     GET_BUSINESS_DETAILS: BASE_URL + "api/Medsie/GetBusinessMasterData",
     UPDATE_USER_DETAILS: BASE_URL + "api/Medsie/PostUserMasterData",
-    CHECK_SERVER: BASE_URL + "api/Medsie/CheckServer"
+    CHECK_SERVER: BASE_URL + "api/Medsie/CheckServer",
+    GET_BUSINESS_CATEGORY_LIST: BASE_URL + "api/Medsie/GetBusinessMasterByLatLong"
 }
