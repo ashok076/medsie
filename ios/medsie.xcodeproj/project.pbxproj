@@ -11,30 +11,31 @@
 		029D169C86174885BD18B6D0 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80E49D2364D645DE98E3C80D /* Ionicons.ttf */; };
 		03E751DE236547F4A73D3DEC /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD9AA3B5E9944178B8889BED /* EvilIcons.ttf */; };
 		072861998AF546BBA6B32CA7 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC40CE749CA84745834F1019 /* FontAwesome5_Regular.ttf */; };
-		0FC7E06BF4353727F99FE22D /* libPods-medsie-medsieTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF01A1DFB14F93EFC4C8F7E9 /* libPods-medsie-medsieTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		161D3DD1F85F4468AB318C4F /* Asap-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 611EC40F413F434EA1402BFC /* Asap-MediumItalic.ttf */; };
+		277E21946D6EB52FC8389E21 /* libPods-medsie-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E1C03BF2DFB3F2039B1FD50 /* libPods-medsie-tvOSTests.a */; };
 		2849C1CADD5A40738CAE4DB2 /* Asap-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 195D78228EE6409F955C206D /* Asap-Bold.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* medsieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* medsieTests.m */; };
-		368F7482F60581AAB4567ED0 /* libPods-medsie-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A41BA20A8759B6D211D43E2B /* libPods-medsie-tvOSTests.a */; };
+		2E72F8DA7CC4B5296E02289F /* libPods-medsie-medsieTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB8CC3CFD2E88D55D571EB /* libPods-medsie-medsieTests.a */; };
+		4153D2012564D93700B65B7B /* QBImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4153D2002564D93700B65B7B /* QBImagePicker.storyboard */; };
 		417C1C587E854DF99345F65C /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C2C643365184959992F2E0C /* MaterialIcons.ttf */; };
 		4182ADA1255AAF36006BEC0B /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4182AD9F255AAF34006BEC0B /* GoogleMaps.bundle */; };
 		4182ADA2255AAF36006BEC0B /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4182ADA0255AAF36006BEC0B /* GoogleMaps.framework */; };
 		4182ADA7255AAF75006BEC0B /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4182AD9F255AAF34006BEC0B /* GoogleMaps.bundle */; };
 		45357686CFAB4E5C8A032FD5 /* Asap-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55802217035A4DC5B5D76C5D /* Asap-SemiBold.ttf */; };
-		4E0FA6804FE3D3D5F872E2F6 /* libPods-medsie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8112CF8634F04543A2F376E3 /* libPods-medsie.a */; };
 		6A39330CBAC34CB580CE0A10 /* Asap-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BE350BDD76BF49279FC5C3E0 /* Asap-Medium.ttf */; };
 		6E17A3A648464A0AB299842D /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 788456F7B7FF4678BBC09465 /* Entypo.ttf */; };
 		75EE0A158F4A4019A7E9AF4E /* Asap-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1AD295C367EE40F69449EDF3 /* Asap-Regular.ttf */; };
 		80B0011FE3FC43D6AA54B70D /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD46201F48F541A793683A4D /* MaterialCommunityIcons.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		828D559BA9A7B14DC192CFC8 /* libPods-medsie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B584FBB0A4B337C7971617 /* libPods-medsie.a */; };
 		88627E9BCD62472D9D2184BA /* Asap-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 818CC55B07CE4E4C98175457 /* Asap-BoldItalic.ttf */; };
-		8B1167DCC981D2E4A9DB778F /* libPods-medsie-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36B63A01C95CB52048894D9A /* libPods-medsie-tvOS.a */; };
+		8E1BD9B25B0286BCDEF5D939 /* libPods-medsie-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4EB0DB6105ED5544D967271 /* libPods-medsie-tvOS.a */; };
 		9C1097B95F6745D2BDA462B4 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3723A2838DFC4C1783B85733 /* Fontisto.ttf */; };
 		C65017AA53B34BE189FE9439 /* Asap-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F3B7FF9507B4097B4677570 /* Asap-Italic.ttf */; };
 		CC079F5A6E4940F6B0EFFF05 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 728541B9A90B43AFA8463F85 /* FontAwesome5_Solid.ttf */; };
@@ -72,8 +73,9 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* medsieTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = medsieTests.m; sourceTree = "<group>"; };
 		02A6D3FC64F64D6EB8611672 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		02B13FB86A92FA9E6D322A2E /* Pods-medsie-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-medsie-tvOSTests/Pods-medsie-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		05B584FBB0A4B337C7971617 /* libPods-medsie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-medsie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8A036859B34D5C84E2E7C8 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		0E1C03BF2DFB3F2039B1FD50 /* libPods-medsie-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-medsie-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* medsie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = medsie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = medsie/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = medsie/AppDelegate.m; sourceTree = "<group>"; };
@@ -86,40 +88,42 @@
 		24BE74DFBD22499F94EDC0D8 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* medsie-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "medsie-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* medsie-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "medsie-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		36B63A01C95CB52048894D9A /* libPods-medsie-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-medsie-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3723A2838DFC4C1783B85733 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		3C8AA354FFF3E75A83FBFB5E /* Pods-medsie-medsieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie-medsieTests.debug.xcconfig"; path = "Target Support Files/Pods-medsie-medsieTests/Pods-medsie-medsieTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3EF87A9128A044D683377BAA /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		4153D2002564D93700B65B7B /* QBImagePicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = QBImagePicker.storyboard; path = "../node_modules/react-native-image-crop-picker/ios/QBImagePicker/QBImagePicker/QBImagePicker.storyboard"; sourceTree = "<group>"; };
 		4182AD9F255AAF34006BEC0B /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleMaps.bundle; sourceTree = "<group>"; };
 		4182ADA0255AAF36006BEC0B /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		41FE731E255E4C0200FE9BAC /* libQBImagePickerController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libQBImagePickerController.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		41FE7320255E4C0E00FE9BAC /* libRSKImageCropper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libRSKImageCropper.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5131FE8DC63D147BD29E5199 /* Pods-medsie-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-medsie-tvOS/Pods-medsie-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		55802217035A4DC5B5D76C5D /* Asap-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Asap-SemiBold.ttf"; path = "../assets/fonts/Asap-SemiBold.ttf"; sourceTree = "<group>"; };
+		577B6D33F17098D5FD414B41 /* Pods-medsie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie.debug.xcconfig"; path = "Target Support Files/Pods-medsie/Pods-medsie.debug.xcconfig"; sourceTree = "<group>"; };
+		5EE4A2058119E3DB02497A39 /* Pods-medsie-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-medsie-tvOSTests/Pods-medsie-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		611EC40F413F434EA1402BFC /* Asap-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Asap-MediumItalic.ttf"; path = "../assets/fonts/Asap-MediumItalic.ttf"; sourceTree = "<group>"; };
-		6673CF74D9541261C8643FF9 /* Pods-medsie-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-medsie-tvOS/Pods-medsie-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		6F3B7FF9507B4097B4677570 /* Asap-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Asap-Italic.ttf"; path = "../assets/fonts/Asap-Italic.ttf"; sourceTree = "<group>"; };
 		728541B9A90B43AFA8463F85 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		74F2F4BB5BFB8045576F2FF4 /* Pods-medsie-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-medsie-tvOSTests/Pods-medsie-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		788456F7B7FF4678BBC09465 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		7D40E4A962A563DEE21B4F2D /* Pods-medsie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie.release.xcconfig"; path = "Target Support Files/Pods-medsie/Pods-medsie.release.xcconfig"; sourceTree = "<group>"; };
 		80E49D2364D645DE98E3C80D /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		8112CF8634F04543A2F376E3 /* libPods-medsie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-medsie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		818CC55B07CE4E4C98175457 /* Asap-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Asap-BoldItalic.ttf"; path = "../assets/fonts/Asap-BoldItalic.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = medsie/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8B9F22EE411044677483407B /* Pods-medsie-medsieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie-medsieTests.release.xcconfig"; path = "Target Support Files/Pods-medsie-medsieTests/Pods-medsie-medsieTests.release.xcconfig"; sourceTree = "<group>"; };
-		8C34654703F14FF53570EF0B /* Pods-medsie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie.release.xcconfig"; path = "Target Support Files/Pods-medsie/Pods-medsie.release.xcconfig"; sourceTree = "<group>"; };
-		A41BA20A8759B6D211D43E2B /* libPods-medsie-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-medsie-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AA4CD74160CCD477991C0595 /* Pods-medsie-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie-tvOS.release.xcconfig"; path = "Target Support Files/Pods-medsie-tvOS/Pods-medsie-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		AA61BF546B4247288FD62D0B /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		AD9AA3B5E9944178B8889BED /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
-		B3AD410231107614602520D8 /* Pods-medsie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie.debug.xcconfig"; path = "Target Support Files/Pods-medsie/Pods-medsie.debug.xcconfig"; sourceTree = "<group>"; };
-		B6E25A66E8B6A26F0AADF812 /* Pods-medsie-medsieTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie-medsieTests.debug.xcconfig"; path = "Target Support Files/Pods-medsie-medsieTests/Pods-medsie-medsieTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B7FB8CC3CFD2E88D55D571EB /* libPods-medsie-medsieTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-medsie-medsieTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE350BDD76BF49279FC5C3E0 /* Asap-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Asap-Medium.ttf"; path = "../assets/fonts/Asap-Medium.ttf"; sourceTree = "<group>"; };
 		C2F9FC3AF9304B1DBE0F26B0 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		C4EB0DB6105ED5544D967271 /* libPods-medsie-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-medsie-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD46201F48F541A793683A4D /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		D1D1DFFB6E2D42CB86FC5BE5 /* Asap-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Asap-SemiBoldItalic.ttf"; path = "../assets/fonts/Asap-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		DC32BE9296FBED68DF90F795 /* Pods-medsie-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie-tvOS.release.xcconfig"; path = "Target Support Files/Pods-medsie-tvOS/Pods-medsie-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		DC40CE749CA84745834F1019 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
-		E39E888D18C26065DC0BD407 /* Pods-medsie-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-medsie-tvOSTests/Pods-medsie-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		EA51BDB6450508BD4DEE32A3 /* Pods-medsie-medsieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-medsie-medsieTests.release.xcconfig"; path = "Target Support Files/Pods-medsie-medsieTests/Pods-medsie-medsieTests.release.xcconfig"; sourceTree = "<group>"; };
 		EBC6EAD05738424A89498756 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		ECBBD168E721436EA206E59F /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		FF01A1DFB14F93EFC4C8F7E9 /* libPods-medsie-medsieTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-medsie-medsieTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,7 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FC7E06BF4353727F99FE22D /* libPods-medsie-medsieTests.a in Frameworks */,
+				2E72F8DA7CC4B5296E02289F /* libPods-medsie-medsieTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E0FA6804FE3D3D5F872E2F6 /* libPods-medsie.a in Frameworks */,
+				828D559BA9A7B14DC192CFC8 /* libPods-medsie.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B1167DCC981D2E4A9DB778F /* libPods-medsie-tvOS.a in Frameworks */,
+				8E1BD9B25B0286BCDEF5D939 /* libPods-medsie-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4182ADA2255AAF36006BEC0B /* GoogleMaps.framework in Frameworks */,
-				368F7482F60581AAB4567ED0 /* libPods-medsie-tvOSTests.a in Frameworks */,
+				277E21946D6EB52FC8389E21 /* libPods-medsie-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,14 +183,14 @@
 		014A46A0F3F173E3C31C9500 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B3AD410231107614602520D8 /* Pods-medsie.debug.xcconfig */,
-				8C34654703F14FF53570EF0B /* Pods-medsie.release.xcconfig */,
-				B6E25A66E8B6A26F0AADF812 /* Pods-medsie-medsieTests.debug.xcconfig */,
-				8B9F22EE411044677483407B /* Pods-medsie-medsieTests.release.xcconfig */,
-				6673CF74D9541261C8643FF9 /* Pods-medsie-tvOS.debug.xcconfig */,
-				AA4CD74160CCD477991C0595 /* Pods-medsie-tvOS.release.xcconfig */,
-				02B13FB86A92FA9E6D322A2E /* Pods-medsie-tvOSTests.debug.xcconfig */,
-				E39E888D18C26065DC0BD407 /* Pods-medsie-tvOSTests.release.xcconfig */,
+				577B6D33F17098D5FD414B41 /* Pods-medsie.debug.xcconfig */,
+				7D40E4A962A563DEE21B4F2D /* Pods-medsie.release.xcconfig */,
+				3C8AA354FFF3E75A83FBFB5E /* Pods-medsie-medsieTests.debug.xcconfig */,
+				EA51BDB6450508BD4DEE32A3 /* Pods-medsie-medsieTests.release.xcconfig */,
+				5131FE8DC63D147BD29E5199 /* Pods-medsie-tvOS.debug.xcconfig */,
+				DC32BE9296FBED68DF90F795 /* Pods-medsie-tvOS.release.xcconfig */,
+				74F2F4BB5BFB8045576F2FF4 /* Pods-medsie-tvOSTests.debug.xcconfig */,
+				5EE4A2058119E3DB02497A39 /* Pods-medsie-tvOSTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -208,14 +212,16 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				41FE7320255E4C0E00FE9BAC /* libRSKImageCropper.a */,
+				41FE731E255E4C0200FE9BAC /* libQBImagePickerController.a */,
 				4182AD9F255AAF34006BEC0B /* GoogleMaps.bundle */,
 				4182ADA0255AAF36006BEC0B /* GoogleMaps.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				8112CF8634F04543A2F376E3 /* libPods-medsie.a */,
-				FF01A1DFB14F93EFC4C8F7E9 /* libPods-medsie-medsieTests.a */,
-				36B63A01C95CB52048894D9A /* libPods-medsie-tvOS.a */,
-				A41BA20A8759B6D211D43E2B /* libPods-medsie-tvOSTests.a */,
+				05B584FBB0A4B337C7971617 /* libPods-medsie.a */,
+				B7FB8CC3CFD2E88D55D571EB /* libPods-medsie-medsieTests.a */,
+				C4EB0DB6105ED5544D967271 /* libPods-medsie-tvOS.a */,
+				0E1C03BF2DFB3F2039B1FD50 /* libPods-medsie-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -230,6 +236,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				4153D2002564D93700B65B7B /* QBImagePicker.storyboard */,
 				13B07FAE1A68108700A75B9A /* medsie */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* medsieTests */,
@@ -292,11 +299,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "medsieTests" */;
 			buildPhases = (
-				E11CC6861145D6D106760020 /* [CP] Check Pods Manifest.lock */,
+				31C1DCDAC6ADBCD125C3E1F8 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				B2B81D3C3C5A91B7F7B59B2D /* [CP] Copy Pods Resources */,
+				77FFD5A310242054AD3C9BDB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -312,7 +319,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "medsie" */;
 			buildPhases = (
-				678C8204AF39F0591A0BC188 /* [CP] Check Pods Manifest.lock */,
+				71CF633C358612B55377D91D /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
@@ -332,7 +339,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "medsie-tvOS" */;
 			buildPhases = (
-				CCFA58796D1D64483E384D32 /* [CP] Check Pods Manifest.lock */,
+				220FAAA02BC5BB7C8EEC84E5 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -352,7 +359,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "medsie-tvOSTests" */;
 			buildPhases = (
-				9B26DC9FC1583BF56DADBC7A /* [CP] Check Pods Manifest.lock */,
+				2836FD8586AEF939F623383C /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -427,6 +434,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4153D2012564D93700B65B7B /* QBImagePicker.storyboard in Resources */,
 				4182ADA7255AAF75006BEC0B /* GoogleMaps.bundle in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
@@ -490,21 +498,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native Code And Images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		678C8204AF39F0591A0BC188 /* [CP] Check Pods Manifest.lock */ = {
+		220FAAA02BC5BB7C8EEC84E5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -519,14 +513,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-medsie-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-medsie-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9B26DC9FC1583BF56DADBC7A /* [CP] Check Pods Manifest.lock */ = {
+		2836FD8586AEF939F623383C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -548,7 +542,65 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B2B81D3C3C5A91B7F7B59B2D /* [CP] Copy Pods Resources */ = {
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		31C1DCDAC6ADBCD125C3E1F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-medsie-medsieTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71CF633C358612B55377D91D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-medsie-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		77FFD5A310242054AD3C9BDB /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -604,50 +656,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-medsie-medsieTests/Pods-medsie-medsieTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CCFA58796D1D64483E384D32 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-medsie-tvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E11CC6861145D6D106760020 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-medsie-medsieTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -743,7 +751,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6E25A66E8B6A26F0AADF812 /* Pods-medsie-medsieTests.debug.xcconfig */;
+			baseConfigurationReference = 3C8AA354FFF3E75A83FBFB5E /* Pods-medsie-medsieTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -766,7 +774,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B9F22EE411044677483407B /* Pods-medsie-medsieTests.release.xcconfig */;
+			baseConfigurationReference = EA51BDB6450508BD4DEE32A3 /* Pods-medsie-medsieTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -786,7 +794,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3AD410231107614602520D8 /* Pods-medsie.debug.xcconfig */;
+			baseConfigurationReference = 577B6D33F17098D5FD414B41 /* Pods-medsie.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -810,7 +818,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C34654703F14FF53570EF0B /* Pods-medsie.release.xcconfig */;
+			baseConfigurationReference = 7D40E4A962A563DEE21B4F2D /* Pods-medsie.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -832,7 +840,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6673CF74D9541261C8643FF9 /* Pods-medsie-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 5131FE8DC63D147BD29E5199 /* Pods-medsie-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -860,7 +868,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA4CD74160CCD477991C0595 /* Pods-medsie-tvOS.release.xcconfig */;
+			baseConfigurationReference = DC32BE9296FBED68DF90F795 /* Pods-medsie-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -888,7 +896,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02B13FB86A92FA9E6D322A2E /* Pods-medsie-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 74F2F4BB5BFB8045576F2FF4 /* Pods-medsie-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -919,7 +927,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E39E888D18C26065DC0BD407 /* Pods-medsie-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 5EE4A2058119E3DB02497A39 /* Pods-medsie-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;

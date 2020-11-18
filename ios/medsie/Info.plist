@@ -46,6 +46,12 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Uploading business logo or photo</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Uploading business logo or photo</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Uploading business logo or photo</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Uploading business logo or photo</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Asap-Bold.ttf</string>

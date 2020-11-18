@@ -235,15 +235,6 @@ onDateTimeChange = (selectedDate) => {
     this.setState({[key]: value});
   };
 
-storeHours = () => (
-    <View>
-        <View style={styles.row}>
-            <Text style={styles.text}> Store Hours </Text>
-            <Text style={styles.underline}> Add custom dates </Text>
-        </View>
-    </View>
-)
-
 weekdays = () => (
     <View>
         <View style={styles.row}>
@@ -369,7 +360,6 @@ dateTimePicker = () => (
                             onChangeText={(description) => this.setState({ description }, () => console.log("Inro: ", description))}
                         />
                     </View>
-                    {this.storeHours()}
                     {this.weekdays()}
                     {this.weekends()}
                     {this.dateTimePicker()}

@@ -16,8 +16,7 @@ target 'medsie' do
     pod 'GoogleMaps', '3.5.0'
     pod 'GooglePlaces', '3.5.0'  # Uncomment this line if you want to support GoogleMaps on iOS
     pod 'Google-Maps-iOS-Utils' # Uncomment this line if you want to support GoogleMaps on iOS
-
-
+    # react-native-image-crop-picker dependencies
   target 'medsieTests' do
     inherit! :complete
     # Pods for testing

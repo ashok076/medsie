@@ -13,8 +13,8 @@ class ListPage extends Component {
         super();
         this.state = { 
             array: [],
-            currentLatitude: '',
-            currentLongitude: '',
+            currentLatitude: 0,
+            currentLongitude: 0,
             locationStatus: ''
         }
     }
@@ -22,7 +22,7 @@ class ListPage extends Component {
       componentDidMount() {
         const {navigation, route} = this.props;
             navigation.addListener('focus', () => {
-                this.homeData();
+                this.getPermission();
             });
   }
 
@@ -45,7 +45,6 @@ class ListPage extends Component {
             console.log("Check: ")
             this.getOneTimeLocation();
             this.subscribeLocationLocation();
-            this.homeData();
           } else {
             this.setState({locationStatus: 'Permission Denied'});
           }
@@ -60,7 +59,6 @@ class ListPage extends Component {
     Geolocation.getCurrentPosition(
       //Will give you the current location
       (position) => {
-        setLocationStatus('You are Here');
 
         //getting the Longitude from the location json
         const currentLongitude = 
@@ -75,7 +73,8 @@ class ListPage extends Component {
         
 
         //Setting Longitude state
-        this.setState({currentLatitude});
+        this.setState({currentLatitude}, () => this.homeData());
+        console.log("Location one: ", currentLatitude, currentLongitude)
       },
       (error) => {
         this.setState({ locationStatus: error.message });
@@ -89,7 +88,7 @@ class ListPage extends Component {
   };
 
   subscribeLocationLocation = () => {
-    watchID = Geolocation.watchPosition(
+    let watchID = Geolocation.watchPosition(
       (position) => {
         //Will give you the location on location change
         
@@ -109,6 +108,7 @@ class ListPage extends Component {
 
         //Setting Latitude state
         this.setState({currentLatitude});
+        console.log("Location subs: ", currentLatitude, currentLongitude)
       },
       (error) => {
         this.setState({ locationStatus: error.message });
@@ -127,8 +127,8 @@ class ListPage extends Component {
         const data = JSON.stringify({ 
             "Type": 1,
             "Buss_CatId": id,
-            "Buss_Lat": 19.1872294,
-            "Buss_Long": 72.8407473
+            "Buss_Lat": currentLatitude,
+            "Buss_Long": currentLongitude
             })
         await getBusinessListData(data)
         .then(response => {
@@ -147,11 +147,11 @@ class ListPage extends Component {
 
     title = (type) => (
         <View>
-                <View style={styles.titleView}>
-                    <Text style={styles.title}>{type}</Text>
-                    {this.showMap()}
-                </View>
-            </View>
+              <View style={styles.titleView}>
+                  <Text style={styles.title}>{type}</Text>
+                  {this.showMap()}
+              </View>
+        </View>
     )
 
     render(){

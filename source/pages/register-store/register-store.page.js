@@ -201,15 +201,6 @@ onDateTimeChange = (selectedDate) => {
     this.setState({[key]: value});
   };
 
-storeHours = () => (
-    <View>
-        <View style={styles.row}>
-            <Text style={styles.text}> Store Hours </Text>
-            <Text style={styles.underline}> Add custom dates </Text>
-        </View>
-    </View>
-)
-
 weekdays = () => (
     <View>
         <View style={styles.row}>
@@ -250,14 +241,17 @@ uploadImage = () => (
 )
 
 pickImage = () => {
+    this.setState({ isOpen: false }, () => {
     ImagePicker.openPicker({
     width: 300,
     height: 400,
     cropping: false,
-    includeBase64: true
+    includeBase64: true,
+    multiple: false
     }).then(images => {
         this.setState({ base64: images.data, fileName: Platform.OS === 'ios' ? images.filename : 'images' + new Date(), imagePath: images.path })
-    });
+    }).catch(error => console.log("Error in image: ", error))
+    })
 }
 
 dateTimePicker = () => (
@@ -331,7 +325,6 @@ dateTimePicker = () => (
                             onChangeText={(addIntroduction) => this.setState({ addIntroduction })}
                         />
                     </View>
-                    {this.storeHours()}
                     {this.weekdays()}
                     {this.weekends()}
                     {this.dateTimePicker()}
