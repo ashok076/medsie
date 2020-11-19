@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {SafeAreaView, Text, View, TouchableOpacity, PermissionsAndroid, Platform} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import ListPageComponent from '../../components/list-page-component/list-page-component.component'
 import BackHeader from '../../components/back-header/back-header.component'
@@ -15,15 +16,27 @@ class ListPage extends Component {
             array: [],
             currentLatitude: 0,
             currentLongitude: 0,
-            locationStatus: ''
+            locationStatus: '',
+            access_token: ''
         }
     }
 
       componentDidMount() {
         const {navigation, route} = this.props;
             navigation.addListener('focus', () => {
-                this.getPermission();
+                this.setState({ isLoader: true }, () => this.getAccessToken())
             });
+  }
+
+    getAccessToken = async () => {
+      let access_token = ''
+      try {
+        access_token = await AsyncStorage.getItem('access_token')
+        this.setState({ access_token }, () => this.getPermission())
+    } catch (error) {
+        console.log(error)
+        this.setState({ isLoader: false })
+    }
   }
 
   getPermission = async () => {
@@ -122,7 +135,7 @@ class ListPage extends Component {
 
     homeData = async () => {
         const { id } = this.props.route.params;
-        const {currentLatitude, currentLongitude, locationStatus} = this.state;
+        const {currentLatitude, currentLongitude, locationStatus, access_token} = this.state;
         console.log("Loc: ", currentLatitude, currentLongitude, locationStatus)
         const data = JSON.stringify({ 
             "Type": 1,
@@ -130,11 +143,11 @@ class ListPage extends Component {
             "Buss_Lat": currentLatitude,
             "Buss_Long": currentLongitude
             })
-        await getBusinessListData(data)
+        await getBusinessListData(data, JSON.parse(access_token))
         .then(response => {
-            this.setState({ array: response[0] }, () => console.log(JSON.stringify(this.state.array)))
+            this.setState({ array: response[0] }, () => console.log(JSON.stringify(response)))
         })
-        .catch(error => console.log(error))
+        .catch(error => console.log("Error: ", error))
     }
 
     showMap = () => (

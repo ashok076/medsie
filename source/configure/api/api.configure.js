@@ -105,11 +105,13 @@ export const registerStoreImage = async (data, access_token) => {
     })
 }
 
-export const getBusinessData = async (data) => {
+export const getBusinessData = async (data, access_token) => {
+    console.log("Buss: ", data)
     return axios(API.GET_BUSINESS_DETAILS, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + access_token
         },
         data
     }).then(response => response.data)
@@ -118,11 +120,13 @@ export const getBusinessData = async (data) => {
     })
 }
 
-export const getBusinessListData = async (data) => {
+export const getBusinessListData = async (data, access_token) => {
+    console.log("Data: ", data)
     return axios(API.GET_BUSINESS_CATEGORY_LIST, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + access_token
         },
         data
     }).then(response => response.data)
@@ -131,11 +135,13 @@ export const getBusinessListData = async (data) => {
     })
 }
 
-export const getHomeData = async (data) => {
+export const getHomeData = async (data, access_token) => {
+    console.log("Home Data: ", data, access_token)
     return axios(API.HOME_PAGE, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + access_token
         },
         data
     }).then(response => response.data)

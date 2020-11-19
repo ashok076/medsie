@@ -27,8 +27,8 @@ const CategoriesListElement = ({item, key, navigation}) =>  (
                         </View>
                         <Caption style={styles.caption}>{item.item.Buss_City}, {item.item.Buss_Country}</Caption>
                         <View style={styles.horizontalView}>
-                            <Icon name="place" color={Color.purpleishBlue} size={17} />
-                            <Text style={styles.place}>Place</Text>
+                            <Icon name="place" color={Color.primaryColor} size={17} />
+                            <Text style={styles.place}>{item.item.Distance} mi</Text>
                         </View>
                     </View>
                 </Card>

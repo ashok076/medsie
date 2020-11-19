@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     min: {
         fontSize: 14,
         fontFamily: 'Asap-Regular',
-        color: Color.purpleishBlue,
+        color: Color.primaryColor,
     },
     icon: {
         marginLeft: 15

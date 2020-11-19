@@ -14,8 +14,8 @@ const CompanyCard  = ({item}) => (
                         <Title style={styles.title}>{item.Buss_Name}</Title>
                         <View style={[styles.row]}>
                             <Caption style={styles.caption}>{item.Buss_City}, {item.Buss_Country}</Caption>
-                            <Icon name="place" color={Color.purpleishBlue} size={17} style={styles.icon}/>
-                            <Caption style={styles.min}>Place</Caption>
+                            <Icon name="place" color={Color.primaryColor} size={17} style={styles.icon}/>
+                            <Caption style={styles.min}>{item.Distance} mi</Caption>
                         </View>
                     </View> 
                 </View>
