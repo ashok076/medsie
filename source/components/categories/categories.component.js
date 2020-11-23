@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import {View, TouchableOpacity, FlatList, PermissionsAndroid, Platform} from 'react-native';
-import Geolocation from '@react-native-community/geolocation';
+import {View, TouchableOpacity, FlatList } from 'react-native';
 import {Text} from 'react-native-paper'
 import AsyncStorage from '@react-native-community/async-storage';
+import { Toast } from 'native-base';
 
 import CategoriesList from '../categories-list/categories-list.component';
 import ShowMapsTitle from '../show-maps-title/show-map-title.component';
@@ -17,10 +17,9 @@ class Categories extends Component {
         super();
         this.state = {
             array: [],
-            currentLatitude: 0,
-            currentLongitude: 0,
             isLoader: false,
-            access_token: "",
+            currentLatitude: 0,
+            currentLongitude: 0
         }
     }
 
@@ -31,26 +30,29 @@ class Categories extends Component {
                   this.setState({ array: response  })
                 })
                 .catch(error => console.log("Query error: ", error))
-            this.setState({ isLoader: true }, () => this.getAccessToken())
+            this.setState({ isLoader: true }, () => this.getLatLong())
             });
   }
 
-   getAccessToken = async () => {
-      let access_token = ''
-      try {
-        access_token = await AsyncStorage.getItem('access_token')
-        this.setState({ access_token }, () => this.getPermission())
-        console.log('access token')
-    } catch (error) {
-        console.log(error)
-        this.setState({ isLoader: false })
-    }
-  }
+  showMessage = (message) => {
+    Toast.show({
+        text: message,
+        style: styles.toasttxt
+    })
+}
+
+getLatLong = async () => {
+  const value = await AsyncStorage.multiGet(['latitude', 'longitude']);
+  const currentLatitude = JSON.parse(value[0][1]);
+  const currentLongitude = JSON.parse(value[1][1]);
+  this.setState({ currentLatitude: currentLatitude, currentLongitude: currentLongitude }, () => this.homeData())
+}
 
     homeData = async () => {
-        const { currentLatitude, currentLongitude, access_token } = this.state;
+        const { currentLatitude, currentLongitude } = this.state;
+        this.showMessage(`Loc: ${currentLatitude} ${currentLongitude}`)
         const data = JSON.stringify({ Type: 1, Cat_Lat: currentLatitude, Cat_Long: currentLongitude })
-        await getHomeData(data, JSON.parse(access_token))
+        await getHomeData(data)
         .then(response => {
             this.setState({ array: response[1], isLoader: false })
             db.InsertHomeDetails(response[1])
@@ -71,100 +73,6 @@ class Categories extends Component {
             <View style={styles.gap}/>
         </View>
     )
-
-  getPermission = async () => {
-      if (Platform.OS === 'ios') {
-        this.getOneTimeLocation();
-        this.subscribeLocationLocation();
-        this.homeData();
-      } else {
-        try {
-          const granted = await PermissionsAndroid.request(
-            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-            {
-              title: 'Location Access Required',
-              message: 'This App needs to Access your location',
-            },
-          );
-          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-            //To Check, If Permission is granted
-            console.log("Check: ")
-            this.getOneTimeLocation();
-            this.subscribeLocationLocation();
-          } else {
-            this.setState({locationStatus: 'Permission Denied'});
-          }
-        } catch (err) {
-          console.warn(err);
-        }
-      }
-    }
-
-  getOneTimeLocation = () => {
-    this.setState({locationStatus:'Getting Location ...'});
-    Geolocation.getCurrentPosition(
-      //Will give you the current location
-      (position) => {
-
-        //getting the Longitude from the location json
-        const currentLongitude = 
-          JSON.stringify(position.coords.longitude);
-
-        //getting the Latitude from the location json
-        const currentLatitude = 
-          JSON.stringify(position.coords.latitude);
-
-        //Setting Longitude state
-        this.setState({currentLongitude});
-        
-
-        //Setting Longitude state
-        this.setState({currentLatitude}, () => this.homeData());
-        console.log("Location one: ", currentLatitude, currentLongitude)
-      },
-      (error) => {
-        this.setState({ locationStatus: error.message });
-      },
-      {
-        enableHighAccuracy: false,
-        timeout: 30000,
-        maximumAge: 1000
-      },
-    );
-  };
-
-  subscribeLocationLocation = () => {
-    let watchID = Geolocation.watchPosition(
-      (position) => {
-        //Will give you the location on location change
-        
-        this.setState({locationStatus: 'You are Here'});
-        console.log(position);
-
-        //getting the Longitude from the location json        
-        const currentLongitude =
-          JSON.stringify(position.coords.longitude);
-
-        //getting the Latitude from the location json
-        const currentLatitude = 
-          JSON.stringify(position.coords.latitude);
-
-        //Setting Longitude state
-        this.setState({currentLongitude});
-
-        //Setting Latitude state
-        this.setState({currentLatitude});
-        console.log("Location subs: ", currentLatitude, currentLongitude)
-      },
-      (error) => {
-        this.setState({ locationStatus: error.message });
-      },
-      {
-        enableHighAccuracy: false,
-        maximumAge: 1000
-      },
-    );
-  };
 
     render(){
         const {array, isLoader} = this.state;

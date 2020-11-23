@@ -6,13 +6,13 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import {Text} from 'react-native-paper'
 import { format } from "date-fns";
 
-import Header from '../../components/header/header.component'
 import InputText from '../../components/input-text/input-text.component'
 import InputTextIcon from '../../components/input-text-icon/input-text-icon.component';
 import ModalPicker from '../../components/modal-picker/modal-picker.component'
 import Button from '../../components/button/button.component';
 import EditStoreSettings from '../../components/edit-store-settings/edit-store-settings.component'
 import {accountSettings, updateUserProfile} from '../../configure/api/api.configure';
+import BackHeader from '../../components/back-header/back-header.component';
 
 import styles from './account-settings.style';
 
@@ -176,7 +176,7 @@ dateTimePicker = () => (
         const {isShowPassword, emailid, password, isLoader, phone, dob, name, bussinessData} = this.state;
         return(
             <SafeAreaView style={styles.container}>
-                <Header navigation={navigation}/>
+                <BackHeader title="Back" navigation={navigation}/>
                 <ScrollView keyboardShouldPersistTaps='handled'>
                     <View style={styles.innerContainer}>
                         <View style={[styles.row, styles.titleContainer]}>

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {View, ScrollView, Text, TouchableWithoutFeedback, Image, SafeAreaView} from 'react-native';
+import {View, ScrollView, Text, TouchableWithoutFeedback, Image, SafeAreaView, PermissionsAndroid, Platform} from 'react-native';
 import { Toast } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
+import Geolocation from '@react-native-community/geolocation';
 import qs from 'qs';
 
 import InputText from '../../components/input-text/input-text.component';
@@ -9,7 +10,7 @@ import InputTextIcon from '../../components/input-text-icon/input-text-icon.comp
 import Button from '../../components/button/button.component';
 import TouchText from '../../components/touch-text/touch-text.component';
 import Loader from '../../components/loader/loader.component'
-import {login} from '../../configure/api/api.configure'
+import {login, userType} from '../../configure/api/api.configure'
 import MedsieLogo from "../../assets/svg-files/medsie_logo.svg";
 
 import styles from './login.style'
@@ -23,13 +24,15 @@ class Login extends Component {
             password: '',
             access_token: '' ,
             isLoader: false,
+            currentLatitude: 0,
+            currentLongitude: 0
         }
     }
 
   componentDidMount() {
     const {navigation, route} = this.props;
     navigation.addListener('focus', () => {
-      this.setState({ isLoader: true })
+      this.setState({ isLoader: true }, () => this.getPermission())
       this.getAccessToken();
     });
   }
@@ -56,6 +59,109 @@ class Login extends Component {
     this.setState({ isLoader: false })
   }
 
+    getPermission = async () => {
+      if (Platform.OS === 'ios') {
+        this.getOneTimeLocation();
+        this.subscribeLocationLocation();
+        this.saveLocation();
+      } else {
+        try {
+          const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+            {
+              title: 'Location Access Required',
+              message: 'This App needs to Access your location',
+            },
+          );
+          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            //To Check, If Permission is granted
+            this.getOneTimeLocation();
+            this.subscribeLocationLocation();
+          } else {
+            this.setState({locationStatus: 'Permission Denied'});
+            alert('Location permission is required to run this application')
+          }
+        } catch (err) {
+          console.warn(err);
+        }
+      }
+    }
+
+  getOneTimeLocation = () => {
+    this.setState({locationStatus:'Getting Location ...'});
+    Geolocation.getCurrentPosition(
+      //Will give you the current location
+      (position) => {
+
+        //getting the Longitude from the location json
+        const currentLongitude = 
+          JSON.stringify(position.coords.longitude);
+
+        //getting the Latitude from the location json
+        const currentLatitude = 
+          JSON.stringify(position.coords.latitude);
+
+        //Setting Longitude state
+        this.setState({currentLongitude});
+        
+
+        //Setting Longitude state
+        this.setState({currentLatitude}, () => this.saveLocation());
+      },
+      (error) => {
+        this.setState({ locationStatus: error.message });
+      },
+      {
+        enableHighAccuracy: false,
+        timeout: 30000,
+        maximumAge: 1000
+      },
+    );
+  };
+
+  subscribeLocationLocation = () => {
+    let watchID = Geolocation.watchPosition(
+      (position) => {
+        //Will give you the location on location change
+        
+        this.setState({locationStatus: 'You are Here'});
+        console.log(position);
+
+        //getting the Longitude from the location json        
+        const currentLongitude =
+          JSON.stringify(position.coords.longitude);
+
+        //getting the Latitude from the location json
+        const currentLatitude = 
+          JSON.stringify(position.coords.latitude);
+
+        //Setting Longitude state
+        this.setState({currentLongitude});
+
+        //Setting Latitude state
+        this.setState({currentLatitude});
+      },
+      (error) => {
+        this.setState({ locationStatus: error.message });
+      },
+      {
+        enableHighAccuracy: false,
+        maximumAge: 1000
+      },
+    );
+  };
+
+  saveLocation = async () => {
+      const {currentLatitude, currentLongitude} = this.state
+      try {
+            const latitude = ['latitude', JSON.stringify(currentLatitude)];
+            const longitude = ['longitude', JSON.stringify(currentLongitude)]
+            await AsyncStorage.multiSet([latitude, longitude]);
+        } catch (error) {
+            console.log(" Location error ", error);
+        }
+  }
+
 submit  = async () => {
     const {emailid, password, firstname} = this.state;
     const {navigation} = this.props;
@@ -70,9 +176,7 @@ submit  = async () => {
                 'FirstName': '' 
             })
             await login(data).then(res => {
-                this.showMessage('Logged in successfull')
-                this.home()
-                this.setState({access_token: res.access_token, isLoader: false }, () => this.saveAccessToken())
+                this.setState({access_token: res.access_token }, () => this.checkUserType())
             }).catch(error => {
                 console.log("error", error.response.data.error_description)
                 this.setState({ isLoader: false })
@@ -84,23 +188,42 @@ submit  = async () => {
 home = async () => {
     const {navigation} = this.props;
     await AsyncStorage.setItem('session', JSON.stringify(true));
+    this.showMessage('Logged in successfull')
     navigation.reset({
         index: 0,
         routes: [{name: 'Home'}],
     });
+    this.setState({ isLoader: false })
 }
 
-saveAccessToken = async () => {
+    checkUserType = async () => {
+        const {access_token} = this.state;
+        let data = JSON.stringify({ Type: 2 });
+        await userType(data, access_token)
+        .then(response => {
+            console.log("User_Type: ", response[0][0].User_Type);
+            this.saveInStorage(response[0][0].User_Type)
+            this.home()
+        })
+        .catch(error => {
+            console.log("Error: ", error);
+            this.setState({ isLoader: false })
+        })
+    }
+
+saveInStorage = async (user_Type) => {
     const {access_token} = this.state;
     if (access_token !== null || access_token !== undefined || access_token !== ''){
         try {
             console.log("Store access: ", access_token)
             const token = ['access_token', JSON.stringify(access_token)];
             const session = ['session', JSON.stringify(true)]
-            await AsyncStorage.multiSet([token, session]);
+            const userType = ['user_type', JSON.stringify(user_Type)];
+            await AsyncStorage.multiSet([token, session, userType]);
         } catch (error) {
             console.log("Async Access token error", access_token);
             alert(error)
+            this.setState({ isLoader: false })
         }
     }
 }
@@ -110,7 +233,7 @@ saveAccessToken = async () => {
         let cancel = false;
         if (emailid.length === 0) {
             cancel = true;
-        } if (password.length === 0) {
+        } if (password.length === 0) { 
             cancel = true;
         }
         if (cancel){

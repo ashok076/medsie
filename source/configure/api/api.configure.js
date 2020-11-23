@@ -135,13 +135,11 @@ export const getBusinessListData = async (data, access_token) => {
     })
 }
 
-export const getHomeData = async (data, access_token) => {
-    console.log("Home Data: ", data, access_token)
+export const getHomeData = async (data) => {
     return axios(API.HOME_PAGE, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + access_token
         },
         data
     }).then(response => response.data)
@@ -168,6 +166,34 @@ export const updateUserProfile = async (data, access_token) => {
 export const checkServer = async () => {
     return axios(API.CHECK_SERVER, {
         method: 'POST',
+    }).then(response => response.data)
+    .catch(error => {
+        throw error;
+    })
+}
+
+export const userType = async (data, access_token) => {
+    return axios(API.USER_TYPE, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + access_token
+        },
+        data
+    }).then(response => response.data)
+    .catch(error => {
+        throw error;
+    })
+}
+
+export const rating = async (data, access_token) => {
+    return axios(API.RATING, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + access_token
+        },
+        data
     }).then(response => response.data)
     .catch(error => {
         throw error;

@@ -25,7 +25,8 @@ class DrawerComponent extends Component {
   constructor(){
     super()
     this.state = {
-      show: false
+      show: false,
+      userType: 0,
     }
   }
 
@@ -37,9 +38,11 @@ class DrawerComponent extends Component {
   }
 
     getAccessToken = async () => {
-      const access_token = await AsyncStorage.getItem('access_token');
-      if (access_token.length !== 0){
-        this.setState({ show: true }, () => console.log("Show: ", this.state.show))
+      const value = await AsyncStorage.multiGet(['access_token', 'user_type']);
+      const access_token = JSON.parse(value[0][1])
+      const userType = JSON.parse(value[1][1])
+      if (access_token.length !== 0 && userType.length !== 0){
+        this.setState({ show: true, userType: userType }, () => console.log("Show: ", this.state.show))
       }
   }
 
@@ -66,6 +69,29 @@ signout = async (navigation) => {
   })
 }; 
 
+  showVisitMenu = (navigation) => {
+    const {userType} = this.state;
+    if (userType === 1){
+      return (
+        <DrawerItem
+          label="Visited Store"
+          onPress={() => navigation.navigate('ListPage', { id: 0, type: 3 })}
+          labelStyle={styles.labelStyle}
+        />
+      )
+    } else if (userType === 2){
+      return (
+        <DrawerItem
+          label="Viewed your Store"
+          onPress={() => navigation.navigate('ListPage', { id: 0, type: 3 })}
+          labelStyle={styles.labelStyle}
+        />
+      )
+    }else if (userType === 2){
+      return <View />
+    }
+  }
+
   render(){
     const {navigation} = this.props;
     const {show} = this.state;
@@ -87,7 +113,7 @@ signout = async (navigation) => {
               <MedicalShops width={size} height={size} />
             )}
             label="Medical Shops"
-            onPress={() => navigation.navigate('ListPage', { id: 1 })}
+            onPress={() => navigation.navigate('ListPage', { id: 1, type: 1 })}
             labelStyle={styles.labelStyle}
           />
           <DrawerItem
@@ -95,7 +121,7 @@ signout = async (navigation) => {
               <Deliveries width={size} height={size} />
             )}
             label="Deliveries"
-            onPress={() => navigation.navigate('ListPage', { id: 2 })}
+            onPress={() => navigation.navigate('ListPage', { id: 2, type: 1 })}
             labelStyle={styles.labelStyle}
           />
           <DrawerItem
@@ -111,11 +137,16 @@ signout = async (navigation) => {
               <Events width={size} height={size} />
             )}
             label="Events"
-            onPress={() => navigation.navigate('ListPage', { id: 3 })}
+            onPress={() => navigation.navigate('ListPage', { id: 3, type: 1 })}
             labelStyle={styles.labelStyle}
           />
         </Drawer.Section>
         <Drawer.Section style={styles.drawerSection}>
+        <DrawerItem
+              label="Home"
+              onPress={() => navigation.navigate('Home')}
+              labelStyle={styles.labelStyle}
+            />
           {!show && (
             <DrawerItem
               label="Login"
@@ -142,6 +173,7 @@ signout = async (navigation) => {
             onPress={() => navigation.navigate('AccountSettings')}
             labelStyle={styles.labelStyle}
           />)}
+          {this.showVisitMenu(navigation)}
           <DrawerItem
             label="Privacy Policy"
             onPress={() => navigation.navigate('Home')}

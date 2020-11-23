@@ -10,13 +10,20 @@ const styles = StyleSheet.create({
     border: {
         borderBottomWidth: 0.5,
         borderColor: Color.txtGrey,
-        marginTop: 11
+        marginTop: 11,
+        marginBottom: 11
     },
     innerContainer: {
         padding: 10
     },
     main: {
         flex: 1
+    },
+    title: {
+        alignSelf: 'center',
+        fontFamily: 'Asap-Regular',
+        fontSize: 18,
+        color: Color.primaryColor
     }
 })
 

@@ -16,13 +16,13 @@ const Reviews  = () => (
                 <View style={styles.center}>
                     <Text style={styles.rating}>4.5</Text>
                     <Stars
-                        default={2.5}
+                        display={3}
+                        spacing={1}
                         count={5}
                         starSize={16}
-                        fullStar={<Star width={16} height={16}/>}
-                        emptyStar={<StarOutline width={16} height={16}/>}
-                        />
-                        <Text style={styles.totalRating}> 289 </Text>
+                        fullStar= {<Star width={16} height={16}/>}
+                        emptyStar= {<StarOutline width={16} height={16}/>}/>
+                    <Text style={styles.totalRating}> 289 </Text>
                 </View>
                 <View style={styles.ratingContainer}>
                     <RatingProgress list={[0,1,2,3,4]}/>

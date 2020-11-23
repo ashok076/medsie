@@ -40,10 +40,11 @@ class ListPage extends Component {
   }
 
   getPermission = async () => {
+    const {type} = this.props;
       if (Platform.OS === 'ios') {
         this.getOneTimeLocation();
         this.subscribeLocationLocation();
-        this.homeData();
+        this.homeData()
       } else {
         try {
           const granted = await PermissionsAndroid.request(
@@ -60,6 +61,7 @@ class ListPage extends Component {
             this.subscribeLocationLocation();
           } else {
             this.setState({locationStatus: 'Permission Denied'});
+            alert('Location permission is required to run this application')
           }
         } catch (err) {
           console.warn(err);
@@ -120,7 +122,7 @@ class ListPage extends Component {
         this.setState({currentLongitude});
 
         //Setting Latitude state
-        this.setState({currentLatitude});
+        this.setState({currentLatitude}, () => this.homeData());
         console.log("Location subs: ", currentLatitude, currentLongitude)
       },
       (error) => {
@@ -161,7 +163,6 @@ class ListPage extends Component {
     title = (type) => (
         <View>
               <View style={styles.titleView}>
-                  <Text style={styles.title}>{type}</Text>
                   {this.showMap()}
               </View>
         </View>

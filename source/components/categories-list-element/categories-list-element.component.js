@@ -21,7 +21,7 @@ const CategoriesListElement = ({item, key, navigation}) =>  (
                             display={4}
                             spacing={1}
                             count={5}
-                            starSize={40}
+                            starSize={12}
                             fullStar= {<Star width={12} height={12}/>}
                             emptyStar= {<StarOutline width={12} height={12}/>}/>
                         </View>

@@ -21,21 +21,21 @@ const ReviewsComment = ({list}) => (
 renderReviews = (item) => (
     <Card style={styles.card} elevation={1}>
         <View style={styles.row}>
-            <Avatar.Text size={30} label="M" />
+            <Avatar.Text size={30} label="U" />
             <View style={styles.usernameContainer}>
-            <Text>User Name</Text>
-            <Caption>Time</Caption>
+                <Text>User Name</Text>
+                <Caption>Time</Caption>
             </View>
         </View>
         <View style={[styles.row, styles.ratingStarView]}>
             <Stars
-                default={3}
+                display={3}
+                spacing={1}
                 count={5}
                 starSize={16}
-                fullStar={<Star width={16} height={16}/>}
-                emptyStar={<StarOutline width={16} height={16}/>}
-                />
-                <Caption style={styles.ratinTxt}>3</Caption>
+                fullStar= {<Star width={16} height={16}/>}
+                emptyStar= {<StarOutline width={16} height={16}/>}/>
+            <Caption style={styles.ratinTxt}>3</Caption>
         </View>
         <View>
             <Text>Title of the comment/review</Text>

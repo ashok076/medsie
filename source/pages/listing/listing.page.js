@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, ScrollView, SafeAreaView, Text, PermissionsAndroid, Platform} from 'react-native';
+import {View, ScrollView, SafeAreaView, Text, PermissionsAndroid, Platform, TouchableOpacity} from 'react-native';
 import Geolocation from '@react-native-community/geolocation';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -82,6 +82,7 @@ class Listing extends Component {
             this.subscribeLocationLocation();
           } else {
             this.setState({locationStatus: 'Permission Denied'});
+            alert('Location permission is required to run this application')
           }
         } catch (err) {
           console.warn(err);
@@ -155,6 +156,12 @@ class Listing extends Component {
     );
   };
 
+  submitReview = (navigation, item) => (
+    <TouchableOpacity onPress={() => navigation.navigate('WriteReviews', {data: item, access_token: this.state.access_token})}>
+      <Text style={styles.title}>Review Store</Text>
+    </TouchableOpacity>
+  )
+
     render(){
         const {item} = this.state;
         const {navigation} = this.props;
@@ -171,6 +178,7 @@ class Listing extends Component {
                             <View style={styles.border}/>
                             <TimingStatus item={item}/>
                             <View style={styles.border}/>
+                            {this.submitReview(navigation, item)}
                             <Reviews />
                             <ReviewsComment list={[0,1,2,3]}/>
                             </View>
