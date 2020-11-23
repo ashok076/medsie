@@ -25,7 +25,6 @@ const CategoriesListElement = ({item, key, navigation}) =>  (
                             fullStar= {<Star width={12} height={12}/>}
                             emptyStar= {<StarOutline width={12} height={12}/>}/>
                         </View>
-                        <Caption style={styles.caption}>{item.item.Buss_City}, {item.item.Buss_Country}</Caption>
                         <View style={styles.horizontalView}>
                             <Icon name="place" color={Color.primaryColor} size={17} />
                             <Text style={styles.place}>{item.item.Distance} mi</Text>

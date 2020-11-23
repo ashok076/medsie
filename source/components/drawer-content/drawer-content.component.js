@@ -41,8 +41,9 @@ class DrawerComponent extends Component {
       const value = await AsyncStorage.multiGet(['access_token', 'user_type']);
       const access_token = JSON.parse(value[0][1])
       const userType = JSON.parse(value[1][1])
+      console.log("Drawer info: ", JSON.stringify(value));
       if (access_token.length !== 0 && userType.length !== 0){
-        this.setState({ show: true, userType: userType }, () => console.log("Show: ", this.state.show))
+        this.setState({ show: true, userType: userType })
       }
   }
 

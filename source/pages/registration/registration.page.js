@@ -10,7 +10,7 @@ import Button from '../../components/button/button.component';
 import TouchText from '../../components/touch-text/touch-text.component';
 import BackHeader from '../../components/back-header/back-header.component';
 import Loader from '../../components/loader/loader.component'
-import {register} from '../../configure/api/api.configure'
+import {register, userType} from '../../configure/api/api.configure'
 
 import styles from './registration.style'
 
@@ -46,11 +46,7 @@ submit  = async () => {
             })
             await register(data).then(res => {
                 this.showMessage('Account created successfully')
-                this.setState({ isLoader: false, access_token: res.access_token },() => this.saveAccessToken())
-                navigation.reset({
-                    index: 0,
-                    routes: [{name: 'Home'}],
-                });
+                this.setState({ isLoader: false, access_token: res.access_token },() => this.checkUserType())
             }).catch(error => {
                 this.setState({ isLoader: false })
                 this.showMessage(error.response.data.error_description)
@@ -59,18 +55,19 @@ submit  = async () => {
     }
 }
 
-saveAccessToken = async () => {
-    const {access_token} = this.state;
-    if (access_token !== null || access_token !== undefined || access_token !== ''){
-        try {
-            const token = ['access_token', JSON.stringify(access_token)];
-            const session = ['session', JSON.stringify(true)]
-            await AsyncStorage.multiSet([token, session]);
-        } catch (error) {
-            console.log("Async Access token error", error);
-        }
-    }
-}
+  checkUserType = async () => {
+        const {access_token} = this.state;
+        let data = JSON.stringify({ Type: 2 });
+        await userType(data, access_token)
+        .then(response => {
+            console.log("User_Type: ", response[0][0].User_Type);
+            this.saveInStorage(response[0][0].User_Type)
+        }) 
+        .catch(error => {
+            console.log("Error: ", error);
+            this.setState({ isLoader: false })
+        })
+  }
 
     passwordCheck = () => {
         const {password, confirmpassword} = this.state;
@@ -111,6 +108,27 @@ showMessage = (message) => {
         style: styles.toasttxt,
         duration: 5000
     })
+    }
+}
+
+saveInStorage = async (user_Type) => {
+    const {access_token} = this.state;
+    const {navigation} = this.props;
+    if (access_token !== null || access_token !== undefined || access_token !== ''){
+        try {
+            const token = ['access_token', JSON.stringify(access_token)];
+            const session = ['session', JSON.stringify(true)]
+            const userType = ['user_type', JSON.stringify(user_Type)];
+            await AsyncStorage.multiSet([token, session, userType]);
+            navigation.reset({
+                    index: 0,
+                    routes: [{name: 'Home'}],
+                });
+                console.log("Async Access token error", token, session, userType);
+        } catch (error) {
+            console.log("Async Access token error", error);
+            this.setState({ isLoader: false })
+        }
     }
 }
 

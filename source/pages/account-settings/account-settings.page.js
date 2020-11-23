@@ -59,7 +59,6 @@ class AccountSettings extends Component{
       const {access_token} = this.state;
       await accountSettings(JSON.parse(access_token))
         .then(response => {
-            console.log("Res: ", JSON.stringify(response))
             this.addViewData(response[0][0])
             })
         .catch(error => console.log("Error: ", error))
@@ -107,9 +106,7 @@ class AccountSettings extends Component{
                 'User_IsActive' : '',
                 'User_IsDelete' : ''
             })
-            console.log("Response: ", access_token, data)
             await updateUserProfile(data, JSON.parse(access_token)).then(res => {
-                console.log("Response: ", res, access_token, data)
                 this.showMessage('Update successfully');
                 navigation.goBack()
             }).catch(error => {
@@ -149,7 +146,6 @@ class AccountSettings extends Component{
 }
 
 onDateTimeChange = (selectedDate) => {
-    console.log("Event: ", selectedDate)
     let dateTime = this.dateFormatter(selectedDate)
     this.setState({ dob: dateTime })
     this.setState({ birthdayPicker: false })

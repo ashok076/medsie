@@ -44,7 +44,6 @@ class Login extends Component {
         const access_token = JSON.parse(value[0][1]);
         const session = JSON.parse(value[1][1]);
         if (access_token !== null && access_token !== undefined && access_token !== ''){
-            console.log("Access Token: ", access_token)
             if (session){
                 navigation.reset({
                     index: 0,
@@ -178,7 +177,6 @@ submit  = async () => {
             await login(data).then(res => {
                 this.setState({access_token: res.access_token }, () => this.checkUserType())
             }).catch(error => {
-                console.log("error", error.response.data.error_description)
                 this.setState({ isLoader: false })
                 this.showMessage(error.response.data.error_description)
             })
@@ -196,7 +194,7 @@ home = async () => {
     this.setState({ isLoader: false })
 }
 
-    checkUserType = async () => {
+  checkUserType = async () => {
         const {access_token} = this.state;
         let data = JSON.stringify({ Type: 2 });
         await userType(data, access_token)
@@ -204,18 +202,17 @@ home = async () => {
             console.log("User_Type: ", response[0][0].User_Type);
             this.saveInStorage(response[0][0].User_Type)
             this.home()
-        })
+        }) 
         .catch(error => {
             console.log("Error: ", error);
             this.setState({ isLoader: false })
         })
-    }
+  }
 
 saveInStorage = async (user_Type) => {
     const {access_token} = this.state;
     if (access_token !== null || access_token !== undefined || access_token !== ''){
         try {
-            console.log("Store access: ", access_token)
             const token = ['access_token', JSON.stringify(access_token)];
             const session = ['session', JSON.stringify(true)]
             const userType = ['user_type', JSON.stringify(user_Type)];

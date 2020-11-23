@@ -13,7 +13,6 @@ const CompanyCard  = ({item}) => (
                     <View style={styles.info}>
                         <Title style={styles.title}>{item.Buss_Name}</Title>
                         <View style={[styles.row]}>
-                            <Caption style={styles.caption}>{item.Buss_City}, {item.Buss_Country}</Caption>
                             <Icon name="place" color={Color.primaryColor} size={17} style={styles.icon}/>
                             <Caption style={styles.min}>{item.Distance} mi</Caption>
                         </View>
@@ -21,4 +20,4 @@ const CompanyCard  = ({item}) => (
                 </View>
         )
 
-export default CompanyCard
+export default CompanyCard;

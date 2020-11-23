@@ -25,7 +25,6 @@ const ListPageElement = ({item, key, navigation}) =>  (
                             fullStar= {<Star width={30} height={30}/>}
                             emptyStar= {<StarOutline width={30} height={30}/>}/>
                         </View>
-                        <Caption style={styles.caption}>{item.item.Buss_City}, {item.item.Buss_Country}</Caption>
                         <View style={styles.horizontalView}>
                             <Icon name="place" color={Color.primaryColor} size={24} />
                             <Text style={styles.place}>{item.item.Distance} mi</Text>

@@ -76,10 +76,8 @@ class EditStore extends Component {
 
   getCategory = async () => {
       const {access_token} = this.state
-      console.log("Access Token: ", access_token)
       await categoryStore(JSON.parse(access_token))
         .then(response => {
-            console.log("Cat Res: ", response)
             let arr = [];
             response[0].map(val => 
                 arr.push({
@@ -103,7 +101,6 @@ class EditStore extends Component {
     }
 
   getData = async (data) => {
-      console.log("Data: ", data)
       this.setState({
           storeName: data.Buss_Name,
           storeNumber: data.Buss_Number,
@@ -130,7 +127,6 @@ class EditStore extends Component {
 submit = async () => {
     const {storeName, storeNumber, storeAddress, buspkid, description, fromWeekD, toWeekD, access_token, base64, fileName, catId, sellId} = this.state;
     this.setState({ isLoader: true, isPickerVisible: false })
-    console.log("Id: ", catId)
     let arr = [];
     week_days.map(day => {
         arr.push({
@@ -162,10 +158,8 @@ submit = async () => {
         UserID: '',
         Buss_PkId: buspkid
     })
-    console.log("Data: ", data);
     await registerStore(data, JSON.parse(access_token))
         .then(response => {
-            console.log("Res: ", response)
             this.setState({ isLoader: false })
             this.showMessage("Your store is successfully registered")
             })
@@ -194,10 +188,8 @@ submit = async () => {
         Client_Result_Photo_FileName: fileName,
         Buss_PkId: buspkid
     })
-    console.log("Data: ", data);
     await registerStoreImage(data, JSON.parse(access_token))
         .then(response => {
-            console.log("Res: ", response)
             this.setState({ isLoader: false })
             this.showMessage("Your store is successfully registered")
             })
@@ -220,7 +212,6 @@ showMessage = (message) => {
 }
 
 onDateTimeChange = (selectedDate) => {
-    console.log("Event: ", selectedDate)
     let dateTime = format(selectedDate, "hh:mm a");
     const {key} = this.state;
     this.setState({ [key]: dateTime })
@@ -302,7 +293,6 @@ dateTimePicker = () => (
         const {navigation, route} = this.props;
         const {showDrawer} = route.params;
         const {storeName, storeNumber, storeAddress, description, modal, array, businessCategory, sellingType, key, catArray, isLoader, pkid} = this.state;
-        console.log("Sell: ", catArray)
         return (
             <SafeAreaView style={styles.contain}>
                 <ScrollView>
@@ -357,7 +347,7 @@ dateTimePicker = () => (
                             message="Not more than 500 words"
                             value={description}
                             keyboardType="default"
-                            onChangeText={(description) => this.setState({ description }, () => console.log("Inro: ", description))}
+                            onChangeText={(description) => this.setState({ description })}
                         />
                     </View>
                     {this.weekdays()}

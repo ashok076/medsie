@@ -10,6 +10,7 @@ import Introduction from '../../components/introduction/introduction.component'
 import TimingStatus from '../../components/timing-status/timing-status.component'
 import Reviews from '../../components/review/review.component'
 import ReviewsComment from '../../components/reviews-comment/reviews-comment.component'
+import Loader from '../../components/loader/loader.component'
 import {getBusinessData} from '../../configure/api/api.configure'
 
 import styles from './listing.style';
@@ -46,7 +47,7 @@ class Listing extends Component {
   categoryData = async () => {
       const {route} = this.props;
       const { currentLatitude, currentLongitude, access_token } = this.state;
-      console.log("Id: ", route.params.id)
+      this.setState({ isLoader: true })
       let data = JSON.stringify({
           Type: 3,
           Buss_PkId: route.params.id,
@@ -55,10 +56,12 @@ class Listing extends Component {
       })
       await getBusinessData(data, JSON.parse(access_token))
       .then(response => {
-          console.log(response, data)
-          this.setState({ item: response[0][0] })
+          this.setState({ item: response[0][0], isLoader: false }, () => console.log("Res: ", JSON.stringify(response[0][0])))
       })
-      .catch(error => console.log("Error: ", error))
+      .catch(error => {
+        console.log("Error: ", error)
+        this.setState({ isLoader: false })
+      })
   }
 
     getPermission = async () => {
@@ -77,7 +80,6 @@ class Listing extends Component {
           );
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
             //To Check, If Permission is granted
-            console.log("Check: ")
             this.getOneTimeLocation();
             this.subscribeLocationLocation();
           } else {
@@ -163,9 +165,8 @@ class Listing extends Component {
   )
 
     render(){
-        const {item} = this.state;
+        const {item, isLoader} = this.state;
         const {navigation} = this.props;
-        console.log("Ifo:" , JSON.stringify(item))
         return (
             <SafeAreaView style={styles.container}>
                     <ScrollView> 
@@ -182,6 +183,7 @@ class Listing extends Component {
                             <Reviews />
                             <ReviewsComment list={[0,1,2,3]}/>
                             </View>
+                            <Loader isLoader={isLoader}/>
                     </View>
                 </ScrollView>
             </SafeAreaView>

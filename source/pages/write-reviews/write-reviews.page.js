@@ -34,7 +34,6 @@ class WriteReviews extends Component {
             Rat_Title: title,
             Rat_BussID: data.Buss_PkId
         })
-        console.log(apiData)
         await rating(apiData, JSON.parse(access_token))
         .then(response => {
             navigation.goBack()

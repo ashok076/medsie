@@ -36,8 +36,6 @@ class ModalList extends Component {
 
   render() {
     const {isModalVisible, list} = this.props;
-    console.log('List: ', JSON.stringify(list));
-    console.log('Visible: ', isModalVisible);
 
     return (
       <Modal visible={isModalVisible} transparent={true} animationType="fade">

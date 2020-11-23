@@ -78,7 +78,6 @@ class RegisterStore extends Component {
       console.log("Access Token: ", access_token)
       await categoryStore(JSON.parse(access_token))
         .then(response => {
-            console.log("Cat Res: ", response)
             let arr = [];
             response[0].map(val => 
                 arr.push({
@@ -94,7 +93,6 @@ class RegisterStore extends Component {
 submit = async () => {
     const {storeName, storeNumber, storeAddress, addIntroduction, fromWeekD, toWeekD, access_token, base64, fileName, catId, sellId} = this.state;
     this.setState({ isLoader: true, isPickerVisible: false })
-    console.log("Id: ", catId)
     let arr = [];
     week_days.map(day => {
         arr.push({
@@ -125,10 +123,8 @@ submit = async () => {
         Buss_Long: '',
         UserID: ''
     })
-    console.log("Data: ", data);
     await registerStore(data, JSON.parse(access_token))
         .then(response => {
-            console.log("Res: ", response)
             this.setState({ isLoader: false })
             this.showMessage("Your store is successfully registered")
             })
@@ -156,10 +152,8 @@ submit = async () => {
         Image: "data:image/png;base64, " + base64,
         Client_Result_Photo_FileName: fileName
     })
-    console.log("Data: ", data);
     await registerStoreImage(data, JSON.parse(access_token))
         .then(response => {
-            console.log("Res: ", response)
             this.setState({ isLoader: false })
             this.showMessage("Your store is successfully registered")
             })
@@ -186,7 +180,6 @@ showMessage = (message) => {
 }
 
 onDateTimeChange = (selectedDate) => {
-    console.log("Event: ", selectedDate)
     let dateTime = format(selectedDate, "hh:mm a");
     const {key} = this.state;
     this.setState({ [key]: dateTime })
@@ -269,7 +262,6 @@ dateTimePicker = () => (
         const {navigation, route} = this.props;
         const {showDrawer} = route.params;
         const {storeName, storeNumber, storeAddress, addIntroduction, modal, array, businessCategory, sellingType, key, catArray, isLoader, pkid} = this.state;
-        console.log("Sell: ", catArray)
         return (
             <SafeAreaView style={styles.contain}>
                 <ScrollView>

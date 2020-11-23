@@ -5,7 +5,8 @@ import {Color} from '../../assets/color/color.assets'
 const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 5
     },
     container: {
         height: 90,
@@ -30,9 +31,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontFamily: 'Asap-Regular',
         color: Color.primaryColor,
-    },
-    icon: {
-        marginLeft: 15
     },
   imageView: {
     width: 100, 

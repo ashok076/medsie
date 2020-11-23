@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgb(245, 245, 245)',
     },
     horizontalView: {
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     ratingView: {
         height: '10%'
@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
         fontFamily: 'Asap-Regular',
     },
     starView: {
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
+        marginBottom: 5
     }
 })
 

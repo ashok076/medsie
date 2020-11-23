@@ -41,7 +41,8 @@ const styles = StyleSheet.create({
         fontSize: 17
     },
     starView: {
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
+        marginBottom: 5
     }
 })
 

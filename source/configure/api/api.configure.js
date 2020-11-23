@@ -59,7 +59,6 @@ export const registerStore = async (data, access_token) => {
 }
 
 export const categoryStore = async (access_token) => {
-    console.log("Access+++", access_token)
     return axios(API.CATEGORY_STORE, {
         method: 'POST',
         headers: {
@@ -106,7 +105,6 @@ export const registerStoreImage = async (data, access_token) => {
 }
 
 export const getBusinessData = async (data, access_token) => {
-    console.log("Buss: ", data)
     return axios(API.GET_BUSINESS_DETAILS, {
         method: 'POST',
         headers: {
@@ -121,7 +119,6 @@ export const getBusinessData = async (data, access_token) => {
 }
 
 export const getBusinessListData = async (data, access_token) => {
-    console.log("Data: ", data)
     return axios(API.GET_BUSINESS_CATEGORY_LIST, {
         method: 'POST',
         headers: {
@@ -149,7 +146,6 @@ export const getHomeData = async (data) => {
 }
 
 export const updateUserProfile = async (data, access_token) => {
-    console.log("Data: ", data, access_token)
     return axios(API.UPDATE_USER_DETAILS, {
         method: 'POST',
         headers: {

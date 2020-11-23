@@ -56,7 +56,6 @@ class ListPage extends Component {
           );
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
             //To Check, If Permission is granted
-            console.log("Check: ")
             this.getOneTimeLocation();
             this.subscribeLocationLocation();
           } else {
@@ -108,7 +107,6 @@ class ListPage extends Component {
         //Will give you the location on location change
         
         this.setState({locationStatus: 'You are Here'});
-        console.log(position);
 
         //getting the Longitude from the location json        
         const currentLongitude =
@@ -138,7 +136,6 @@ class ListPage extends Component {
     homeData = async () => {
         const { id } = this.props.route.params;
         const {currentLatitude, currentLongitude, locationStatus, access_token} = this.state;
-        console.log("Loc: ", currentLatitude, currentLongitude, locationStatus)
         const data = JSON.stringify({ 
             "Type": 1,
             "Buss_CatId": id,
@@ -147,7 +144,7 @@ class ListPage extends Component {
             })
         await getBusinessListData(data, JSON.parse(access_token))
         .then(response => {
-            this.setState({ array: response[0] }, () => console.log(JSON.stringify(response)))
+            this.setState({ array: response[0] })
         })
         .catch(error => console.log("Error: ", error))
     }
