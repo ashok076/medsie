@@ -152,6 +152,7 @@ submit = async () => {
         Image: "data:image/png;base64, " + base64,
         Client_Result_Photo_FileName: fileName
     })
+    console.log("Image: ", data, access_token)
     await registerStoreImage(data, JSON.parse(access_token))
         .then(response => {
             this.setState({ isLoader: false })

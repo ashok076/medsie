@@ -188,6 +188,7 @@ signout = async (navigation) => {
         </View>
       </DrawerContentScrollView>
       <Drawer.Section style={styles.bottomDrawerSection}>
+        {show && (
         <Drawer.Item
           icon={({color, size}) => (
             <Icon name="logout" color={color} size={size} />
@@ -198,7 +199,7 @@ signout = async (navigation) => {
           }}
             labelStyle={styles.labelStyle}
             onPress={() => this.logout(navigation)}
-        />
+        />)}
       </Drawer.Section>
     </View>
   );

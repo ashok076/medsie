@@ -4,8 +4,16 @@ import {StyleSheet} from 'react-native'
 const styles = StyleSheet.create({
   content: {
     padding: 5,
+    flex: 1
   },
-
+  map: {
+    flex: 1,
+    ...StyleSheet.absoluteFillObject,
+    top: 0, 
+    left: 0, 
+    right: 0, 
+    bottom: -25
+  },
   contentSubheading: {
     marginBottom: 2,
     fontSize: 16,
@@ -52,20 +60,19 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: '#000',
   },
-    modalize: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    zIndex: 0,
-  },
   container: {
-    flex: 1
+    flex: 1,
   },
   map: {
     height: '100%'
-  }
+  },
+  card: {
+    width: '100%',
+    position: 'absolute',
+    bottom: 0,
+    zIndex: 130,
+    padding: 16
+    }
 });
 
 export default styles;

@@ -186,7 +186,6 @@ submit  = async () => {
 home = async () => {
     const {navigation} = this.props;
     await AsyncStorage.setItem('session', JSON.stringify(true));
-    this.showMessage('Logged in successfull')
     navigation.reset({
         index: 0,
         routes: [{name: 'Home'}],
@@ -202,6 +201,7 @@ home = async () => {
             console.log("User_Type: ", response[0][0].User_Type);
             this.saveInStorage(response[0][0].User_Type)
             this.home()
+            this.showMessage('Logged in successfully')
         }) 
         .catch(error => {
             console.log("Error: ", error);
@@ -307,7 +307,6 @@ navigate = (page) => {
                                 Skip for now >
                             </Text>
                         </TouchableWithoutFeedback>
-                        
                     </View>
                     <Loader isLoader={isLoader}/>
                     </View>
