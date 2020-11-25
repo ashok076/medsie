@@ -79,7 +79,7 @@ class Listing extends Component {
                             <TimingStatus item={item}/>
                             <View style={styles.border}/>
                             <Reviews item={item}/>
-                            <ReviewsComment list={[0,1,2,3]}/>
+                            <ReviewsComment list={[0,1,2,3]} navigation={navigation} show={false}/>
                             </View>
                             <Loader isLoader={isLoader}/>
                     </View>

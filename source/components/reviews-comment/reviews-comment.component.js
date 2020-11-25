@@ -1,24 +1,23 @@
 import React from "react";
-import {View, FlatList} from 'react-native';
+import {View, FlatList, TextInput} from 'react-native';
 import {Text, Title, Caption, Avatar, Card} from 'react-native-paper';
-import Stars from 'react-native-stars';
+import StarRating from 'react-native-star-rating';
 
-import Star from '../../assets/svg-files/starfilled.svg'
-import StarOutline from '../../assets/svg-files/star-outline.svg'
-import ReadMore from '../../lib/read-more/read-more.lib'
+import ReadMore from '../../lib/read-more/read-more.lib';
+import Reply from '../reply/reply.component'
 
 import styles from './reviews-comment.style';
 
-const ReviewsComment = ({list}) => (
+const ReviewsComment = ({list, navigation, show}) => (
     <View>
         <FlatList
             data={list}
-            renderItem={(item) => renderReviews(item)}
+            renderItem={(item) => renderReviews(item, navigation, show)}
             />
     </View>
 )
 
-renderReviews = (item) => (
+renderReviews = (item, navigation, show) => (
     <Card style={styles.card} elevation={1}>
         <View style={styles.row}>
             <Avatar.Text size={30} label="U" />
@@ -28,47 +27,27 @@ renderReviews = (item) => (
             </View>
         </View>
         <View style={[styles.row, styles.ratingStarView]}>
-            <Stars
-                display={3}
-                spacing={1}
-                count={5}
-                starSize={16}
-                fullStar= {<Star width={16} height={16}/>}
-                emptyStar= {<StarOutline width={16} height={16}/>}/>
-            <Caption style={styles.ratinTxt}>3</Caption>
+            <StarRating
+                disabled={false}
+                maxStars={5}
+                rating={item.item.Rat_Rating}
+                fullStar= {'star'}
+                emptyStar= {'star-o'}
+                fullStarColor={'orange'}
+                emptyStarColor={'orange'}
+                starSize={16}/>
+            <Caption style={styles.ratinTxt}>{item.item.Rat_Rating}</Caption>
         </View>
         <View>
-            <Text>Title of the comment/review</Text>
+            <Text>{item.item.Rat_Title}</Text>
             <ReadMore
                     numberOfLines={5}
                     textStyle={styles.introduction}>
                     <Caption style={styles.introductions}>
-                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-      praesentium voluptatum deleniti atque corrupti quos dolores et quas
-      molestias excepturi sint occaecati cupiditate non provident, similique
-      sunt in culpa qui officia deserunt mollitia animi, id est laborum et
-      dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
-      Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-      impedit quo minus id quod maxime placeat facere possimus, omnis voluptas
-      assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut
-      officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates
-      repudiandae sint et molestiae non recusandae. Itaque earum rerum hic
-      tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias
-      consequatur aut perferendis doloribus asperiores repellat. At vero eos et
-      accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-      voluptatum deleniti atque corrupti quos dolores et quas molestias
-      excepturi sint occaecati cupiditate non provident, similique sunt in culpa
-      qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et
-      harum quidem rerum facilis est et expedita distinctio. Nam libero tempore,
-      cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod
-      maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor
-      repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum
-      necessitatibus saepe eveniet ut et voluptates repudiandae sint et
-      molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente
-      delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut
-      perferendis doloribus asperiores repellat.
+                        {item.item.Rat_Description}
                     </Caption>
             </ReadMore>
+            <Reply item={item.item} show={show} navigation={navigation}/>
         </View>
     </Card>
 )

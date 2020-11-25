@@ -61,7 +61,7 @@ class WriteReviews extends Component {
                     </View> 
                 </View>
                     <Stars
-                        default={0}
+                        default={1}
                         update={(val)=> {this.setState({stars: val})}}
                         spacing={4}
                         starSize={40}

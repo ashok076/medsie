@@ -73,7 +73,7 @@ class AccountSettings extends Component{
             dob: response.User_DOB ? this.dateFormatter(new Date(Date.parse(response.User_DOB))) : '',
             isLoader: false,
             bussinessData: response.BusinessMaster_DTO
-        })
+        }, () => console.log("Resp: ", response))
 }
 
     navigate = (nav) => {
@@ -169,7 +169,7 @@ dateTimePicker = () => (
 
     render(){
         const {navigation} = this.props;
-        const {isShowPassword, emailid, password, isLoader, phone, dob, name, bussinessData} = this.state;
+        const {isShowPassword, emailid, password, isLoader, phone, dob, name, bussinessData, access_token} = this.state;
         return(
             <SafeAreaView style={styles.container}>
                 <BackHeader title="Back" navigation={navigation}/>
@@ -177,7 +177,6 @@ dateTimePicker = () => (
                     <View style={styles.innerContainer}>
                         <View style={[styles.row, styles.titleContainer]}>
                             <Text style={styles.titeText}>Account Settings</Text>
-                            <TouchableOpacity onPress={() => this.navigate('RegisterStore')}><Text style={styles.editText}>My Store</Text></TouchableOpacity>
                         </View>
                         <View style={styles.inputContainer}>
                         <InputText

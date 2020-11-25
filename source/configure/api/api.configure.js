@@ -195,3 +195,17 @@ export const rating = async (data, access_token) => {
         throw error;
     })
 }
+
+export const reply = async (data, access_token) => {
+    return axios(API.REPLY, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + access_token
+        },
+        data
+    }).then(response => response.data)
+    .catch(error => {
+        throw error;
+    })
+}

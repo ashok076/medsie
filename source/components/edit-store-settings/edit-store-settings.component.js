@@ -24,8 +24,9 @@ const store = (navigation, item) => (
             <View style={styles.textContainer}>
                 <Title style={styles.title}>{item.item.Buss_Name}</Title>
                 <Text style={styles.text}>{item.item.Buss_Number}</Text>
-            <View style={styles.buttonContainer}>
+            <View style={[styles.buttonContainer, styles.horizontal]}>
                 <NoBackgroundButton title="Edit Store Settings" onPress={() => navigate(navigation, item)}/>
+                <NoBackgroundButton title="Review" onPress={() => navigation.navigate('ReplyReview', {BussId: item.item.Buss_PkId})}/>
             </View>
             </View>
         </View>

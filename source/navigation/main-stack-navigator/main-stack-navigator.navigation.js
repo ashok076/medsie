@@ -8,7 +8,9 @@ import ListPage from '../../pages/list-page/list-page.page';
 import Listing from '../../pages/listing/listing.page';
 import RegisterStore from '../../pages/register-store/register-store.page';
 import EditStore from '../../pages/edit-store/edit-store.page';
-import WriteReviews from '../../pages/write-reviews/write-reviews.page'
+import WriteReviews from '../../pages/write-reviews/write-reviews.page';
+import ReplyReview from '../../pages/reply-review/reply-review.page';
+import EditReply from '../../components/edit-reply/edit-reply.component'
 
 const Stack = createStackNavigator();
 
@@ -22,6 +24,8 @@ const MainStackNavigator = () => (
     <Stack.Screen name="EditStore" component={EditStore} />
     <Stack.Screen name="WriteReviews" component={WriteReviews} />
     <Stack.Screen name="Listing" component={Listing} />
+    <Stack.Screen name="ReplyReview" component={ReplyReview} />
+    <Stack.Screen name="EditReply" component={EditReply} />
   </Stack.Navigator>
 );
 

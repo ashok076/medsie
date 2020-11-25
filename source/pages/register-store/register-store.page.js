@@ -267,7 +267,7 @@ dateTimePicker = () => (
             <SafeAreaView style={styles.contain}>
                 <ScrollView>
                     <View style={styles.container}>
-                    {showDrawer ? <Header navigation={navigation}/> : <BackHeader title="Back to create an account" navigation={navigation}/>}
+                    <BackHeader title="Back" navigation={navigation}/>
                     <View style={styles.bodycontainer}>
                     <Text style={styles.title}> Register your store </Text>
                         {this.uploadImage()}
