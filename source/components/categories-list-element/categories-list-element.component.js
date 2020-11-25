@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {View, TouchableOpacity, Image} from 'react-native';
 import {Text, Caption, Card, Title} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Stars from 'react-native-stars';
+import StarRating from 'react-native-star-rating';
 
 import {Color} from '../../assets/color/color.assets'
 import Star from '../../assets/svg-files/starfilled.svg'
@@ -17,13 +17,15 @@ const CategoriesListElement = ({item, key, navigation}) =>  (
                     <View style={styles.body}> 
                         <Title style={styles.title}>{ ((item.item.Buss_Name).length > 15) ? (((item.item.Buss_Name).substring(0,15-3)) + '...') : item.item.Buss_Name }</Title>
                         <View style={styles.starView}>
-                        <Stars
-                            display={4}
-                            spacing={1}
-                            count={5}
-                            starSize={12}
-                            fullStar= {<Star width={12} height={12}/>}
-                            emptyStar= {<StarOutline width={12} height={12}/>}/>
+                        <StarRating
+                            disabled={false}
+                            maxStars={5}
+                            rating={4}
+                            fullStar= {'star'}
+                            emptyStar= {'star-o'}
+                            fullStarColor={'#FFBF00'}
+                            emptyStarColor={'#FFBF00'}
+                            starSize={12}/>
                         </View>
                         <View style={styles.horizontalView}>
                             <Icon name="place" color={Color.primaryColor} size={17} />

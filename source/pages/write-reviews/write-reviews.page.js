@@ -34,8 +34,10 @@ class WriteReviews extends Component {
             Rat_Title: title,
             Rat_BussID: data.Buss_PkId
         })
-        await rating(apiData, JSON.parse(access_token))
+        console.log("Data: ", apiData);
+        await rating(apiData, access_token)
         .then(response => {
+            console.log(response)
             navigation.goBack()
         })
         .catch(error => {
@@ -59,7 +61,7 @@ class WriteReviews extends Component {
                     </View> 
                 </View>
                     <Stars
-                        default={2.5}
+                        default={0}
                         update={(val)=> {this.setState({stars: val})}}
                         spacing={4}
                         starSize={40}

@@ -1,45 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {View, FlatList} from 'react-native';
 import {Title, Text} from 'react-native-paper';
 
 import styles from './timing-status.style';
 
-const list = [{
-    days: 'Sunday',
-    time: '10:00 AM - 10:00 PM'
-}, {
-    days: 'Monday',
-    time: '10:00 AM - 10:00 PM'
-},{
-    days: 'Tuesday',
-    time: '10:00 AM - 10:00 PM'
-},{
-    days: 'Wednesday',
-    time: '10:00 AM - 10:00 PM'
-},{
-    days: 'Thursday',
-    time: '10:00 AM - 10:00 PM'
-},{
-    days: 'Friday',
-    time: '10:00 AM - 10:00 PM'
-},{
-    days: 'Saturday',
-    time: '10:00 AM - 10:00 PM'
-}]
+class TimingStatus  extends Component {
+    constructor(){
+        super();
+        this.state = {
+            status: ''
+        }
+    }
 
-const TimingStatus  = ({ item }) => (
-            <View style={styles.container}>
-            <Title style={styles.close}>CLOSED NOW </Title>
-                <View>
-                    <FlatList
-                        data={item.businessHoursTransMaster_DTOs}
-                        renderItem={(i) => renderTime(i)}
-                        />
-                </View>
-            </View>
-        )
+    componentDidMount() {
+        const {item} = this.props;
+        this.setState({ status: this.getStatus(item) })
+  }
 
-const renderTime = (item) => (
+  renderTime = (item) => (
     <View style={[styles.row, styles.viewMargin]}>
         <View style={styles.rowContainer}>
             <Text style={styles.days}>{item.item.BHT_Weekdays}</Text>
@@ -49,5 +27,60 @@ const renderTime = (item) => (
         </View>
     </View>
 )
+
+getStatus = (item) => {
+    let zone = new Date().getTimezoneOffset() / 60;
+    let time = new Date().getDay();
+    let day = time === 6 ? 0 : time + 1;
+    console.log("IT: ", item)
+    if (Object.keys(item).length !== 0){
+        return this.isOpen(item.businessHoursTransMaster_DTOs[day].BHT_FromTime, item.businessHoursTransMaster_DTOs[day].BHT_ToTime, zone);
+    }
+    return;
+}
+
+isOpen = (openTime, closeTime, timezone) => {
+
+  // handle special case
+  if (openTime === "24HR") {
+    return "open";
+  }
+
+  // get the current date and time in the given time zone
+  const now = moment.tz(timezone);
+
+  // Get the exact open and close times on that date in the given time zone
+  const date = now.format("YYYY-MM-DD");
+  const storeOpenTime = moment.tz(date + ' ' + openTime, "YYYY-MM-DD h:mmA", timezone);
+  const storeCloseTime = moment.tz(date + ' ' + closeTime, "YYYY-MM-DD h:mmA", timezone);
+
+  let check;
+  if (storeCloseTime.isBefore(storeOpenTime)) {
+    // Handle ranges that span over midnight
+    check = now.isAfter(storeOpenTime) || now.isBefore(storeCloseTime);
+  } else {
+    // Normal range check using an inclusive start time and exclusive end time
+    check = now.isBetween(storeOpenTime, storeCloseTime, null, '[)');
+  }
+
+  return check ? "open" : "closed";
+}
+
+    render(){
+        const {item} = this.props;
+        const {status} = this.state;
+        return (
+            <View style={styles.container}>
+            <Title style={styles.close}> {status} </Title>
+                <View>
+                    <FlatList
+                        data={item.businessHoursTransMaster_DTOs}
+                        renderItem={(i) => this.renderTime(i)}
+                        />
+                </View>
+            </View>
+        )
+    }
+}
 
 export default TimingStatus

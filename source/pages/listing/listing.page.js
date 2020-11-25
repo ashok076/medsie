@@ -48,12 +48,14 @@ class Listing extends Component {
           Type: 3,
           Buss_PkId: route.params.id,
           Buss_Lat: currentLatitude, 
-          Buss_Long: currentLongitude
+          Buss_Long: currentLongitude,
+          PageNumber: 0,
+          NoofRows: 0
       })
       console.log("Access: ", currentLatitude, currentLongitude, access_token)
       await getBusinessData(data, access_token)
       .then(response => {
-          this.setState({ item: response[0][0], isLoader: false }, () => console.log("Res: ", JSON.stringify(response[0][0])))
+          this.setState({ item: response[0][0], isLoader: false }, () => console.log("Res: ", JSON.stringify(response[0][0].RatingMaster_Count[0].Rat_Count1)))
       })
       .catch(error => {
         console.log("Error: ", error)
@@ -61,14 +63,8 @@ class Listing extends Component {
       })
   }
 
-  submitReview = (navigation, item) => (
-    <TouchableOpacity onPress={() => navigation.navigate('WriteReviews', {data: item, access_token: this.state.access_token})}>
-      <Text style={styles.title}>Review Store</Text>
-    </TouchableOpacity>
-  )
-
     render(){
-        const {item, isLoader} = this.state;
+        const {item, isLoader, access_token} = this.state;
         const {navigation} = this.props;
         return (
             <SafeAreaView style={styles.container}>
@@ -77,13 +73,12 @@ class Listing extends Component {
                         <View style={styles.main}>
                             <BackHeader title="Back" navigation={navigation}/>
                             <CompanyCard style={styles.main} item={item}/>
-                            <ActionButtons item={item} />
+                            <ActionButtons item={item} navigation={navigation} access_token={access_token}/>
                             <Introduction item={item}/>
                             <View style={styles.border}/>
                             <TimingStatus item={item}/>
                             <View style={styles.border}/>
-                            {this.submitReview(navigation, item)}
-                            <Reviews />
+                            <Reviews item={item}/>
                             <ReviewsComment list={[0,1,2,3]}/>
                             </View>
                             <Loader isLoader={isLoader}/>

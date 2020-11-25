@@ -55,7 +55,7 @@ getLatLong = async () => {
         .then(response => {
             this.setState({ array: response[1], isLoader: false })
             db.InsertHomeDetails(response[1])
-            .then(response => console.log("Res: ", response))
+            .then(response => console.log("Response: ", response))
             .catch(error => console.log("Error: ", error))
             })
         .catch(error => {

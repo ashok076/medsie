@@ -7,13 +7,13 @@ import Location from '../../assets/svg-files/location.svg';
 
 import styles from './action-button.style';
 
-const ActionButtons  = ({item}) => (
+const ActionButtons  = ({item, navigation, access_token}) => (
             <View style={styles.container}>
                 <TouchableOpacity style={styles.icon} onPress={() => call(item)}>
                     <Call height={45} width={45}/>
                     <Text style={styles.label}>Call</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.icon}>
+                <TouchableOpacity style={styles.icon} onPress={() => navigate(item, navigation, access_token)}>
                     <Car height={45} width={45}/>
                     <Text style={styles.label}>Review</Text>
                 </TouchableOpacity>
@@ -29,6 +29,10 @@ const call = (data) => {
     if (Platform.OS === 'android') { phoneNumber = `tel:${data.Buss_Number}`; }
     else {phoneNumber = `tel://${data.Buss_Number}`; }
     Linking.openURL(phoneNumber)
+}
+
+navigate = (data, navigation, access_token) => {
+    navigation.navigate('WriteReviews', {data: data, access_token: access_token})
 }
 
 const map = (data) => {
