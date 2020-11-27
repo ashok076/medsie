@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, TouchableOpacity, Image} from 'react-native';
+import {View, TouchableOpacity, Image, Dimensions} from 'react-native';
 import {Text, Caption, Card, Title} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import StarRating from 'react-native-star-rating';
@@ -10,10 +10,13 @@ import StarOutline from '../../assets/svg-files/star-outline.svg'
 
 import styles from './categories-list-element.style';
 
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
+
 const CategoriesListElement = ({item, key, navigation}) =>  (
             <TouchableOpacity style={styles.cardView} key={key} onPress={() => navigation.navigate('Listing', {id: item.item.Buss_PkId})}>
                 <Card style={styles.card}>
-                    <Image style={styles.image} source={{uri: item.item.Buss_Image_Path}}/>
+                    <Image style={item.item.Buss_Image_Path ? styles.image : {width: width / 2.8, height: 120, resizeMode: 'center'}} source={item.item.Buss_Image_Path ? {uri: item.item.Buss_Image_Path} : require('../../assets/png-images/placeholder.png')}/>
                     <View style={styles.body}> 
                         <Title style={styles.title}>{ ((item.item.Buss_Name).length > 15) ? (((item.item.Buss_Name).substring(0,15-3)) + '...') : item.item.Buss_Name }</Title>
                         <View style={styles.starView}>

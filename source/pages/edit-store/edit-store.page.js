@@ -19,6 +19,7 @@ import ModalList from '../../components/modal-list/modal-list.component';
 import Loader from '../../components/loader/loader.component';
 import {registerStore, categoryStore, registerStoreImage, getBusinessData} from '../../configure/api/api.configure';
 import {selling_type, week_days, week_ends} from './edit-store.list';
+import { createOffset } from '../../configure/miscellaneous/miscellaneous.configure'
 
 import styles from './edit-store.style';
 
@@ -156,7 +157,8 @@ submit = async () => {
         Buss_Lat: '',
         Buss_Long: '',
         UserID: '',
-        Buss_PkId: buspkid
+        Buss_PkId: buspkid,
+        Buss_TimeZone: createOffset(new Date())
     })
     await registerStore(data, JSON.parse(access_token))
         .then(response => {
@@ -186,7 +188,8 @@ submit = async () => {
         IPLNO : 'Images',
         Image: "data:image/png;base64, " + base64,
         Client_Result_Photo_FileName: fileName,
-        Buss_PkId: buspkid
+        Buss_PkId: buspkid,
+        Buss_TimeZone: createOffset(new Date())
     })
     await registerStoreImage(data, JSON.parse(access_token))
         .then(response => {

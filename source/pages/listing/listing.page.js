@@ -11,6 +11,7 @@ import Reviews from '../../components/review/review.component'
 import ReviewsComment from '../../components/reviews-comment/reviews-comment.component'
 import Loader from '../../components/loader/loader.component'
 import {getBusinessData} from '../../configure/api/api.configure'
+import { createOffset } from '../../configure/miscellaneous/miscellaneous.configure'
 
 import styles from './listing.style';
 
@@ -49,13 +50,14 @@ class Listing extends Component {
           Buss_PkId: route.params.id,
           Buss_Lat: currentLatitude, 
           Buss_Long: currentLongitude,
-          PageNumber: 0,
-          NoofRows: 0
+          PageNumber: 1,
+          NoofRows: 50,
+          Buss_User_TimeZone: createOffset(new Date())
       })
-      console.log("Access: ", currentLatitude, currentLongitude, access_token)
+      console.log("data: ", data)
       await getBusinessData(data, access_token)
       .then(response => {
-          this.setState({ item: response[0][0], isLoader: false }, () => console.log("Res: ", JSON.stringify(response[0][0].RatingMaster_Count[0].Rat_Count1)))
+          this.setState({ item: response[0][0], isLoader: false }, () => console.log("Res: ", JSON.stringify(response[0][0])))
       })
       .catch(error => {
         console.log("Error: ", error)

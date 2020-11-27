@@ -20,6 +20,7 @@ import Loader from '../../components/loader/loader.component';
 import GoogleAutoComplete from '../../components/google-auto-complete/google-auto-complete.component';
 import {registerStore, categoryStore, registerStoreImage} from '../../configure/api/api.configure';
 import {selling_type, week_days, week_ends} from './register-store.list';
+import { createOffset } from '../../configure/miscellaneous/miscellaneous.configure'
 
 import styles from './register-store.style';
 
@@ -122,7 +123,8 @@ submit = async () => {
         Buss_SellType: sellId,
         Buss_Lat: '',
         Buss_Long: '',
-        UserID: ''
+        UserID: '',
+        Buss_TimeZone: createOffset(new Date())
     })
     await registerStore(data, JSON.parse(access_token))
         .then(response => {
@@ -151,7 +153,8 @@ submit = async () => {
         ContentType  : 1,
         IPLNO : 'Images',
         Image: "data:image/png;base64, " + base64,
-        Client_Result_Photo_FileName: fileName
+        Client_Result_Photo_FileName: fileName,
+        Buss_TimeZone: createOffset(new Date())
     })
     console.log("Image: ", data, access_token)
     await registerStoreImage(data, JSON.parse(access_token))
