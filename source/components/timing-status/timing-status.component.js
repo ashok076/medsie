@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {View, FlatList} from 'react-native';
 import {Title, Text} from 'react-native-paper';
+import moment from 'moment';
+import 'moment-timezone';
 
 import styles from './timing-status.style';
 
@@ -14,8 +16,16 @@ class TimingStatus  extends Component {
 
     componentDidMount() {
         const {item} = this.props;
-        this.setState({ status: this.getStatus(item) })
+        // this.setState({ status: this.getStatus(item) })
+        let timezone = new Date().getTimezoneOffset() / 60
+        console.log(new Date().toTimeString().slice(9));
+        console.log(new Date().getTimezoneOffset() / -60);      
   }
+
+  getTimeZone() {
+    var offset = new Date().getTimezoneOffset(), o = Math.abs(offset);
+    return (offset < 0 ? "+" : "-") + ("00" + Math.floor(o / 60)).slice(-2) + ":" + ("00" + (o % 60)).slice(-2);
+}
 
   renderTime = (item) => (
     <View style={[styles.row, styles.viewMargin]}>
@@ -53,6 +63,7 @@ isOpen = (openTime, closeTime, timezone) => {
   const date = now.format("YYYY-MM-DD");
   const storeOpenTime = moment.tz(date + ' ' + openTime, "YYYY-MM-DD h:mmA", timezone);
   const storeCloseTime = moment.tz(date + ' ' + closeTime, "YYYY-MM-DD h:mmA", timezone);
+  console.log("timezone: ", storeOpenTime)
 
   let check;
   if (storeCloseTime.isBefore(storeOpenTime)) {

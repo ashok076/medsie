@@ -8,7 +8,6 @@ import CategoriesList from '../categories-list/categories-list.component';
 import ShowMapsTitle from '../show-maps-title/show-map-title.component';
 import Loader from '../../components/loader/loader.component';
 import {getBusinessData, getHomeData} from '../../configure/api/api.configure';
-import * as db from '../../configure/realm/realm.configure';
 
 import styles from './categories.style';
 
@@ -25,13 +24,9 @@ class Categories extends Component {
 
       componentDidMount() {
         const {navigation, route} = this.props;
-            navigation.addListener('focus', () => {
-                db.queryHomeDetails().then(response => {
-                  this.setState({ array: response  })
-                })
-                .catch(error => console.log("Query error: ", error))
+        navigation.addListener('focus', () => {
             this.setState({ isLoader: true }, () => this.getLatLong())
-            });
+        });
   }
 
   showMessage = (message) => {
@@ -54,9 +49,6 @@ getLatLong = async () => {
         await getHomeData(data)
         .then(response => {
             this.setState({ array: response[1], isLoader: false })
-            db.InsertHomeDetails(response[1])
-            .then(response => console.log("Response: ", response))
-            .catch(error => console.log("Error: ", error))
             })
         .catch(error => {
             console.log(error)

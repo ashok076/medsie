@@ -7,16 +7,18 @@ import Location from '../../assets/svg-files/location.svg';
 
 import styles from './action-button.style';
 
-const ActionButtons  = ({item, navigation, access_token}) => (
+const ActionButtons  = ({item, navigation, access_token, show}) => (
             <View style={styles.container}>
                 <TouchableOpacity style={styles.icon} onPress={() => call(item)}>
                     <Call height={45} width={45}/>
                     <Text style={styles.label}>Call</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.icon} onPress={() => navigate(item, navigation, access_token)}>
+                {show  && (
+                    <TouchableOpacity style={styles.icon} onPress={() => navigate(item, navigation, access_token)}>
                     <Car height={45} width={45}/>
                     <Text style={styles.label}>Review</Text>
                 </TouchableOpacity>
+                )}
                 <TouchableOpacity style={styles.icon} onPress={() => map(item)}>
                     <Location height={45} width={45}/>
                     <Text style={styles.label}>Direction</Text>

@@ -73,13 +73,13 @@ class Listing extends Component {
                         <View style={styles.main}>
                             <BackHeader title="Back" navigation={navigation}/>
                             <CompanyCard style={styles.main} item={item}/>
-                            <ActionButtons item={item} navigation={navigation} access_token={access_token}/>
+                            <ActionButtons item={item} navigation={navigation} access_token={access_token} show={true}/>
                             <Introduction item={item}/>
                             <View style={styles.border}/>
                             <TimingStatus item={item}/>
                             <View style={styles.border}/>
                             <Reviews item={item}/>
-                            <ReviewsComment list={[0,1,2,3]} navigation={navigation} show={false}/>
+                            <ReviewsComment list={item.RatingMaster_DTO} navigation={navigation} show={false}/>
                             </View>
                             <Loader isLoader={isLoader}/>
                     </View>

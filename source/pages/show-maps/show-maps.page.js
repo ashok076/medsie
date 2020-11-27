@@ -56,7 +56,7 @@ class ShowMaps extends Component{
                 {show && (
                     <Card style={styles.card}>
                         <CompanyCard item={data}/>
-                        <ActionButtons item={data}/>
+                        <ActionButtons item={data} show={false}/>
                     </Card>
                 )}
             </SafeAreaView>

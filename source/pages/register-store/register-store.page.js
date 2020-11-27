@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { format } from "date-fns";
 import qs from 'qs';
-import ImagePicker from 'react-native-image-crop-picker';
+ import ImagePicker from 'react-native-image-crop-picker';
 
 import Header from '../../components/header/header.component';
 import BackHeader from '../../components/back-header/back-header.component'
@@ -17,6 +17,7 @@ import NoBackgroundButton from '../../components/no-background-button/no-backgro
 import ModalPicker from '../../components/modal-picker/modal-picker.component'
 import ModalList from '../../components/modal-list/modal-list.component';
 import Loader from '../../components/loader/loader.component';
+import GoogleAutoComplete from '../../components/google-auto-complete/google-auto-complete.component';
 import {registerStore, categoryStore, registerStoreImage} from '../../configure/api/api.configure';
 import {selling_type, week_days, week_ends} from './register-store.list';
 
@@ -265,7 +266,7 @@ dateTimePicker = () => (
         const {storeName, storeNumber, storeAddress, addIntroduction, modal, array, businessCategory, sellingType, key, catArray, isLoader, pkid} = this.state;
         return (
             <SafeAreaView style={styles.contain}>
-                <ScrollView>
+                <ScrollView keyboardShouldPersistTaps='always'>
                     <View style={styles.container}>
                     <BackHeader title="Back" navigation={navigation}/>
                     <View style={styles.bodycontainer}>
@@ -302,12 +303,12 @@ dateTimePicker = () => (
                         />
                     </View>
                     <View style={styles.inputContainer}>
-                        <InputText
+                    <View style={styles.inputContainer}>
+                        <GoogleAutoComplete
                             placeHolder="Enter store address"
-                            keyboardType="default"
-                            value={storeAddress}
-                            onChangeText={(storeAddress) => this.setState({ storeAddress })}
+                            onPress={(a, b) => this.setState({ storeAddress: a.description })}
                         />
+                    </View>
                     </View>
                     <View style={styles.inputContainer}>
                         <MultilineInput

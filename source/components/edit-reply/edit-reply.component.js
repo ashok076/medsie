@@ -27,15 +27,13 @@ class EditReply extends Component {
         const {item, id} = route.params;
         if (description.length !== 0){
             let data = JSON.stringify({
-                Rep_PKId : item.Rat_PkId,
-                Rep_RatID : 0,
+                Rep_PKId : 0,
+                Rep_RatID : item.Rat_PkId,
                 Rep_Buss_PkId : id,
                 Rep_Descp : description,
-                Rep_IsActive : '',
-                Rep_IsDelete : '',
                 Type : 1,
-                UserID : ''
             })
+            console.log("API: ", data);
             try{
                 let access_token = await AsyncStorage.getItem('access_token');
                 await reply(data, JSON.parse(access_token))

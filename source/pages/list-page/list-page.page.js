@@ -36,10 +36,10 @@ class ListPage extends Component {
 }
 
     homeData = async () => {
-        const { id } = this.props.route.params;
+        const { id, type } = this.props.route.params;
         const {currentLatitude, currentLongitude, locationStatus, access_token} = this.state;
         const data = JSON.stringify({
-            "Type": 1,
+            "Type": type,
             "Buss_CatId": id,
             "Buss_Lat": currentLatitude,
             "Buss_Long": currentLongitude
