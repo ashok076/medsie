@@ -45,6 +45,7 @@ getLatLong = async () => {
 
     homeData = async () => {
         const { currentLatitude, currentLongitude } = this.state;
+        console.log(currentLatitude, "Loc: ", currentLongitude)
         const data = JSON.stringify({ Type: 1, Cat_Lat: currentLatitude, Cat_Long: currentLongitude })
         await getHomeData(data)
         .then(response => {

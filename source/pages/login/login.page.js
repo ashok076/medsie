@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {View, ScrollView, Text, TouchableWithoutFeedback, Image, SafeAreaView, PermissionsAndroid, Platform} from 'react-native';
+import {View, ScrollView, Text, TouchableWithoutFeedback, Image, SafeAreaView, PermissionsAndroid, Platform, Linking, Alert, BackHandler} from 'react-native';
 import { Toast } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
-import Geolocation from '@react-native-community/geolocation';
+import Geolocation from 'react-native-geolocation-service';
 import qs from 'qs';
 
 import InputText from '../../components/input-text/input-text.component';
@@ -12,10 +12,13 @@ import TouchText from '../../components/touch-text/touch-text.component';
 import Loader from '../../components/loader/loader.component'
 import {login, userType} from '../../configure/api/api.configure'
 import MedsieLogo from "../../assets/svg-files/medsie_logo.svg";
+import appConfig from '../../../app.json';
+
 
 import styles from './login.style'
 
 class Login extends Component {
+    watchId = null;
     constructor(){
         super()
         this.state = {
@@ -24,6 +27,14 @@ class Login extends Component {
             password: '',
             access_token: '' ,
             isLoader: false,
+            forceLocation: true,
+            highAccuracy: true,
+            loading: false,
+            showLocationDialog: true,
+            significantChanges: false,
+            updatesEnabled: false,
+            foregroundService: false,
+            location: {},
             currentLatitude: 0,
             currentLongitude: 0
         }
@@ -32,10 +43,125 @@ class Login extends Component {
   componentDidMount() {
     const {navigation, route} = this.props;
     navigation.addListener('focus', () => {
-      this.setState({ isLoader: true }, () => this.getPermission())
+      this.setState({ isLoader: true }, () => this.getLocation())
       this.getAccessToken();
     });
   }
+
+  hasLocationPermissionIOS = async () => {
+    const openSetting = () => {
+      Linking.openSettings().catch(() => {
+        Alert.alert('Unable to open settings');
+      });
+    };
+    const status = await Geolocation.requestAuthorization('whenInUse');
+    console.log("Check")
+    if (status === 'granted') {
+      console.log("granted")
+      return true;
+    }
+
+    if (status === 'denied') {
+      Alert.alert(
+        `Turn on Location Services to allow "${appConfig.displayName}" to determine your location.`,
+        '',
+        [
+          { text: "Don't Use Location", onPress: () => {BackHandler.exitApp()} },
+        ],
+      );
+
+      console.log("denied")
+    }
+
+    if (status === 'disabled') {
+      Alert.alert(
+        `Turn on Location Services to allow "${appConfig.displayName}" to determine your location.`,
+        '',
+        [
+          { text: 'Go to Settings', onPress: openSetting },
+          { text: "Don't Use Location", onPress: () => {BackHandler.exitApp()} },
+        ],
+      );
+
+      console.log("disable")
+    }
+
+    return false;
+  };
+
+  hasLocationPermission = async () => {
+    if (Platform.OS === 'ios') {
+      const hasPermission = await this.hasLocationPermissionIOS();
+      return hasPermission;
+    }
+
+    if (Platform.OS === 'android' && Platform.Version < 23) {
+      return true;
+    }
+
+    const hasPermission = await PermissionsAndroid.check(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+    );
+
+    if (hasPermission) {
+      return true;
+    }
+
+    const status = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+    );
+
+    if (status === PermissionsAndroid.RESULTS.GRANTED) {
+      return true;
+    }
+
+    if (status === PermissionsAndroid.RESULTS.DENIED) {
+      ToastAndroid.show(
+        'Location permission denied by user.',
+        ToastAndroid.LONG,
+      );
+    } else if (status === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) {
+      ToastAndroid.show(
+        'Location permission revoked by user.',
+        ToastAndroid.LONG,
+      );
+    }
+
+    return false;
+  };
+
+    getLocation = async () => {
+    const hasLocationPermission = await this.hasLocationPermission();
+
+    if (!hasLocationPermission) {
+      console.log("POst");
+      return;
+    }
+
+    this.setState({ loading: true }, () => {
+      Geolocation.getCurrentPosition(
+        (position) => {
+          this.setState({ currentLatitude: position.coords.latitude,currentLongitude: position.coords.longitude, loading: false }, () => this.saveLocation());
+        },
+        (error) => {
+          this.setState({ loading: false });
+          console.log(error);
+        },
+        {
+          accuracy: {
+            android: 'high',
+            ios: 'best'
+          },
+          enableHighAccuracy: this.state.highAccuracy,
+          timeout: 15000,
+          maximumAge: 10000,
+          distanceFilter: 0,
+          forceRequestLocation: this.state.forceLocation,
+          showLocationDialog: this.state.showLocationDialog,
+        },
+      );
+    });
+  };
 
     getAccessToken = async () => {
         const {navigation} = this.props;
@@ -58,104 +184,13 @@ class Login extends Component {
     this.setState({ isLoader: false })
   }
 
-    getPermission = async () => {
-      if (Platform.OS === 'ios') {
-        this.getOneTimeLocation();
-        this.subscribeLocationLocation();
-        this.saveLocation();
-      } else {
-        try {
-          const granted = await PermissionsAndroid.request(
-            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-            {
-              title: 'Location Access Required',
-              message: 'This App needs to Access your location',
-            },
-          );
-          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-            //To Check, If Permission is granted
-            this.getOneTimeLocation();
-            this.subscribeLocationLocation();
-          } else {
-            this.setState({locationStatus: 'Permission Denied'});
-            alert('Location permission is required to run this application')
-          }
-        } catch (err) {
-          console.warn(err);
-        }
-      }
-    }
-
-  getOneTimeLocation = () => {
-    this.setState({locationStatus:'Getting Location ...'});
-    Geolocation.getCurrentPosition(
-      //Will give you the current location
-      (position) => {
-
-        //getting the Longitude from the location json
-        const currentLongitude = 
-          JSON.stringify(position.coords.longitude);
-
-        //getting the Latitude from the location json
-        const currentLatitude = 
-          JSON.stringify(position.coords.latitude);
-
-        //Setting Longitude state
-        this.setState({currentLongitude});
-        
-
-        //Setting Longitude state
-        this.setState({currentLatitude}, () => this.saveLocation());
-      },
-      (error) => {
-        this.setState({ locationStatus: error.message });
-      },
-      {
-        enableHighAccuracy: false,
-        timeout: 30000,
-        maximumAge: 1000
-      },
-    );
-  };
-
-  subscribeLocationLocation = () => {
-    let watchID = Geolocation.watchPosition(
-      (position) => {
-        //Will give you the location on location change
-        
-        this.setState({locationStatus: 'You are Here'});
-        console.log(position);
-
-        //getting the Longitude from the location json        
-        const currentLongitude =
-          JSON.stringify(position.coords.longitude);
-
-        //getting the Latitude from the location json
-        const currentLatitude = 
-          JSON.stringify(position.coords.latitude);
-
-        //Setting Longitude state
-        this.setState({currentLongitude});
-
-        //Setting Latitude state
-        this.setState({currentLatitude});
-      },
-      (error) => {
-        this.setState({ locationStatus: error.message });
-      },
-      {
-        enableHighAccuracy: false,
-        maximumAge: 1000
-      },
-    );
-  };
-
   saveLocation = async () => {
       const {currentLatitude, currentLongitude} = this.state
       try {
             const latitude = ['latitude', JSON.stringify(currentLatitude)];
             const longitude = ['longitude', JSON.stringify(currentLongitude)]
             await AsyncStorage.multiSet([latitude, longitude]);
+            console.log("Set: ", latitude, longitude);
         } catch (error) {
             console.log(" Location error ", error);
         }
