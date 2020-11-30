@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {View, SafeAreaView, ScrollView, Text, TouchableOpacity, Platform, Image} from 'react-native';
+import {View, SafeAreaView, Text, TouchableOpacity, Platform, Image} from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { Toast } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/Feather';
@@ -269,7 +270,7 @@ dateTimePicker = () => (
         const {storeName, storeNumber, storeAddress, addIntroduction, modal, array, businessCategory, sellingType, key, catArray, isLoader, pkid} = this.state;
         return (
             <SafeAreaView style={styles.contain}>
-                <ScrollView keyboardShouldPersistTaps='always'>
+                <KeyboardAwareScrollView keyboardShouldPersistTaps='handled'>
                     <View style={styles.container}>
                     <BackHeader title="Back" navigation={navigation}/>
                     <View style={styles.bodycontainer}>
@@ -339,7 +340,7 @@ dateTimePicker = () => (
                     />
                     <Loader isLoader={isLoader}/>
                 </View>
-                </ScrollView>
+                </KeyboardAwareScrollView>
             </SafeAreaView>
         )
     }

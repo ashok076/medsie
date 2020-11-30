@@ -18,7 +18,7 @@ const Reviews  = ({item}) => (
                         <StarRating
                             disabled={false}
                             maxStars={5}
-                            rating={item.Rat_Rating}
+                            rating={item.Rat_Rating ? item.Rat_Rating : 0}
                             fullStar= {'star'}
                             emptyStar= {'star-o'}
                             fullStarColor={'orange'}

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View, ScrollView, Text, TouchableWithoutFeedback, SafeAreaView} from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { Toast } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import qs from 'qs'
@@ -153,7 +154,7 @@ navigate = async () => {
         const {navigation} = this.props
         return (
             <SafeAreaView style={styles.container}>
-                <ScrollView keyboardShouldPersistTaps='handled'>
+                <KeyboardAwareScrollView keyboardShouldPersistTaps='handled'>
                 <View style={styles.innerContainer}>
                     <BackHeader title="Back" navigation={navigation}/>
                     <Text style={styles.loginText}>CREATE AN ACCOUNT</Text>
@@ -214,7 +215,7 @@ navigate = async () => {
                     </View>
                     <Loader isLoader={isLoader}/>
                 </View>
-            </ScrollView>
+            </KeyboardAwareScrollView>
             </SafeAreaView>
         )
     }

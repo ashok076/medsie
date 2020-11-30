@@ -9,9 +9,6 @@ import styles from './timing-status.style';
 class TimingStatus  extends Component {
     constructor(){
         super();
-        this.state = {
-            status: ''
-        }
     }
 
   renderTime = (item) => (
@@ -27,10 +24,9 @@ class TimingStatus  extends Component {
 
     render(){
         const {item} = this.props;
-        const {status} = this.state;
         return (
             <View style={styles.container}>
-            <Title style={styles.close}> {status} </Title>
+            <Title style={styles.close}> {item.Buss_Open_Close ? 'Open' : 'Close'} </Title>
                 <View>
                     <FlatList
                         data={item.businessHoursTransMaster_DTOs}

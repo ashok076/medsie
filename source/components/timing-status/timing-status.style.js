@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     close: {
-        color: Color.red,
         fontFamily: 'Asap-SemiBold',
         fontSize: 14
     },

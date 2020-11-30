@@ -43,7 +43,10 @@ const styles = StyleSheet.create({
     starView: {
         alignItems: 'flex-start',
         marginBottom: 5
-    }
+    },
+    image: {
+        height: 120
+    },
 })
 
 export default styles

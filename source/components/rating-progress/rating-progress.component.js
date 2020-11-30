@@ -21,7 +21,7 @@ renderRatingProgressOne = (rate, total) => (
     <View style={styles.row}>
         <Text style={styles.margin}>1 star</Text>
         <View style={[styles.center, styles.margin]}>
-            <Progress.Bar progress={getRating(rate, total)} width={180} color={'red'}/>
+            <Progress.Bar progress={getRating(rate,total)} width={180} color={'red'}/>
         </View>
         <Text>{rate}</Text>
     </View>
@@ -31,7 +31,7 @@ renderRatingProgressTwo = (rate, total) => (
     <View style={styles.row}>
         <Text style={styles.margin}>2 star</Text>
         <View style={[styles.center, styles.margin]}>
-            <Progress.Bar progress={getRating(rate, total)} width={180} color={'orange'}/>
+            <Progress.Bar progress={getRating(rate,total)} width={180} color={'orange'}/>
         </View>
         <Text>{rate}</Text>
     </View>
@@ -41,7 +41,7 @@ renderRatingProgressThree = (rate, total) => (
     <View style={styles.row}>
         <Text style={styles.margin}>3 star</Text>
         <View style={[styles.center, styles.margin]}>
-            <Progress.Bar progress={getRating(rate, total)} width={180} color={'#FFBF00'}/>
+            <Progress.Bar progress={getRating(rate,total)} width={180} color={'#FFBF00'}/>
         </View>
         <Text>{rate}</Text>
     </View>
@@ -51,7 +51,7 @@ renderRatingProgressFour = (rate, total) => (
     <View style={styles.row}>
         <Text style={styles.margin}>4 star</Text>
         <View style={[styles.center, styles.margin]}>
-            <Progress.Bar progress={getRating(rate, total)} width={180} color={'lightgreen'}/>
+            <Progress.Bar progress={getRating(rate,total)} width={180} color={'lightgreen'}/>
         </View>
         <Text>{rate}</Text>
     </View>
@@ -61,12 +61,12 @@ renderRatingProgressFive = (rate, total) => (
     <View style={styles.row}>
         <Text style={styles.margin}>5 star</Text>
         <View style={[styles.center, styles.margin]}>
-            <Progress.Bar progress={getRating(rate, total)} width={180} color={'green'}/>
+            <Progress.Bar progress={getRating(rate,total)} width={180} color={'green'}/>
         </View>
         <Text>{rate}</Text>
     </View>
 )
 
-getRating = (rate, total) =>  (rate/total);
+getRating = (rate, total) =>  total === 0 ? 0 : rate / total
 
 export default RatingProgress;

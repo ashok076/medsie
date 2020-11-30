@@ -23,7 +23,7 @@ const CategoriesListElement = ({item, key, navigation}) =>  (
                         <StarRating
                             disabled={false}
                             maxStars={5}
-                            rating={4}
+                            rating={item.item.Rat_Rating ? item.item.Rat_Rating : 1}
                             fullStar= {'star'}
                             emptyStar= {'star-o'}
                             fullStarColor={'#FFBF00'}

@@ -48,7 +48,7 @@ getLatLong = async () => {
         const data = JSON.stringify({ Type: 1, Cat_Lat: currentLatitude, Cat_Long: currentLongitude })
         await getHomeData(data)
         .then(response => {
-            this.setState({ array: response[1], isLoader: false })
+            this.setState({ array: response[1], isLoader: false }, () => console.log("Res: ", JSON.stringify(response)))
             })
         .catch(error => {
             console.log(error)

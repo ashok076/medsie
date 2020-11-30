@@ -5,6 +5,7 @@ import {Color} from '../../assets/color/color.assets'
 const styles = StyleSheet.create({
     container:{
       backgroundColor: Color.backGroundColor,
+      flex: 1
     },
   inputContainer: {
     paddingTop: 20,
@@ -51,6 +52,7 @@ const styles = StyleSheet.create({
   },
   contain: {
     backgroundColor: 'white',
+    flex: 1
   },
   toasttxt: {
     fontFamily: 'Asap-Regular',
