@@ -102,7 +102,9 @@ class EditStore extends Component {
     }
 
   getData = async (data) => {
-      this.setState({
+      console.log("Data: ", data);
+      if (data.businessHoursTransMaster_DTOs.length === 0){
+          this.setState({
           storeName: data.Buss_Name,
           storeNumber: data.Buss_Number,
           storeAddress: data.Buss_Address,
@@ -110,8 +112,24 @@ class EditStore extends Component {
           imagePath: data.Buss_Image_Path ? data.Buss_Image_Path : '',
           catId: data.Buss_CatId ? data.Buss_CatId : 0,
           sellId: data.Buss_SellType ? data.Buss_SellType : 0,
-          buspkid: data.Buss_PkId
+          buspkid: data.Buss_PkId,
       }, () => this.category())
+      }else {
+          this.setState({
+          storeName: data.Buss_Name,
+          storeNumber: data.Buss_Number,
+          storeAddress: data.Buss_Address,
+          description: data.Buss_Description,
+          imagePath: data.Buss_Image_Path ? data.Buss_Image_Path : '',
+          catId: data.Buss_CatId ? data.Buss_CatId : 0,
+          sellId: data.Buss_SellType ? data.Buss_SellType : 0,
+          buspkid: data.Buss_PkId,
+          fromWeekD: data.businessHoursTransMaster_DTOs[0].BHT_FromTime ? data.businessHoursTransMaster_DTOs[0].BHT_FromTime : "10:00 AM",
+          toWeekD: data.businessHoursTransMaster_DTOs[0].BHT_ToTime ? data.businessHoursTransMaster_DTOs[0].BHT_ToTime : "10:00 PM",
+          fromWeekE: data.businessHoursTransMaster_DTOs.length === 7 ? data.businessHoursTransMaster_DTOs[6].BHT_FromTime : "10:00 AM",
+          toWeekE: data.businessHoursTransMaster_DTOs.length === 7 ? data.businessHoursTransMaster_DTOs[6].BHT_ToTime : "10:00 PM",
+      }, () => this.category())
+      }
   }
 
   category = () => {
@@ -126,7 +144,7 @@ class EditStore extends Component {
   }
 
 submit = async () => {
-    const {storeName, storeNumber, storeAddress, buspkid, description, fromWeekD, toWeekD, access_token, base64, fileName, catId, sellId} = this.state;
+    const {storeName, storeNumber, storeAddress, buspkid, description, fromWeekD, toWeekD, access_token, base64, fileName, catId, sellId, imagePath,fromWeekE,toWeekE} = this.state;
     this.setState({ isLoader: true, isPickerVisible: false })
     let arr = [];
     week_days.map(day => {
@@ -134,7 +152,17 @@ submit = async () => {
         BHT_Weekdays: day,
         BHT_FromTime: fromWeekD,
         BHT_ToTime: toWeekD,
-        BHT_CustomDate: ''
+        BHT_CustomDate: '',
+        BHT_Flag: 0
+        })
+    })
+    week_ends.map(day => {
+        arr.push({
+        BHT_Weekdays: day,
+        BHT_FromTime: fromWeekE,
+        BHT_ToTime: toWeekE,
+        BHT_CustomDate: '',
+        BHT_Flag: 1
         })
     })
     if (catId !== 0){
@@ -150,7 +178,7 @@ submit = async () => {
         Buss_Country: '',
         Buss_Zip: '',
         Buss_UserId: '',
-        Buss_Image_Path: '',
+        Buss_Image_Path: imagePath,
         Buss_CatId: catId,
         Buss_TypeOfBuss: '',
         Buss_SellType: sellId,
@@ -160,6 +188,7 @@ submit = async () => {
         Buss_PkId: buspkid,
         Buss_TimeZone: createOffset(new Date())
     })
+    console.log("Res Data: ", JSON.stringify(data));
     await registerStore(data, JSON.parse(access_token))
         .then(response => {
             this.setState({ isLoader: false })
@@ -178,7 +207,7 @@ submit = async () => {
         Buss_Country: '',
         Buss_Zip: '',
         Buss_UserId: '',
-        Buss_Image_Path: '',
+        Buss_Image_Path: imagePath,
         Buss_CatId: catId,
         Buss_TypeOfBuss: '',
         Buss_SellType: sellId,
@@ -191,6 +220,7 @@ submit = async () => {
         Buss_PkId: buspkid,
         Buss_TimeZone: createOffset(new Date())
     })
+    console.log("Res Data: ", JSON.stringify(data));
     await registerStoreImage(data, JSON.parse(access_token))
         .then(response => {
             this.setState({ isLoader: false })

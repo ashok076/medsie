@@ -4,11 +4,12 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 
 import styles from './google-auto-complete.style'
 
-const GoogleAutoComplete = ({ onPress, placeHolder }) => (
+const GoogleAutoComplete = ({ onPress, placeHolder, ref }) => (
     <View>
     <Text style={styles.placeholder}>{placeHolder}</Text>
     <View style={styles.editTextView}> 
         <GooglePlacesAutocomplete
+            ref={ref}
             placeholder=''
             onPress={onPress}
             query={{

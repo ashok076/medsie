@@ -94,7 +94,7 @@ class RegisterStore extends Component {
   }
 
 submit = async () => {
-    const {storeName, storeNumber, storeAddress, addIntroduction, fromWeekD, toWeekD, access_token, base64, fileName, catId, sellId} = this.state;
+    const {storeName, storeNumber, storeAddress, addIntroduction, fromWeekD, toWeekD, access_token, base64, fileName, catId, sellId, fromWeekE, toWeekE} = this.state;
     this.setState({ isLoader: true, isPickerVisible: false })
     let arr = [];
     week_days.map(day => {
@@ -102,7 +102,17 @@ submit = async () => {
         BHT_Weekdays: day,
         BHT_FromTime: fromWeekD,
         BHT_ToTime: toWeekD,
-        BHT_CustomDate: ''
+        BHT_CustomDate: '',
+        BHT_Flag: 0
+        })
+    })
+    week_ends.map(day => {
+        arr.push({
+        BHT_Weekdays: day,
+        BHT_FromTime: fromWeekE,
+        BHT_ToTime: toWeekE,
+        BHT_CustomDate: '',
+        BHT_Flag: 1
         })
     })
     if (catId !== 0){
@@ -311,6 +321,7 @@ dateTimePicker = () => (
                         <GoogleAutoComplete
                             placeHolder="Enter store address"
                             onPress={(a, b) => this.setState({ storeAddress: a.description })}
+                            ref={(instance) => { this.GooglePlacesRef = instance }}
                         />
                     </View>
                     </View>

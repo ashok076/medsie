@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import BackHeader from '../../components/back-header/back-header.component';
 import CompanyCard from '../../components/company-card/company-card.component';
 import ActionButtons from '../../components/action-button/action-button.component';
+import Reviews from '../../components/review/review.component'
 import {getBusinessListData} from '../../configure/api/api.configure';
 import Loader from '../../components/loader/loader.component'
 
@@ -103,6 +104,7 @@ class ShowMaps extends Component{
                     <Card style={styles.card}>
                         <CompanyCard item={data}/>
                         <ActionButtons item={data} show={false}/>
+                        <Reviews item={data} />
                     </Card>
                 )}
                 <Loader isLoader={isLoader}/>
