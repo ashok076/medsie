@@ -106,7 +106,7 @@ signout = async (navigation) => {
               <Shops width={size} height={size} />
             )}
             label="Recreational Shops"
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.navigate('ListPage', { id: 1, type: 1 })}
             labelStyle={styles.labelStyle}
           />
           <DrawerItem
@@ -114,7 +114,7 @@ signout = async (navigation) => {
               <MedicalShops width={size} height={size} />
             )}
             label="Medical Shops"
-            onPress={() => navigation.navigate('ListPage', { id: 1, type: 1 })}
+            onPress={() => navigation.navigate('ListPage', { id: 2, type: 1 })}
             labelStyle={styles.labelStyle}
           />
           <DrawerItem
@@ -122,7 +122,7 @@ signout = async (navigation) => {
               <Deliveries width={size} height={size} />
             )}
             label="Deliveries"
-            onPress={() => navigation.navigate('ListPage', { id: 2, type: 1 })}
+            onPress={() => navigation.navigate('ListPage', { id: 3, type: 1 })}
             labelStyle={styles.labelStyle}
           />
           <DrawerItem
@@ -130,7 +130,7 @@ signout = async (navigation) => {
               <Doctors width={size} height={size} />
             )}
             label="Doctors"
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.navigate('ListPage', { id: 4, type: 1 })}
             labelStyle={styles.labelStyle}
           />
           <DrawerItem
@@ -138,7 +138,7 @@ signout = async (navigation) => {
               <Events width={size} height={size} />
             )}
             label="Events"
-            onPress={() => navigation.navigate('ListPage', { id: 3, type: 1 })}
+            onPress={() => navigation.navigate('ListPage', { id: 5, type: 1 })}
             labelStyle={styles.labelStyle}
           />
         </Drawer.Section>

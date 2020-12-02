@@ -47,6 +47,9 @@ const styles = StyleSheet.create({
     image: {
         height: 120
     },
+    icon: {
+        marginLeft: 10
+    }
 })
 
 export default styles

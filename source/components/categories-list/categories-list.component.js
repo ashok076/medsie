@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, FlatList} from 'react-native';
+import {View, FlatList, Text} from 'react-native';
 
 import CategoriesListElement from '../categories-list-element/categories-list-element.component'
 

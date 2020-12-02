@@ -3,6 +3,8 @@ import {View, TouchableOpacity, Image, Dimensions} from 'react-native';
 import {Text, Caption, Card, Title} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import StarRating from 'react-native-star-rating';
+import Foundation from 'react-native-vector-icons/Foundation';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import {Color} from '../../assets/color/color.assets'
 import Star from '../../assets/svg-files/starfilled.svg'
@@ -32,11 +34,18 @@ const ListPageElement = ({item, key, navigation}) =>  (
                         <View style={styles.horizontalView}>
                             <Icon name="place" color={Color.primaryColor} size={24} />
                             <Text style={styles.place}>{item.item.Distance} mi</Text>
+                            {icon(item.item.Buss_CatId)}
                         </View>
                     </View>
                 </Card>
             </TouchableOpacity>
     
 )
+
+const icon = (id) => {
+    console.log("Id: ", id);
+    if (id === 1) return <FontAwesome5 name="cannabis" color={"green"} size={24} style={styles.icon}/>
+    else if (id === 2) return <Foundation name="plus" color={"green"} size={24} style={styles.icon}/>
+}
 
 export default ListPageElement

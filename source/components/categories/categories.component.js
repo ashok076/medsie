@@ -49,7 +49,7 @@ getLatLong = async () => {
         const data = JSON.stringify({ Type: 1, Cat_Lat: currentLatitude, Cat_Long: currentLongitude })
         await getHomeData(data)
         .then(response => {
-            this.setState({ array: response[1], isLoader: false }, () => console.log("Res: ", JSON.stringify(response)))
+            this.setState({ array: response[1], isLoader: false })
             })
         .catch(error => {
             console.log(error)
@@ -59,7 +59,7 @@ getLatLong = async () => {
 
     category = (navigation, item) => (
         <View>
-            <ShowMapsTitle title={item.item.Cat_Name}/>
+            <ShowMapsTitle title={item.item.Cat_Name} onPress={() => navigation.navigate('ShowMaps', {id: item.item.Cat_PkId})}/>
             <View style={styles.gap}/>
             <CategoriesList list={item.item.BusinessMaster_Home} navigation={navigation}/>
             <View style={styles.gap}/>
@@ -69,6 +69,7 @@ getLatLong = async () => {
     render(){
         const {array, isLoader} = this.state;
         const {navigation} = this.props;
+        console.log("Array lenm: ", array.length)
         return (
             <View>
                 <FlatList

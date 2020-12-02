@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {View, TouchableOpacity, Image, Dimensions} from 'react-native';
 import {Text, Caption, Card, Title} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Foundation from 'react-native-vector-icons/Foundation';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import StarRating from 'react-native-star-rating';
 
 import {Color} from '../../assets/color/color.assets'
@@ -33,11 +35,18 @@ const CategoriesListElement = ({item, key, navigation}) =>  (
                         <View style={styles.horizontalView}>
                             <Icon name="place" color={Color.primaryColor} size={17} />
                             <Text style={styles.place}>{item.item.Distance} mi</Text>
+                            {icon(item.item.Buss_CatId)}
                         </View>
+                            <Caption>{item.item.Cat_Name}</Caption>
                     </View>
                 </Card>
             </TouchableOpacity>
     
 )
+
+const icon = (id) => {
+    if (id === 1) return <FontAwesome5 name="cannabis" color={"green"} size={17} style={styles.icon}/>
+    else if (id === 2) return <Foundation name="plus" color={"green"} size={17} style={styles.icon}/>
+}
 
 export default CategoriesListElement

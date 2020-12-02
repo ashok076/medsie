@@ -29,7 +29,7 @@ class Listing extends Component {
     componentDidMount() {
         const {navigation, route} = this.props;
         navigation.addListener('focus', () => {
-            this.setState({ isLoader: true }, () => this.getLatLong())
+            this.setState({ isLoader: true }, () => this.getLatLong(), console.log("Offset: ", createOffset(new Date())))
         });
   }
 
@@ -57,7 +57,7 @@ class Listing extends Component {
       console.log("data: ", data)
       await getBusinessData(data, access_token)
       .then(response => {
-          this.setState({ item: response[0][0], isLoader: false }, () => console.log("Res: ", JSON.stringify(response[0][0])))
+          this.setState({ item: response[0][0], isLoader: false })
       })
       .catch(error => {
         console.log("Error: ", error)

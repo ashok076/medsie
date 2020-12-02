@@ -39,6 +39,9 @@ const styles = StyleSheet.create({
     starView: {
         alignItems: 'flex-start',
         marginBottom: 5
+    },
+    icon: {
+        marginLeft: 10
     }
 })
 

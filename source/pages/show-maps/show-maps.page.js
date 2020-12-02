@@ -2,27 +2,73 @@ import React, { Component } from "react";
 import {View, Text, SafeAreaView} from "react-native";
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import { Card } from 'react-native-paper';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import BackHeader from '../../components/back-header/back-header.component';
 import CompanyCard from '../../components/company-card/company-card.component';
 import ActionButtons from '../../components/action-button/action-button.component';
+import {getBusinessListData} from '../../configure/api/api.configure';
+import Loader from '../../components/loader/loader.component'
 
 import LogoMarker from '../../assets/svg-files/marker.svg'
 
 import styles from './show-maps.style'
 
 class ShowMaps extends Component{
+    initialState = {
+        data: '',
+        show: false,
+        longitudeDelta: 0.5,
+        latitudeDelta: 0.5,
+        isLoader: false,
+        array: []
+    }
     constructor(){
         super();
         this.state={
-            data: '',
-            show: false
+            ...this.initialState
         }
+    }
+ 
+    componentDidMount(){
+        const {navigation} = this.props;
+        navigation.addListener('focus', () => {
+            this.setState(this.initialState)
+            this.setState({ isLoader: true }, () => this.getLatLong())
+        });
+    }
+
+      getLatLong = async () => {
+  const value = await AsyncStorage.multiGet(['latitude', 'longitude', 'access_token']);
+  const currentLatitude = JSON.parse(value[0][1]);
+  const currentLongitude = JSON.parse(value[1][1]);
+  const access_token = JSON.parse(value[2][1]);
+  this.setState({ currentLatitude: currentLatitude, currentLongitude: currentLongitude, access_token: access_token }, () => this.mapData())
+}
+
+    mapData = async () => {
+        const { id, type } = this.props.route.params;
+        const {currentLatitude, currentLongitude, locationStatus, access_token} = this.state;
+        const data = JSON.stringify({
+            "Type": 1,
+            "Buss_CatId": id,
+            "Buss_Lat": currentLatitude,
+            "Buss_Long": currentLongitude
+            })
+        await getBusinessListData(data, access_token)
+        .then(response => {
+            this.setState({ array: response[0], isLoader: false })
+        })
+        .catch(error => {
+            console.log("Error: ", error);
+            this.setState({ isLoader: false })
+        })
     }
 
     marker = () => {
         const {route} = this.props;
-        return route.params.data.map(marker => (
+        const {array} = this.state;
+        return array.map(marker => (
             <Marker
               coordinate={{
                 latitude: marker.Buss_Lat ? parseFloat(marker.Buss_Lat) : 0,
@@ -36,7 +82,7 @@ class ShowMaps extends Component{
 
     render(){
         const {navigation, route} = this.props;
-        const {data, show} = this.state;
+        const {data, show, longitudeDelta, latitudeDelta, isLoader} = this.state;
         return(
             <SafeAreaView style={styles.container}>
             <View style={{marginLeft: 10}}>
@@ -45,10 +91,10 @@ class ShowMaps extends Component{
                 <MapView 
                 provider={PROVIDER_GOOGLE}
                 initialRegion={{
-                    latitude: parseFloat(route.params.data[0].Buss_Lat),
-                    longitude: parseFloat(route.params.data[0].Buss_Long),
-                    latitudeDelta: 0.3,
-                    longitudeDelta: 0.3,
+                    latitude: 19.0759837,
+                    longitude: 72.8776559,
+                    latitudeDelta: longitudeDelta,
+                    longitudeDelta: latitudeDelta,
                 }}
                 style={styles.map}>
                     {this.marker()}
@@ -59,6 +105,7 @@ class ShowMaps extends Component{
                         <ActionButtons item={data} show={false}/>
                     </Card>
                 )}
+                <Loader isLoader={isLoader}/>
             </SafeAreaView>
         )
     }

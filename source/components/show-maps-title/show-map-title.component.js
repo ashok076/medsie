@@ -11,6 +11,9 @@ const ShowMapsTitle = ({title, onPress}) => (
             <View>
                 <View style={styles.titleView}>
                     <Text style={styles.title}>{title}</Text>
+                    <TouchableOpacity style={styles.showMap} onPress={onPress}>
+                        <Text style={styles.title}>Show Maps</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
 )

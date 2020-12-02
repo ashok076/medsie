@@ -9,4 +9,4 @@ const StoreElement = ({item, navigation}) => (
     </TouchableOpacity>
 )
 
-export default StoreElement;
+export default StoreElement; 

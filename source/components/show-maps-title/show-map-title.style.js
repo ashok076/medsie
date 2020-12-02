@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
         borderWidth: 0.7,
         padding: 5,
         borderRadius: 5,
-        margin: 1
+        margin: 1,
+        borderColor: Color.txtGrey
     },
     title: {
         fontFamily: 'Asap-Regular',

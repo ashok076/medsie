@@ -53,7 +53,7 @@ class ListPage extends Component {
 
     showMap = () => (
         <View>
-                <TouchableOpacity style={styles.showMap} onPress={() => this.props.navigation.navigate('ShowMaps', {data: this.state.array}) }>
+                <TouchableOpacity style={styles.showMap} onPress={() => this.props.navigation.navigate('ShowMaps', {id: this.props.route.params.id}) }>
                     <Text style={styles.title}>Show Map</Text>
                 </TouchableOpacity>
             </View>
