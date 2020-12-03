@@ -4,8 +4,6 @@ import {Title, Text} from 'react-native-paper';
 import StarRating from 'react-native-star-rating';
 
 import RatingProgress from '../rating-progress/rating-progress.component'
-import Star from '../../assets/svg-files/starfilled.svg'
-import StarOutline from '../../assets/svg-files/star-outline.svg'
 
 import styles from './review.style';
 

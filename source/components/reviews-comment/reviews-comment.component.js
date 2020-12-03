@@ -23,7 +23,6 @@ renderReviews = (item, navigation, show) => (
             <Avatar.Text size={30} label="U" />
             <View style={styles.usernameContainer}>
                 <Text>User Name</Text>
-                <Caption>Time</Caption>
             </View>
         </View>
         <View style={[styles.row, styles.ratingStarView]}>

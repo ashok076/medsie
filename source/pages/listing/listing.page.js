@@ -68,6 +68,7 @@ class Listing extends Component {
     render(){
         const {item, isLoader, access_token} = this.state;
         const {navigation} = this.props;
+        console.log("Item: ", JSON.stringify(item))
         return (
             <SafeAreaView style={styles.container}>
                     <ScrollView> 

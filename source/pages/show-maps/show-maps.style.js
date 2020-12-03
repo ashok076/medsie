@@ -72,6 +72,18 @@ const styles = StyleSheet.create({
     bottom: 0,
     zIndex: 130,
     padding: 16
+    },
+    rating: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      width: '100%',
+      justifyContent: 'center',
+      marginTop: 10
+    },
+    ratingText: {
+      fontFamily: 'Asap-Regular',
+      fontSize: 16,
+      marginLeft: 10
     }
 });
 

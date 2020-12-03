@@ -13,7 +13,6 @@ import StarOutline from '../../assets/svg-files/star-outline.svg'
 import styles from './categories-list-element.style';
 
 const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
 
 const CategoriesListElement = ({item, key, navigation}) =>  (
             <TouchableOpacity style={styles.cardView} key={key} onPress={() => navigation.navigate('Listing', {id: item.item.Buss_PkId})}>
