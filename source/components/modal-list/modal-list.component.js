@@ -27,7 +27,7 @@ class ModalList extends Component {
     changeState(id, item.type);
     changeState(pkid, item.id);
     this.closeModal();
-  };
+  }; 
 
   closeModal = () => {
     const {changeModalVisibility} = this.props;

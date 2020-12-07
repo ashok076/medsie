@@ -18,9 +18,10 @@ const CompanyCard  = ({item}) => (
                     <View style={styles.info}>
                         <Title style={styles.title}>{ item.Buss_Name }</Title>
                         <View style={[styles.row]}>
+                            <Caption>{item.Buss_City} {item.Buss_Country}</Caption>
                             <Icon name="place" color={Color.primaryColor} size={17} style={styles.icon}/>
                             <Caption style={styles.min}>{item.Distance} mi</Caption>
-                            {icon(item.Buss_CatId)}
+                            {icon(item.Buss_SellType)}
                         </View>
                         <Caption>{item.Cat_Name}</Caption>
                     </View> 

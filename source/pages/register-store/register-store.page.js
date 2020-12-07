@@ -115,7 +115,7 @@ submit = async () => {
         BHT_Flag: 1
         })
     })
-    if (catId !== 0){
+    if (catId !== 0 && sellId !== 0){
         if (base64.length === 0){
         let data = JSON.stringify({
         Type: 1,

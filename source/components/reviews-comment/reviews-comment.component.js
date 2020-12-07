@@ -17,12 +17,13 @@ const ReviewsComment = ({list, navigation, show}) => (
     </View>
 )
 
-renderReviews = (item, navigation, show) => (
+const renderReviews = (item, navigation, show) => (
     <Card style={styles.card} elevation={1}>
         <View style={styles.row}>
-            <Avatar.Text size={30} label="U" />
+            <Avatar.Text size={30} label={getAvatar(item.item.User_Name)} />
             <View style={styles.usernameContainer}>
-                <Text>User Name</Text>
+                <Text>{item.item.User_Name === "No Name" ? "Unknown" : item.item.User_Name}</Text>
+                {item.item.Rat_Day === 1 ? <Caption>{item.item.Rat_Day} day</Caption> : <Caption>{item.item.Rat_Day} days</Caption>}
             </View>
         </View>
         <View style={[styles.row, styles.ratingStarView]}>
@@ -50,5 +51,10 @@ renderReviews = (item, navigation, show) => (
         </View>
     </Card>
 )
+
+const getAvatar = (text) => {
+    if (text === "No Name") return "U";
+    else return text.charAt(0);
+}
 
 export default ReviewsComment

@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
-        padding: 15
     },
     titleView: {
         flexDirection: 'row',
@@ -22,7 +21,7 @@ const styles = StyleSheet.create({
     title: {
         fontFamily: 'Asap-Regular',
         fontSize: 17,
-        color: Color.txtGrey
+        color: Color.txtGrey,
     },
     showMap: {
         borderWidth: 0.7,
@@ -34,6 +33,9 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         margin: 1
     },
+    inner: {
+        margin: 10,
+    }
 })
 
 export default styles;

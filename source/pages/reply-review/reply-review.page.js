@@ -55,7 +55,7 @@ categoryData = async () => {
       console.log("Access: ", currentLatitude, currentLongitude, access_token)
       await getBusinessData(data, access_token)
       .then(response => {
-          this.setState({ item: response[0][0], isLoader: false })
+          this.setState({ item: response[0][0], isLoader: false }, console.log(JSON.stringify(response)))
       })
       .catch(error => {
         console.log("Error: ", error)

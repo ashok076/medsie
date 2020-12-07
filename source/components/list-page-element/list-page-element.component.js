@@ -34,7 +34,7 @@ const ListPageElement = ({item, key, navigation}) =>  (
                         <View style={styles.horizontalView}>
                             <Icon name="place" color={Color.primaryColor} size={24} />
                             <Text style={styles.place}>{item.item.Distance} mi</Text>
-                            {icon(item.item.Buss_CatId)}
+                            {icon(item.item.Buss_SellType)}
                         </View>
                     </View>
                 </Card>

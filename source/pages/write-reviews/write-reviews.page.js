@@ -17,7 +17,7 @@ class WriteReviews extends Component {
     constructor(){
         super();
         this.state = {
-            stars: 0,
+            stars: 1,
             title: '',
             description: ''
         }
@@ -46,13 +46,15 @@ class WriteReviews extends Component {
     }
 
     render(){
-        const {title, description} = this.state;
+        const {title, description, stars} = this.state;
         const {navigation, route} = this.props;
         const {data} = route.params;
         return (
             <SafeAreaView style={styles.container}>
                 <ScrollView keyboardShouldPersistTaps='handled'>
-                    <BackHeader title="Back" navigation={navigation}/>
+                    <View style={styles.back}>
+                        <BackHeader title="Back" navigation={navigation}/>
+                    </View>
                 <View>
                 <View style={[styles.row, styles.innercontainer]}>
                     <Image source = {{uri: data.Buss_Image_Path}} style = {styles.imageView}/>
@@ -61,7 +63,7 @@ class WriteReviews extends Component {
                     </View> 
                 </View>
                     <Stars
-                        default={1}
+                        default={stars}
                         update={(val)=> {this.setState({stars: val})}}
                         spacing={4}
                         starSize={40}

@@ -4,14 +4,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'white',
-        paddingTop: 20,
-        padding: 10
     },
   inputContainer: {
     paddingTop: 15,
+    margin: 10
   },
   buttonContainer: {
     paddingTop: 15,
+    margin: 10
   },
   row: {
     flexDirection: 'row',
@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
     width: 90, 
     height: 90,
     },
+    back: {
+      margin: 10
+    }
 })
 
 export default styles

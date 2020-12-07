@@ -73,8 +73,10 @@ class ListPage extends Component {
         const { type } = this.props.route.params;
         return(
             <SafeAreaView style={styles.container}>
-                <BackHeader title="Back" navigation={navigation}/>
-                {this.title(type)}
+                <View style={styles.inner}>
+                    <BackHeader title="Back" navigation={navigation}/>
+                        {this.title(type)}
+                </View>
                 <ListPageComponent list={array} navigation={navigation}/>
             </SafeAreaView>
         )

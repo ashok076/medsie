@@ -33,8 +33,9 @@ const call = (data) => {
     Linking.openURL(phoneNumber)
 }
 
-navigate = (data, navigation, access_token) => {
-    navigation.navigate('WriteReviews', {data: data, access_token: access_token})
+const navigate = (data, navigation, access_token) => {
+    if (access_token !== null) navigation.navigate('WriteReviews', {data: data, access_token: access_token})
+    else {navigation.reset({index: 0, routes: [{name: 'Login'}]})}
 }
 
 const map = (data) => {

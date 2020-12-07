@@ -83,8 +83,8 @@ class Listing extends Component {
                             <View style={styles.border}/>
                             <Reviews item={item}/>
                             <ReviewsComment list={item.RatingMaster_DTO} navigation={navigation} show={false}/>
-                            </View>
-                            <Loader isLoader={isLoader}/>
+                        </View>
+                        <Loader isLoader={isLoader}/>
                     </View>
                 </ScrollView>
             </SafeAreaView>

@@ -34,7 +34,7 @@ const CategoriesListElement = ({item, key, navigation}) =>  (
                         <View style={styles.horizontalView}>
                             <Icon name="place" color={Color.primaryColor} size={17} />
                             <Text style={styles.place}>{item.item.Distance} mi</Text>
-                            {icon(item.item.Buss_CatId)}
+                            {icon(item.item.Buss_SellType)}
                         </View>
                             <Caption>{item.item.Cat_Name}</Caption>
                     </View>
