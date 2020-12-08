@@ -256,7 +256,8 @@ pickImage = () => {
     height: 400,
     cropping: false,
     includeBase64: true,
-    multiple: false
+    multiple: false,
+    compressImageQuality: 0.5
     }).then(images => {
         this.setState({ base64: images.data, fileName: Platform.OS === 'ios' ? images.filename : 'images' + new Date(), imagePath: images.path })
     }).catch(error => console.log("Error in image: ", error))

@@ -170,6 +170,7 @@ dateTimePicker = () => (
     render(){
         const {navigation} = this.props;
         const {isShowPassword, emailid, password, isLoader, phone, dob, name, bussinessData, access_token} = this.state;
+        console.log("Data Settings: ", JSON.stringify(bussinessData))
         return(
             <SafeAreaView style={styles.container}>
                 <BackHeader title="Back" navigation={navigation}/>

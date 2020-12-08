@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {View, Image, Dimensions} from 'react-native';
-import {Title, Caption, Paragraph} from 'react-native-paper'
+import {Title, Caption, Paragraph, Text} from 'react-native-paper'
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import StarRating from 'react-native-star-rating';
 import Foundation from 'react-native-vector-icons/Foundation';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -17,9 +18,20 @@ const CompanyCard  = ({item}) => (
                     <Image style={item.Buss_Image_Path ? styles.imageView : {width: 100, height: 100, resizeMode: 'center'}} source={item.Buss_Image_Path ? {uri: item.Buss_Image_Path} : require('../../assets/png-images/placeholder.png')}/>
                     <View style={styles.info}>
                         <Title style={styles.title}>{ item.Buss_Name }</Title>
+                        <View style={styles.rating}>
+                            <StarRating
+                            disabled={false}
+                            maxStars={5}
+                            rating={item.Rat_Rating}
+                            fullStar= {'star'}
+                            emptyStar= {'star-o'}
+                            fullStarColor={'orange'}
+                            emptyStarColor={'orange'}
+                            starSize={24}/>
+                        </View>
+                            <Caption>{item.Buss_Address}</Caption>
                         <View style={[styles.row]}>
-                            <Caption>{item.Buss_City} {item.Buss_Country}</Caption>
-                            <Icon name="place" color={Color.primaryColor} size={17} style={styles.icon}/>
+                            <Icon name="place" color={Color.primaryColor} size={17}/>
                             <Caption style={styles.min}>{item.Distance} mi</Caption>
                             {icon(item.Buss_SellType)}
                         </View>

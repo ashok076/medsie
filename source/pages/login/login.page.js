@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View, ScrollView, Text, TouchableWithoutFeedback, Image, SafeAreaView, PermissionsAndroid, Platform, Linking, Alert, BackHandler} from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { Toast } from 'native-base';
 import AsyncStorage from '@react-native-community/async-storage';
 import Geolocation from 'react-native-geolocation-service';
@@ -301,8 +302,8 @@ navigate = (page) => {
         const {isShowPassword, emailid, password, isLoader} = this.state;
         return (
             <SafeAreaView style={styles.container}>
+                <KeyboardAwareScrollView keyboardShouldPersistTaps='handled'>
                 {this.header()}
-                <ScrollView keyboardShouldPersistTaps='handled' style={{ flex: 1 }}>
                 <View style={styles.innerContainer}>
                     <Text style={styles.title}>Find stores, doctors and events right next to you</Text>
                     <Text style={styles.loginText}>LOGIN</Text>
@@ -345,7 +346,7 @@ navigate = (page) => {
                     </View>
                     <Loader isLoader={isLoader}/>
                     </View>
-            </ScrollView>
+            </KeyboardAwareScrollView>
             </SafeAreaView>
         )
     }

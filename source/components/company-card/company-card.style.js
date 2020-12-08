@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
         marginBottom: 5
     },
     container: {
-        height: 90,
+        height: 155,
         width: '90%',
         padding: 10
     },
@@ -38,7 +38,12 @@ const styles = StyleSheet.create({
     },
     icon: {
         marginLeft: 10
-    }
+    },
+    rating: {
+      alignItems: 'center',
+      flexDirection: 'row',
+      width: '100%',
+    },
 })
 
 export default styles

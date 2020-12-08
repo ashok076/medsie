@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View, TouchableOpacity, SafeAreaView, ScrollView, Image} from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import Stars from 'react-native-stars';
 import {Title, Caption, Paragraph} from 'react-native-paper'
 
@@ -51,7 +52,7 @@ class WriteReviews extends Component {
         const {data} = route.params;
         return (
             <SafeAreaView style={styles.container}>
-                <ScrollView keyboardShouldPersistTaps='handled'>
+                <KeyboardAwareScrollView keyboardShouldPersistTaps='handled'>
                     <View style={styles.back}>
                         <BackHeader title="Back" navigation={navigation}/>
                     </View>
@@ -92,7 +93,7 @@ class WriteReviews extends Component {
                         <Button title="Submit review" onPress={() => this.submit()}/>
                     </View>
                 </View>
-                </ScrollView>
+                </KeyboardAwareScrollView>
             </SafeAreaView>
         )
     }

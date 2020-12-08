@@ -3,7 +3,6 @@ import {View, SafeAreaView} from "react-native";
 import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import { Card, Text, Caption } from 'react-native-paper';
 import AsyncStorage from '@react-native-community/async-storage';
-import StarRating from 'react-native-star-rating';
 
 import BackHeader from '../../components/back-header/back-header.component';
 import CompanyCard from '../../components/company-card/company-card.component';
@@ -81,21 +80,6 @@ class ShowMaps extends Component{
         ))
     }
 
-    rating = (data) => (
-        <View style={styles.rating}>
-            <StarRating
-                disabled={false}
-                maxStars={5}
-                rating={data.Rat_Rating}
-                fullStar= {'star'}
-                emptyStar= {'star-o'}
-                fullStarColor={'orange'}
-                emptyStarColor={'orange'}
-                starSize={30}/>
-            <Text style={styles.ratingText}>{data.Rat_Rating}</Text>
-        </View>
-    )
-
     render(){
         const {navigation, route} = this.props;
         const {data, show, longitudeDelta, latitudeDelta, isLoader} = this.state;
@@ -119,7 +103,6 @@ class ShowMaps extends Component{
                     <Card style={styles.card}>
                         <CompanyCard item={data}/>
                         <ActionButtons item={data} show={true} navigation={navigation}/>
-                        {this.rating(data)}
                     </Card>
                 )}
                 <Loader isLoader={isLoader}/>

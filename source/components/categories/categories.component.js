@@ -7,7 +7,7 @@ import { Toast } from 'native-base';
 import CategoriesList from '../categories-list/categories-list.component';
 import ShowMapsTitle from '../show-maps-title/show-map-title.component';
 import Loader from '../../components/loader/loader.component';
-import {getBusinessData, getHomeData} from '../../configure/api/api.configure';
+import {getHomeData} from '../../configure/api/api.configure';
 
 import styles from './categories.style';
 
