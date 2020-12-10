@@ -43,6 +43,7 @@
     "react-native-stars": "^1.2.2",
     "react-native-svg": "^12.1.0",
     "react-native-vector-icons": "^7.1.0",
+    "react-native-walkthrough-tooltip": "^1.1.11",
     "reanimated-bottom-sheet": "^1.0.0-alpha.22"
   },
   "devDependencies": {

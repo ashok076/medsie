@@ -1,11 +1,11 @@
 import {StyleSheet} from 'react-native';
 
-import {Color} from '../../assets/color/color.assets'
+import {Color} from '../../assets/color/color.assets';
 
 const styles = StyleSheet.create({
-    container:{
-      backgroundColor: Color.backGroundColor,
-    },
+  container: {
+    backgroundColor: Color.backGroundColor,
+  },
   inputContainer: {
     paddingTop: 20,
   },
@@ -15,17 +15,17 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 15
+    marginTop: 15,
   },
   underline: {
     borderBottomWidth: 0.5,
     borderColor: '#000',
     fontFamily: 'Asap-Regular',
-    color: Color.grey
+    color: Color.grey,
   },
   rowD: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   uploadImageView: {
     borderStyle: 'dashed',
@@ -34,20 +34,20 @@ const styles = StyleSheet.create({
     height: 150,
     width: '100%',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   title: {
     fontSize: 22,
     paddingBottom: 20,
-    fontFamily: 'Asap-SemiBold'
+    fontFamily: 'Asap-SemiBold',
   },
   uploadImageTxt: {
     fontFamily: 'Asap-Regular',
-    color: Color.grey
+    color: Color.grey,
   },
   text: {
     fontFamily: 'Asap-Regular',
-    color: Color.grey
+    color: Color.grey,
   },
   contain: {
     backgroundColor: 'white',
@@ -56,16 +56,16 @@ const styles = StyleSheet.create({
     fontFamily: 'Asap-Regular',
   },
   imageView: {
-    width: 200, 
+    width: 200,
     height: 200,
-    alignSelf: 'center'
-    },
+    alignSelf: 'center',
+  },
   bodycontainer: {
-    padding: 10
-    },
-    back: {
-        marginLeft: 10
-    }
-})
+    padding: 10,
+  },
+  back: {
+    marginLeft: 10,
+  },
+});
 
-export default styles
+export default styles;

@@ -7,18 +7,18 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-    },
+    }, 
     showMap: {
         borderWidth: 0.7,
         padding: 5,
         borderRadius: 5,
         margin: 1,
-        borderColor: Color.txtGrey
+        borderColor: Color.primaryColor
     },
     title: {
         fontFamily: 'Asap-Regular',
         fontSize: 14,
-        color: Color.txtGrey
+        color: Color.primaryColor
     }
 })
 

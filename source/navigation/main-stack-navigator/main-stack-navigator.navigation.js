@@ -10,7 +10,9 @@ import RegisterStore from '../../pages/register-store/register-store.page';
 import EditStore from '../../pages/edit-store/edit-store.page';
 import WriteReviews from '../../pages/write-reviews/write-reviews.page';
 import ReplyReview from '../../pages/reply-review/reply-review.page';
-import EditReply from '../../components/edit-reply/edit-reply.component'
+import EditReply from '../../components/edit-reply/edit-reply.component';
+import SearchAndFilter from '../../pages/search-and-filter/search-and-filter.page'
+import FilterModal from '../../pages/filter-modal/filter-modal.page'
 
 const Stack = createStackNavigator();
 
@@ -26,6 +28,8 @@ const MainStackNavigator = () => (
     <Stack.Screen name="Listing" component={Listing} />
     <Stack.Screen name="ReplyReview" component={ReplyReview} />
     <Stack.Screen name="EditReply" component={EditReply} />
+    <Stack.Screen name="SearchAndFilter" component={SearchAndFilter} />
+    <Stack.Screen name="FilterModal" component={FilterModal} />
   </Stack.Navigator>
 );
 

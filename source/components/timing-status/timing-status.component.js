@@ -26,7 +26,7 @@ class TimingStatus  extends Component {
         const {item} = this.props;
         return (
             <View style={styles.container}>
-            <Title style={styles.close}> {item.Buss_Open_Close ? 'Open' : 'Close'} </Title>
+            <Title style={[styles.close, item.Buss_Open_Close ? {color: 'green'}:{color: 'red'} ]}> {item.Buss_Open_Close ? 'Open now' : 'Closed now'} </Title>
                 <View>
                     <FlatList
                         data={item.businessHoursTransMaster_DTOs}

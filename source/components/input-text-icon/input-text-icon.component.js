@@ -6,7 +6,7 @@ import {Color} from '../../assets/color/color.assets'
 
 import styles from "./input-text-icon.style"
 
-const InputTextIcon = ({placeholder, icon, onChangeText, value, show, onPress}) => (
+const InputTextIcon = ({placeholder, icon, onChangeText, value, show, onPress, focus}) => (
   <View>
   <Text style={styles.placeholder}>{placeholder}</Text>
     <View style={styles.inputContainer}>
@@ -16,6 +16,7 @@ const InputTextIcon = ({placeholder, icon, onChangeText, value, show, onPress}) 
       secureTextEntry={show}
       onChangeText={onChangeText}
       value={value}
+      autoFocus={focus}
     />
     <TouchableOpacity onPress={onPress}>
       <Icon size={24} color={Color.grey} name={icon} style={styles.iconStyle}/>

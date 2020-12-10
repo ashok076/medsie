@@ -93,8 +93,8 @@ class ShowMaps extends Component{
                 initialRegion={{
                     latitude: 19.0759837,
                     longitude: 72.8776559,
-                    latitudeDelta: longitudeDelta,
-                    longitudeDelta: latitudeDelta,
+                    latitudeDelta: latitudeDelta,
+                    longitudeDelta: longitudeDelta,
                 }}
                 style={styles.map}>
                     {this.marker()}

@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginTop: 10
     },
-    ratingView: {
+    hor: {
+        flexDirection: 'row',
     },
     title: {
         fontFamily: 'Asap-Regular',
@@ -49,7 +50,11 @@ const styles = StyleSheet.create({
     },
     icon: {
         marginLeft: 10
-    }
+    },
+    introductions: {
+        fontFamily: 'Asap-Regular',
+        fontSize: 14
+    },
 })
 
 export default styles

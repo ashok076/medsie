@@ -44,6 +44,9 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       width: '100%',
     },
+    hor: {
+        flexDirection: 'row'
+    },
 })
 
 export default styles

@@ -46,6 +46,14 @@ const CategoriesListElement = ({item, key, navigation}) =>  (
 const icon = (id) => {
     if (id === 1) return <FontAwesome5 name="cannabis" color={"green"} size={17} style={styles.icon}/>
     else if (id === 2) return <Foundation name="plus" color={"green"} size={17} style={styles.icon}/>
+    else if (id === 3) {
+        return (
+            <View style={styles.horizontalView}>
+                <FontAwesome5 name="cannabis" color={"green"} size={17} style={styles.icon}/>
+                <Foundation name="plus" color={"green"} size={17} style={styles.icon}/>
+            </View>
+        )
+    }
 }
 
 export default CategoriesListElement
