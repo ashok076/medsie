@@ -18,7 +18,7 @@ const HomeContent = ({navigation}) => (
       <View style={styles.searchView}>
         <SearchTextInput
           navigation={navigation}
-          onPress={() => navigation.navigate('SearchAndFilter', {isFocus: true})}
+          onPress={() => navigation.navigate('SearchAndFilter', {isFocus: true, data: ''})}
         />
         <TouchableOpacity
           style={styles.tune}

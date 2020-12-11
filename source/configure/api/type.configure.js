@@ -13,5 +13,6 @@ export const API = {
     GET_BUSINESS_CATEGORY_LIST: BASE_URL + "api/Medsie/GetBusinessMasterByLatLong",
     USER_TYPE: BASE_URL + "api/Medsie/GetUserMasterData",
     RATING: BASE_URL + "api/Medsie/PostRatingMasterData",
-    REPLY: BASE_URL + "api/Medsie/AddUpdateReplyReviewTrans"
+    REPLY: BASE_URL + "api/Medsie/AddUpdateReplyReviewTrans",
+    FILTER_DATA: BASE_URL + "api/Medsie/GetBusinessMasterFilterDetails"
 }

@@ -209,3 +209,17 @@ export const reply = async (data, access_token) => {
         throw error;
     })
 }
+
+export const filterData = async (data) => {
+    console.log("D: ", data)
+    return axios(API.FILTER_DATA, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        data
+    }).then(response => response.data)
+    .catch(error => {
+        throw error;
+    })
+}

@@ -51,6 +51,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'white'
   },
+  paragraph: {
+    fontFamily: 'Asap-Regular'
+  }
 });
 
 export default styles;
