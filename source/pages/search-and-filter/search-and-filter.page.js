@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, SafeAreaView, TouchableOpacity} from 'react-native';
 import {Text, Title} from 'react-native-paper';
 import Icons from 'react-native-vector-icons/AntDesign';
+import _ from "lodash";
 
 import BackHeader from '../../components/back-header/back-header.component';
 import InputTextIcon from '../../components/input-text-icon/input-text-icon.component';
@@ -14,8 +15,40 @@ class SearchAndFilter extends Component {
     super();
     this.state = {
       search: '',
+      data: [],
+      filterData: []
     };
   }
+
+    componentDidMount() {
+    const {navigation, route} = this.props;
+    const {data} = route.params;
+    navigation.addListener('focus', () => {
+      this.setState({data: data[0], filterData: data[0]});
+    });
+  }
+
+  handleSearch = (search) => {
+    const {filterData} = this.state;
+    const formatQuery = search.toLowerCase();
+    const data = _.filter(filterData, (keywords) => {
+      return this.contains(keywords, formatQuery);
+    })
+    this.setState({ data: data, search: search})
+  }
+
+  contains = ({Buss_Name}, query) => {
+    console.log(`Buss_Name: ${Buss_Name}`);
+    if (
+      Buss_Name !== null &&
+      Buss_Name !== ""
+    ) {
+      if (Buss_Name.toLowerCase().includes(query)) {
+        return true;
+      }
+    }
+    return false;
+  };
 
   back = (navigation) => (
     <TouchableOpacity
@@ -44,9 +77,8 @@ class SearchAndFilter extends Component {
   );
 
   render() {
-    const {navigation, route} = this.props;
-    const {isFocus, data} = route.params;
-    const {search} = this.state;
+    const {navigation} = this.props;
+    const {search, data} = this.state;
     return (
       <SafeAreaView style={styles.container}>
         <View style={styles.back}>{this.back(navigation)}</View>
@@ -57,15 +89,14 @@ class SearchAndFilter extends Component {
               icon={'search'}
               value={search}
               show={false}
-              onChangeText={(search) => this.setState({search})}
-              focus={isFocus}
+              onChangeText={this.handleSearch}
             />
           </View>
           <View style={styles.resultContainer}>
             <Text>Results</Text>
-            <ResultCategory list={data[0]} navigation={navigation} />
+            <ResultCategory list={data} navigation={navigation} />
           </View>
-        </View>
+        </View> 
       </SafeAreaView>
     );
   }

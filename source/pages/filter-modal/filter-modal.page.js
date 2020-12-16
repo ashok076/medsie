@@ -105,7 +105,7 @@ class FilterModal extends Component {
       Buss_SellType: JSON.stringify(sellArr),
       Buss_CatId: JSON.stringify(catArr),
       Buss_Rat_Rating: JSON.stringify(ratArr),
-      OrderbyVal: 'Rat_Rating',
+      OrderbyVal: 'Buss_Name',
       Orderby: orderBy ? 'Asc' : 'Desc',
       Type: 4,
       Buss_Open_Close: isShopOpen,

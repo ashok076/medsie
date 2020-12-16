@@ -4,14 +4,12 @@ import {Color} from '../../assets/color/color.assets'
 
 const styles = StyleSheet.create({
   inputContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: 'center',
     height: 50,
     width: '85%',
     borderRadius: 5,
     borderWidth: 0.7,
     padding: 10,
-    justifyContent: 'space-between',
     borderColor: Color.grey,
   },
   searchText: {

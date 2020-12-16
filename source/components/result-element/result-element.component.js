@@ -15,7 +15,7 @@ import styles from './result-element.style';
 const width = Dimensions.get('window').width;
 
 const ResultElement = ({item, key, navigation}) => (
-  <TouchableOpacity style={[styles.row, styles.container]}>
+  <TouchableOpacity style={[styles.row, styles.container]} onPress={() => navigation.navigate('Listing', {id: item.Buss_PkId})}>
     <Image
       style={
         item.Buss_Image_Path

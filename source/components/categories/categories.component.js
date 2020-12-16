@@ -2,12 +2,14 @@ import React, {Component} from 'react';
 import {View, TouchableOpacity, FlatList} from 'react-native';
 import {Text} from 'react-native-paper';
 import AsyncStorage from '@react-native-community/async-storage';
+import { connect } from 'react-redux';
 import {Toast} from 'native-base';
 
 import CategoriesList from '../categories-list/categories-list.component';
 import ShowMapsTitle from '../show-maps-title/show-map-title.component';
 import Loader from '../../components/loader/loader.component';
 import {getHomeData} from '../../configure/api/api.configure';
+import { homeItem } from '../../redux/home-item/home-item.action';
 
 import styles from './categories.style';
 
@@ -15,7 +17,6 @@ class Categories extends Component {
   constructor() {
     super();
     this.state = {
-      array: [],
       isLoader: false,
       currentLatitude: 0,
       currentLongitude: 0,
@@ -23,10 +24,11 @@ class Categories extends Component {
   }
 
   componentDidMount() {
-    const {navigation, route} = this.props;
+    const {navigation, route, search} = this.props;
     navigation.addListener('focus', () => {
       this.setState({isLoader: true}, () => this.getLatLong());
     });
+    console.log("Search: ", search)
   }
 
   showMessage = (message) => {
@@ -47,6 +49,7 @@ class Categories extends Component {
   };
 
   homeData = async () => {
+    const { homeItem } = this.props;
     const {currentLatitude, currentLongitude} = this.state;
     console.log(currentLatitude, 'Loc: ', currentLongitude);
     const data = JSON.stringify({
@@ -56,13 +59,15 @@ class Categories extends Component {
     });
     await getHomeData(data)
       .then((response) => {
-        this.setState({array: response[1], isLoader: false});
+        homeItem(response[1])
+        this.setState({isLoader: false});
       })
       .catch((error) => {
         console.log(error);
         this.setState({isLoader: false});
       });
   };
+
 
   category = (navigation, item) => (
     <View>
@@ -82,13 +87,12 @@ class Categories extends Component {
   );
 
   render() {
-    const {array, isLoader} = this.state;
-    const {navigation} = this.props;
-    console.log('Array lenm: ', array.length);
+    const {isLoader} = this.state;
+    const {navigation, content} = this.props;
     return (
       <View>
         <FlatList
-          data={array}
+          data={content}
           renderItem={(item, index) => this.category(navigation, item)}
           keyExtractor={(item, index) => item.id}
           showsHorizontalScrollIndicator={false}
@@ -99,4 +103,12 @@ class Categories extends Component {
   }
 }
 
-export default Categories;
+const mapDispatchToProps = dispatch => ({
+  homeItem: (content) => dispatch(homeItem(content))
+})
+
+const mapStateToProps = ({ homeContent: {content} }) => ({
+  content: content
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories);

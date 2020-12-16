@@ -13,8 +13,9 @@ const ResultCategory = ({list, navigation}) => (
         <ResultElement item={item.item} key={index} navigation={navigation} />
       )}
       keyExtractor={(item, index) => item.id}
+      contentContainerStyle={{ paddingBottom: 100 }}
     />
   </View>
-);
+); 
 
 export default ResultCategory;

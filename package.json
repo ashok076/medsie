@@ -19,6 +19,7 @@
     "@react-navigation/stack": "^5.9.3",
     "axios": "^0.20.0",
     "date-fns": "^2.16.1",
+    "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.32",
     "native-base": "^2.13.14",
@@ -44,7 +45,10 @@
     "react-native-svg": "^12.1.0",
     "react-native-vector-icons": "^7.1.0",
     "react-native-walkthrough-tooltip": "^1.1.11",
-    "reanimated-bottom-sheet": "^1.0.0-alpha.22"
+    "react-redux": "^7.2.2",
+    "reanimated-bottom-sheet": "^1.0.0-alpha.22",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",

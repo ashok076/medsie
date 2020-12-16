@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     margin: 10,
+    flex: 1
   },
   resultContainer: {
     marginTop: 10,
