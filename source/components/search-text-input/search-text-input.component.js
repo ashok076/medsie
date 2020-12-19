@@ -6,7 +6,7 @@ import styles from './search-text-input.style'
 
 const SearchTextInput = ({location, value, onChangeText}) => (
     <View style={styles.inputContainer}>
-        <TextInput style={styles.searchText} val={value} onChangeText={onChangeText} placeholder="Search"/>
+        <TextInput style={styles.searchText} value={value} onChangeText={onChangeText} placeholder="Search"/>
     </View>
 )
 

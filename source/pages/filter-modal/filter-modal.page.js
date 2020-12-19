@@ -10,10 +10,12 @@ import {
   Switch,
 } from 'react-native-paper';
 import AsyncStorage from '@react-native-community/async-storage';
+import { connect } from 'react-redux';
 
 import BackHeader from '../../components/back-header/back-header.component';
 import Button from '../../components/button/button.component';
 import {filterData} from '../../configure/api/api.configure';
+import { filterDataPreserve } from '../../redux/filter/filter.action'
 import {createOffset} from '../../configure/miscellaneous/miscellaneous.configure';
 import {Color} from '../../assets/color/color.assets';
 
@@ -44,10 +46,11 @@ class FilterModal extends Component {
   }
 
   componentDidMount() {
-    const {navigation} = this.props;
+    const {navigation, filtering} = this.props;
     navigation.addListener('focus', () => {
-      this.setState(this.initialState);
       this.setState({isLoader: true}, () => this.getLatLong());
+      this.setState(filtering);
+      console.log("Check: ", filtering)
     });
   }
 
@@ -65,6 +68,7 @@ class FilterModal extends Component {
     let catArr = [];
     let sellArr = [];
     let ratArr = [];
+    const {navigation, filterDataPreserve} = this.props;
     const {
       catRec,
       catMed,
@@ -84,7 +88,6 @@ class FilterModal extends Component {
       ratFour,
       ratFive,
     } = this.state;
-    const {navigation} = this.props;
     if (catRec) catArr.push({Cat_PkId: 1});
     if (catMed) catArr.push({Cat_PkId: 2});
     if (catDel) catArr.push({Cat_PkId: 3});
@@ -114,6 +117,7 @@ class FilterModal extends Component {
     await filterData(data)
       .then((response) => {
         console.log('Filter Res: ', response);
+        filterDataPreserve(this.state);
         navigation.navigate('SearchAndFilter', {
           isFocus: false,
           data: response,
@@ -245,4 +249,12 @@ class FilterModal extends Component {
   }
 }
 
-export default FilterModal;
+const mapDispatchToProps = dispatch => ({
+  filterDataPreserve: (filter) => dispatch(filterDataPreserve(filter))
+})
+
+const mapStateToProps = ({ filter: { filterPreserve } }) => ({
+  filtering: filterPreserve
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilterModal);

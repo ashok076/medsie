@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import {View, TouchableOpacity, FlatList} from 'react-native';
 import {Text} from 'react-native-paper';
 import AsyncStorage from '@react-native-community/async-storage';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import {Toast} from 'native-base';
 
 import CategoriesList from '../categories-list/categories-list.component';
 import ShowMapsTitle from '../show-maps-title/show-map-title.component';
 import Loader from '../../components/loader/loader.component';
 import {getHomeData} from '../../configure/api/api.configure';
-import { homeItem } from '../../redux/home-item/home-item.action';
+import {homeItem} from '../../redux/home-item/home-item.action';
+import {filterDataPreserve} from '../../redux/filter/filter.action';
 
 import styles from './categories.style';
 
@@ -24,11 +25,11 @@ class Categories extends Component {
   }
 
   componentDidMount() {
-    const {navigation, route, search} = this.props;
+    const {navigation, filterDataPreserve} = this.props;
     navigation.addListener('focus', () => {
       this.setState({isLoader: true}, () => this.getLatLong());
+      filterDataPreserve({})
     });
-    console.log("Search: ", search)
   }
 
   showMessage = (message) => {
@@ -49,7 +50,7 @@ class Categories extends Component {
   };
 
   homeData = async () => {
-    const { homeItem } = this.props;
+    const {homeItem} = this.props;
     const {currentLatitude, currentLongitude} = this.state;
     console.log(currentLatitude, 'Loc: ', currentLongitude);
     const data = JSON.stringify({
@@ -59,7 +60,7 @@ class Categories extends Component {
     });
     await getHomeData(data)
       .then((response) => {
-        homeItem(response[1])
+        homeItem(response[1]);
         this.setState({isLoader: false});
       })
       .catch((error) => {
@@ -67,7 +68,6 @@ class Categories extends Component {
         this.setState({isLoader: false});
       });
   };
-
 
   category = (navigation, item) => (
     <View>
@@ -103,12 +103,13 @@ class Categories extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  homeItem: (content) => dispatch(homeItem(content))
-})
+const mapDispatchToProps = (dispatch) => ({
+  homeItem: (content) => dispatch(homeItem(content)),
+  filterDataPreserve: (filter) => dispatch(filterDataPreserve(filter)),
+});
 
-const mapStateToProps = ({ homeContent: {content} }) => ({
-  content: content
-})
+const mapStateToProps = ({homeContent: {content}}) => ({
+  content: content,
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);

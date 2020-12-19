@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     margin: 10,
-    flex: 1
+    flex: 1,
   },
   resultContainer: {
     marginTop: 10,
@@ -31,6 +31,15 @@ const styles = StyleSheet.create({
   rowObject: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  searchView: {
+    flexDirection: 'row',
+    paddingTop: 15,
+  },
+  tune: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '15%',
   },
 });
 

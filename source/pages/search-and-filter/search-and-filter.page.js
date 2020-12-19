@@ -2,11 +2,14 @@ import React, {Component} from 'react';
 import {View, SafeAreaView, TouchableOpacity} from 'react-native';
 import {Text, Title} from 'react-native-paper';
 import Icons from 'react-native-vector-icons/AntDesign';
-import _ from "lodash";
+import _ from 'lodash';
+import { connect } from 'react-redux';
 
 import BackHeader from '../../components/back-header/back-header.component';
 import InputTextIcon from '../../components/input-text-icon/input-text-icon.component';
 import ResultCategory from '../../components/result-component/result-component.component';
+import SearchTextInput from '../../components/search-text-input/search-text-input.component';
+import Filter from '../../assets/svg-files/filter.svg';
 
 import styles from './search-and-filter.style';
 
@@ -16,33 +19,31 @@ class SearchAndFilter extends Component {
     this.state = {
       search: '',
       data: [],
-      filterData: []
+      filterData: [],
     };
   }
 
-    componentDidMount() {
-    const {navigation, route} = this.props;
+  componentDidMount() {
+    const {navigation, route, search} = this.props;
     const {data} = route.params;
     navigation.addListener('focus', () => {
-      this.setState({data: data[0], filterData: data[0]});
+      this.setState({data: data[0], filterData: data[0], search: search}, () => this.handleSearch());
+      
     });
   }
 
-  handleSearch = (search) => {
-    const {filterData} = this.state;
+  handleSearch = () => {
+    const {filterData, search} = this.state;
     const formatQuery = search.toLowerCase();
     const data = _.filter(filterData, (keywords) => {
       return this.contains(keywords, formatQuery);
-    })
-    this.setState({ data: data, search: search})
-  }
+    });
+    this.setState({data: data, search: search});
+  };
 
   contains = ({Buss_Name}, query) => {
     console.log(`Buss_Name: ${Buss_Name}`);
-    if (
-      Buss_Name !== null &&
-      Buss_Name !== ""
-    ) {
+    if (Buss_Name !== null && Buss_Name !== '') {
       if (Buss_Name.toLowerCase().includes(query)) {
         return true;
       }
@@ -83,23 +84,29 @@ class SearchAndFilter extends Component {
       <SafeAreaView style={styles.container}>
         <View style={styles.back}>{this.back(navigation)}</View>
         <View style={styles.innerContainer}>
-          <View style={styles.inputContainer}>
-            <InputTextIcon
-              placeholder="Search"
-              icon={'search'}
+          <View style={styles.searchView}>
+            <SearchTextInput
               value={search}
-              show={false}
-              onChangeText={this.handleSearch}
+              onChangeText={(search) => this.setState({ search }, () => this.handleSearch())}
             />
+            <TouchableOpacity
+              style={styles.tune}
+              onPress={() => navigation.navigate('FilterModal')}>
+              <Filter width={30} height={30} />
+            </TouchableOpacity>
           </View>
           <View style={styles.resultContainer}>
             <Text>Results</Text>
             <ResultCategory list={data} navigation={navigation} />
           </View>
-        </View> 
+        </View>
       </SafeAreaView>
     );
   }
 }
 
-export default SearchAndFilter;
+const mapStateToProps = ({ homeContent: { search } }) => ({
+  search
+})
+
+export default connect(mapStateToProps)(SearchAndFilter);
