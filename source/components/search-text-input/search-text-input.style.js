@@ -5,7 +5,7 @@ import {Color} from '../../assets/color/color.assets'
 const styles = StyleSheet.create({
   inputContainer: {
     justifyContent: 'center',
-    height: 50,
+    height: 60,
     width: '85%',
     borderRadius: 5,
     borderWidth: 0.7,

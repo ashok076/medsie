@@ -1,19 +1,18 @@
-import { FilterActionTypes } from './filter.types';
+import {FilterActionTypes} from './filter.types';
 
 INITIAL_STATE = {
-    filterPreserve: {}
-}
+  filterPreserve: {},
+};
 
 export const filterPreserveReducer = (state = INITIAL_STATE, action) => {
-    switch (action.type){
-        case FilterActionTypes.PRESERVE_FILTER: 
-        return {
-            ...state,
-            filterPreserve: action.payload
-        }
+  switch (action.type) {
+    case FilterActionTypes.PRESERVE_FILTER:
+      return {
+        ...state,
+        filterPreserve: action.payload,
+      };
 
-        default:
-        return state
-    }
-}
-
+    default:
+      return state;
+  }
+};
