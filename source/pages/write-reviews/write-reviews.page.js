@@ -41,7 +41,7 @@ class WriteReviews extends Component {
       Rat_Title: title,
       Rat_BussID: data.Buss_PkId,
     });
-    console.log('Data: ', apiData);
+    console.log('Datatingkkk: ', apiData);
     await rating(apiData, access_token)
       .then((response) => {
         console.log(response);

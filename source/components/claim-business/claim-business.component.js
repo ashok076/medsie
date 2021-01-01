@@ -1,29 +1,57 @@
 import React from 'react';
-import {View} from 'react-native';
-import {Button} from 'react-native-paper';
+import {View, ToastAndroid, Alert, TouchableOpacity, Text} from 'react-native';
 
 import {registerStore} from '../../configure/api/api.configure';
 
-const ClaimBusiness = ({access_token, item}) => (
-  <View>
+import styles from './claim-business.style';
+
+const ClaimBusiness = ({access_token, item, categoryData, navigation}) => (
+  <View style={styles.buttonView}>
     {item.Buss_IsApprove_bit ? (
-      <Button onPress={() => claimBusiness(item, access_token)}>
-        Claim this business
-      </Button>
+      <View>
+        <View style={styles.titleView}>
+          <Text style={styles.title}></Text>
+          <TouchableOpacity style={styles.showMap} onPress={() => claimBusiness(item, access_token, categoryData, navigation)}>
+            <Text style={styles.title}>Claim Business</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     ) : null}
   </View>
 );
 
-const claimBusiness = async (item, access_token) => {
-    console.log("Access Token: ", access_token)
-  let data = JSON.stringify({
-    Buss_PkId: item.Buss_PkId,
-    Buss_IsApprove: 2,
-    Type: 6,
-  });
-  await registerStore(data, access_token)
-    .then((response) => console.log('Response: ', response))
-    .catch((error) => console.log('Claim Business error: ', error));
+const claimBusiness = async (item, access_token, categoryData, navigation) => {
+  if (access_token !== null && access_token !== undefined) {
+    let data = JSON.stringify({
+      Buss_PkId: item.Buss_PkId,
+      Buss_IsApprove: 2,
+      Type: 6,
+    });
+    await registerStore(data, access_token)
+      .then((response) => {
+        console.log('Response: ', response);
+        ToastAndroid.show('You have claimed this business', ToastAndroid.LONG);
+        categoryData();
+      })
+      .catch((error) => console.log('Claim Business error: ', error));
+  } else {
+    Alert.alert(
+      'Login alert',
+      'Please login to claim this business',
+      [
+        {
+          text: 'LOGIN',
+          onPress: () =>
+            navigation.reset({
+              index: 0,
+              routes: [{name: 'Login'}],
+            }),
+        },
+        {text: 'CANCEL'},
+      ],
+      {cancelable: false},
+    );
+  }
 };
 
 export default ClaimBusiness;

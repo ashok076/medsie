@@ -59,6 +59,7 @@ class ShowMaps extends Component {
 
   mapData = async () => {
     const {id, type} = this.props.route.params;
+    console.log("Route: ", type)
     const {
       currentLatitude,
       currentLongitude,
@@ -66,7 +67,7 @@ class ShowMaps extends Component {
       access_token,
     } = this.state;
     const data = JSON.stringify({
-      Type: 1,
+      Type: type,
       Buss_CatId: id,
       Buss_Lat: currentLatitude,
       Buss_Long: currentLongitude,
@@ -102,7 +103,7 @@ class ShowMaps extends Component {
 
   render() {
     const {navigation, route} = this.props;
-    const {data, show, longitudeDelta, latitudeDelta, isLoader} = this.state;
+    const {data, show, longitudeDelta, latitudeDelta, isLoader, access_token} = this.state;
     return (
       <SafeAreaView style={styles.container}>
         <View style={{marginLeft: 10}}>
@@ -122,7 +123,7 @@ class ShowMaps extends Component {
         {show && (
           <Card style={styles.card}>
             <CompanyCard item={data} />
-            <ActionButtons item={data} show={true} navigation={navigation} />
+            <ActionButtons item={data} show={true} navigation={navigation} access_token={access_token}/>
           </Card>
         )}
         <Loader isLoader={isLoader} />

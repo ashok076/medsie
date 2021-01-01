@@ -161,6 +161,7 @@ class RegisterStore extends Component {
           Buss_Long: '',
           UserID: '',
           Buss_TimeZone: createOffset(new Date()),
+          Buss_IsApprove: 2
         });
         await registerStore(data, JSON.parse(access_token))
           .then((response) => {
@@ -191,6 +192,7 @@ class RegisterStore extends Component {
           Image: 'data:image/png;base64, ' + base64,
           Client_Result_Photo_FileName: fileName,
           Buss_TimeZone: createOffset(new Date()),
+          Buss_IsApprove: 2
         });
         console.log('Image: ', data, access_token);
         await registerStoreImage(data, JSON.parse(access_token))

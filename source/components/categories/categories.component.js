@@ -74,7 +74,7 @@ class Categories extends Component {
       <ShowMapsTitle
         title={item.item.Cat_Name}
         onPress={() =>
-          navigation.navigate('ShowMaps', {id: item.item.Cat_PkId})
+          navigation.navigate('ShowMaps', {id: item.item.Cat_PkId, type: 1})
         }
       />
       <View style={styles.gap} />

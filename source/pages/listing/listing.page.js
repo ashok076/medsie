@@ -106,11 +106,16 @@ class Listing extends Component {
                 access_token={access_token}
                 show={true}
               />
-              {access_token ? <ClaimBusiness item={item} access_token={access_token}/> : <View/>}
               <Introduction item={item} />
               <View style={styles.border} />
               <TimingStatus item={item} />
               <View style={styles.border} />
+              <ClaimBusiness
+                item={item}
+                access_token={access_token}
+                categoryData={this.categoryData}
+                navigation={navigation}
+              />
               <Reviews item={item} />
               <ReviewsComment
                 list={item.RatingMaster_DTO}

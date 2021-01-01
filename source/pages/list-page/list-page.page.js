@@ -75,13 +75,14 @@ class ListPage extends Component {
       .catch((error) => console.log('Error: ', error));
   };
 
-  showMap = () => (
+  showMap = (type) => (
     <View>
       <TouchableOpacity
         style={styles.showMap}
         onPress={() =>
           this.props.navigation.navigate('ShowMaps', {
             id: this.props.route.params.id,
+            type: type
           })
         }>
         <Text style={styles.title}>Show Map</Text>
@@ -91,7 +92,7 @@ class ListPage extends Component {
 
   title = (type) => (
     <View>
-      <View style={styles.titleView}>{this.showMap()}</View>
+      <View style={styles.titleView}>{this.showMap(type)}</View>
     </View>
   );
 
