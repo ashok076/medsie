@@ -26,6 +26,7 @@ import Loader from '../../components/loader/loader.component';
 import {login, userType} from '../../configure/api/api.configure';
 import MedsieLogo from '../../assets/svg-files/medsie_logo.svg';
 import appConfig from '../../../app.json';
+import {verifyEmail} from '../../configure/miscellaneous/miscellaneous.configure';
 
 import styles from './login.style';
 
@@ -347,7 +348,7 @@ class Login extends Component {
           {this.header()}
           <View style={styles.innerContainer}>
             <Text style={styles.title}>
-              Find stores, doctors and events right next to you
+              Find weed shops, doctors, and activities near me
             </Text>
             <Text style={styles.loginText}>LOGIN</Text>
             <View style={styles.inputContainer}>

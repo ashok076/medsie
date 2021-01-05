@@ -18,6 +18,10 @@ import TouchText from '../../components/touch-text/touch-text.component';
 import BackHeader from '../../components/back-header/back-header.component';
 import Loader from '../../components/loader/loader.component';
 import {register, userType} from '../../configure/api/api.configure';
+import {
+  verifyEmail,
+  verifyPassword,
+} from '../../configure/miscellaneous/miscellaneous.configure';
 
 import styles from './registration.style';
 
@@ -42,28 +46,47 @@ class Registration extends Component {
     const {navigation} = this.props;
     if (this.validation()) {
       if (this.passwordCheck()) {
-        this.setState({isLoader: true});
-        let data = qs.stringify({
-          grant_type: 'password',
-          username: emailid,
-          password: confirmpassword,
-          ClientId: '2',
-          FirstName: firstname,
-          MobileNumber: mobile,
-        });
-        await register(data)
-          .then((res) => {
-            this.showMessage('Account created successfully');
-            this.setState(
-              {isLoader: false, access_token: res.access_token},
-              () => this.checkUserType(),
-            );
-          })
-          .catch((error) => {
-            this.setState({isLoader: false});
-            this.showMessage(error.response.data.error_description);
+        if (this.checkPassEmail(emailid, confirmpassword)) {
+          this.setState({isLoader: true});
+          let data = qs.stringify({
+            grant_type: 'password',
+            username: emailid,
+            password: confirmpassword,
+            ClientId: '2',
+            FirstName: firstname,
+            MobileNumber: mobile,
           });
+          await register(data)
+            .then((res) => {
+              this.showMessage('Account created successfully');
+              this.setState(
+                {isLoader: false, access_token: res.access_token},
+                () => this.checkUserType(),
+              );
+            })
+            .catch((error) => {
+              this.setState({isLoader: false});
+              this.showMessage(error.response.data.error_description);
+            });
+        }
       }
+    }
+  };
+
+  checkPassEmail = (email, password) => {
+    let cancel = false;
+    if (verifyEmail(email)) {
+      cancel = true;
+      this.showMessage('Please enter valid email');
+    }
+    if (verifyPassword(password)) {
+      cancel = true;
+      this.showMessage(`Your password must be minimum 8 characters to 16 characters and must contain one uppercase, one digit and special character '?!@#$%^&*'`);
+    }
+    if (cancel) {
+      return false;
+    } else {
+      return true;
     }
   };
 
@@ -92,15 +115,12 @@ class Registration extends Component {
   };
 
   validation = () => {
-    const {firstname, emailid, mobile, password, confirmpassword} = this.state;
+    const {firstname, emailid, password, confirmpassword} = this.state;
     let cancel = false;
     if (firstname.length === 0) {
       cancel = true;
     }
     if (emailid.length === 0) {
-      cancel = true;
-    }
-    if (mobile.length === 0) {
       cancel = true;
     }
     if (password.length === 0) {
@@ -122,7 +142,7 @@ class Registration extends Component {
       Toast.show({
         text: message,
         style: styles.toasttxt,
-        duration: 5000,
+        duration: 10000,
       });
     }
   };

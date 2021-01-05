@@ -191,6 +191,7 @@ class EditStore extends Component {
       fromWeekE,
       toWeekE,
     } = this.state;
+    const {navigation} = this.props;
     this.setState({isLoader: true, isPickerVisible: false});
     let arr = [];
     week_days.map((day) => {
@@ -238,7 +239,8 @@ class EditStore extends Component {
         await registerStore(data, JSON.parse(access_token))
           .then((response) => {
             this.setState({isLoader: false});
-            this.showMessage('Your store is successfully registered');
+            this.showMessage('Your store is pending verification');
+            navigation.reset({index: 0, routes: [{name: 'Home'}]});
           })
           .catch((error) => console.log('Error: ', error));
       } else {
@@ -270,7 +272,8 @@ class EditStore extends Component {
         await registerStoreImage(data, JSON.parse(access_token))
           .then((response) => {
             this.setState({isLoader: false});
-            this.showMessage('Your store is successfully registered');
+            this.showMessage('Your store is pending verification');
+            navigation.reset({index: 0, routes: [{name: 'Home'}]});
           })
           .catch((error) => {
             console.log('Error: ', error);

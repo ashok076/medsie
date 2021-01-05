@@ -105,7 +105,7 @@ signout = async (navigation) => {
             icon={({color, size}) => (
               <Shops width={size} height={size} />
             )}
-            label="Recreational Shops"
+            label="Featured"
             onPress={() => navigation.navigate('ListPage', { id: 1, type: 1 })}
             labelStyle={styles.labelStyle}
           />
@@ -113,7 +113,7 @@ signout = async (navigation) => {
             icon={({color, size}) => (
               <MedicalShops width={size} height={size} />
             )}
-            label="Medical Shops"
+            label="Weed Shops"
             onPress={() => navigation.navigate('ListPage', { id: 2, type: 1 })}
             labelStyle={styles.labelStyle}
           />
@@ -137,7 +137,7 @@ signout = async (navigation) => {
             icon={({color, size}) => (
               <Events width={size} height={size} />
             )}
-            label="Events"
+            label="Activities"
             onPress={() => navigation.navigate('ListPage', { id: 5, type: 1 })}
             labelStyle={styles.labelStyle}
           />

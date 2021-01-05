@@ -46,10 +46,6 @@ class RegisterStore extends Component {
     sellingType: '',
     isPickerVisible: false,
     mode: '',
-    fromWeekD: '10:00 AM',
-    toWeekD: '10:00 PM',
-    fromWeekE: '10:00 AM',
-    toWeekE: '10:00 PM',
     key: '',
     modal: '',
     array: [],
@@ -61,6 +57,20 @@ class RegisterStore extends Component {
     imagePath: '',
     catId: 0,
     sellId: 0,
+    fMonday: '10:00 AM',
+    tMonday: '10:00 AM',
+    fTuesday: '10:00 AM',
+    tTuesday: '10:00 AM',
+    fWednesday: '10:00 AM',
+    tWednesday: '10:00 AM',
+    fThursday: '10:00 AM',
+    tThursday: '10:00 AM',
+    fFriday: '10:00 AM',
+    tFriday: '10:00 AM',
+    fSaturday: '10:00 AM',
+    tSaturday: '10:00 AM',
+    fSunday: '10:00 AM',
+    tSunday: '10:00 AM',
   };
   constructor() {
     super();
@@ -110,36 +120,78 @@ class RegisterStore extends Component {
       storeNumber,
       storeAddress,
       addIntroduction,
-      fromWeekD,
-      toWeekD,
       access_token,
       base64,
       fileName,
       catId,
       sellId,
-      fromWeekE,
-      toWeekE,
+      fMonday,
+      tMonday,
+      fTuesday,
+      tTuesday,
+      fWednesday,
+      tWednesday,
+      fThursday,
+      tThursday,
+      fFriday,
+      tFriday,
+      fSaturday,
+      tSaturday,
+      fSunday,
+      tSunday,
     } = this.state;
     this.setState({isLoader: true, isPickerVisible: false});
-    let arr = [];
-    week_days.map((day) => {
-      arr.push({
-        BHT_Weekdays: day,
-        BHT_FromTime: fromWeekD,
-        BHT_ToTime: toWeekD,
+    let arr = [
+      {
+        BHT_Weekdays: 'Monday',
+        BHT_FromTime: fMonday,
+        BHT_ToTime: tMonday,
         BHT_CustomDate: '',
         BHT_Flag: 0,
-      });
-    });
-    week_ends.map((day) => {
-      arr.push({
-        BHT_Weekdays: day,
-        BHT_FromTime: fromWeekE,
-        BHT_ToTime: toWeekE,
+      },
+      {
+        BHT_Weekdays: 'Tuesday',
+        BHT_FromTime: fTuesday,
+        BHT_ToTime: tTuesday,
         BHT_CustomDate: '',
-        BHT_Flag: 1,
-      });
-    });
+        BHT_Flag: 0,
+      },
+      {
+        BHT_Weekdays: 'Wednesday',
+        BHT_FromTime: fWednesday,
+        BHT_ToTime: tWednesday,
+        BHT_CustomDate: '',
+        BHT_Flag: 0,
+      },
+      {
+        BHT_Weekdays: 'Thurday',
+        BHT_FromTime: fThursday,
+        BHT_ToTime: tThursday,
+        BHT_CustomDate: '',
+        BHT_Flag: 0,
+      },
+      {
+        BHT_Weekdays: 'Friday',
+        BHT_FromTime: fFriday,
+        BHT_ToTime: tFriday,
+        BHT_CustomDate: '',
+        BHT_Flag: 0,
+      },
+      {
+        BHT_Weekdays: 'Saturday',
+        BHT_FromTime: fSaturday,
+        BHT_ToTime: tSaturday,
+        BHT_CustomDate: '',
+        BHT_Flag: 0,
+      },
+      {
+        BHT_Weekdays: 'Sunday',
+        BHT_FromTime: fSunday,
+        BHT_ToTime: tSunday,
+        BHT_CustomDate: '',
+        BHT_Flag: 0,
+      },
+    ];
     if (catId !== 0 && sellId !== 0) {
       if (base64.length === 0) {
         let data = JSON.stringify({
@@ -161,12 +213,12 @@ class RegisterStore extends Component {
           Buss_Long: '',
           UserID: '',
           Buss_TimeZone: createOffset(new Date()),
-          Buss_IsApprove: 2
+          Buss_IsApprove: 2,
         });
         await registerStore(data, JSON.parse(access_token))
           .then((response) => {
             this.setState({isLoader: false});
-            this.showMessage('Your store is successfully registered');
+            this.showMessage('Your store is pending verification');
           })
           .catch((error) => console.log('Error: ', error));
       } else {
@@ -192,13 +244,13 @@ class RegisterStore extends Component {
           Image: 'data:image/png;base64, ' + base64,
           Client_Result_Photo_FileName: fileName,
           Buss_TimeZone: createOffset(new Date()),
-          Buss_IsApprove: 2
+          Buss_IsApprove: 2,
         });
         console.log('Image: ', data, access_token);
         await registerStoreImage(data, JSON.parse(access_token))
           .then((response) => {
             this.setState({isLoader: false});
-            this.showMessage('Your store is successfully registered');
+            this.showMessage('Your store is pending verification');
           })
           .catch((error) => {
             console.log('Error: ', error);
@@ -237,60 +289,29 @@ class RegisterStore extends Component {
     this.setState({[key]: value});
   };
 
-  weekdays = () => (
+  weekdays = (day) => (
     <View>
       <View style={styles.row}>
-        <Text style={styles.text}> Weekdays </Text>
+        <Text style={styles.text}> {day} </Text>
         <View style={styles.rowD}>
           <NoBackgroundButton
-            title={this.state.fromWeekD}
+            title={this.state[`f${day}`]}
             onPress={() =>
               this.setState({
                 isPickerVisible: true,
                 mode: 'time',
-                key: 'fromWeekD',
+                key: `f${day}`,
               })
             }
           />
           <Text> to </Text>
           <NoBackgroundButton
-            title={this.state.toWeekD}
+            title={this.state[`t${day}`]}
             onPress={() =>
               this.setState({
                 isPickerVisible: true,
                 mode: 'time',
-                key: 'toWeekD',
-              })
-            }
-          />
-        </View>
-      </View>
-    </View>
-  );
-
-  weekends = () => (
-    <View>
-      <View style={styles.row}>
-        <Text style={styles.text}> Weekends </Text>
-        <View style={styles.rowD}>
-          <NoBackgroundButton
-            title={this.state.fromWeekE}
-            onPress={() =>
-              this.setState({
-                isPickerVisible: true,
-                mode: 'time',
-                key: 'fromWeekE',
-              })
-            }
-          />
-          <Text> to </Text>
-          <NoBackgroundButton
-            title={this.state.toWeekE}
-            onPress={() =>
-              this.setState({
-                isPickerVisible: true,
-                mode: 'time',
-                key: 'toWeekE',
+                key: `t${day}`,
               })
             }
           />
@@ -442,8 +463,13 @@ class RegisterStore extends Component {
                   }
                 />
               </View>
-              {this.weekdays()}
-              {this.weekends()}
+              {this.weekdays('Monday')}
+              {this.weekdays('Tuesday')}
+              {this.weekdays('Wednesday')}
+              {this.weekdays('Thursday')}
+              {this.weekdays('Friday')}
+              {this.weekdays('Saturday')}
+              {this.weekdays('Sunday')}
               {this.dateTimePicker()}
               <View style={styles.buttonContainer}>
                 <Button title="Submit" onPress={() => this.submit()} />
