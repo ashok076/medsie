@@ -245,6 +245,7 @@ class Login extends Component {
       });
       await login(data)
         .then((res) => {
+          console.log("res: ", JSON.stringify(res))
           this.setState({access_token: res.access_token}, () =>
             this.checkUserType(),
           );

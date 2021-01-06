@@ -9,8 +9,8 @@
     <application
       android:name=".MainApplication"
       android:label="@string/app_name"
-      android:icon="@mipmap/medsie"
-      android:roundIcon="@mipmap/medsie"
+      android:icon="@mipmap/app_icon"
+      android:roundIcon="@mipmap/app_icon"
       android:allowBackup="false"
       android:usesCleartextTraffic="true"
       android:theme="@style/AppTheme"

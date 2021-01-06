@@ -46,6 +46,21 @@ export const login = async (data) => {
     });
 };
 
+export const verify = async (data) => {
+  console.log("API: ", data, API.VERIFY_API)
+  return axios(API.VERIFY_API, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    data,
+  })
+    .then((response) => response.data)
+    .catch((error) => {
+      throw error;
+    });
+};
+
 export const registerStore = async (data, access_token) => {
   return axios(API.REGISTER_STORE, {
     method: 'POST',

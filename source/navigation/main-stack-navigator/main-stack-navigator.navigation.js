@@ -13,6 +13,7 @@ import ReplyReview from '../../pages/reply-review/reply-review.page';
 import EditReply from '../../components/edit-reply/edit-reply.component';
 import SearchAndFilter from '../../pages/search-and-filter/search-and-filter.page'
 import FilterModal from '../../pages/filter-modal/filter-modal.page'
+import VerifyPage from '../../pages/verify/verify.page'
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ const MainStackNavigator = () => (
     <Stack.Screen name="Login" component={Login} />
     <Stack.Screen name="Home" component={DrawerNavigator} />
     <Stack.Screen name="Registration" component={Registration} />
+    <Stack.Screen name="VerifyPage" component={VerifyPage} />
     <Stack.Screen name="RegisterStore" component={RegisterStore} />
     <Stack.Screen name="ListPage" component={ListPage} />
     <Stack.Screen name="EditStore" component={EditStore} />

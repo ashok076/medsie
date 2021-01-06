@@ -61,7 +61,7 @@ class Registration extends Component {
               this.showMessage('Account created successfully');
               this.setState(
                 {isLoader: false, access_token: res.access_token},
-                () => this.checkUserType(),
+                () => this.checkUserType(emailid, confirmpassword, firstname, mobile),
               );
             })
             .catch((error) => {
@@ -148,7 +148,8 @@ class Registration extends Component {
   };
 
   saveInStorage = async (user_Type) => {
-    const {access_token} = this.state;
+    const {access_token, emailid, confirmpassword, firstname, mobile} = this.state;
+    console.log("Email Check: ", emailid, confirmpassword, firstname, mobile)
     const {navigation} = this.props;
     if (
       access_token !== null ||
@@ -157,13 +158,10 @@ class Registration extends Component {
     ) {
       try {
         const token = ['access_token', JSON.stringify(access_token)];
-        const session = ['session', JSON.stringify(true)];
+        const session = ['session', JSON.stringify(false)];
         const userType = ['user_type', JSON.stringify(user_Type)];
         await AsyncStorage.multiSet([token, session, userType]);
-        navigation.reset({
-          index: 0,
-          routes: [{name: 'Home'}],
-        });
+        navigation.navigate('VerifyPage', {email: emailid, password: confirmpassword, name: firstname, mobile: mobile})
         console.log('Async Access token error', token, session, userType);
       } catch (error) {
         console.log('Async Access token error', error);
