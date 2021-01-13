@@ -46,6 +46,17 @@ export const login = async (data) => {
     });
 };
 
+export const forgotPassword = async (data) => {
+  return axios(API.FORGOT_PASSWORD, {
+    method: 'POST',
+    data,
+  })
+    .then((response) => response.data)
+    .catch((error) => {
+      throw error;
+    });
+};
+
 export const verify = async (data) => {
   console.log("API: ", data, API.VERIFY_API)
   return axios(API.VERIFY_API, {

@@ -23,7 +23,11 @@ import InputTextIcon from '../../components/input-text-icon/input-text-icon.comp
 import Button from '../../components/button/button.component';
 import TouchText from '../../components/touch-text/touch-text.component';
 import Loader from '../../components/loader/loader.component';
-import {login, userType} from '../../configure/api/api.configure';
+import {
+  login,
+  userType,
+  forgotPassword,
+} from '../../configure/api/api.configure';
 import MedsieLogo from '../../assets/svg-files/medsie_logo.svg';
 import appConfig from '../../../app.json';
 import {verifyEmail} from '../../configure/miscellaneous/miscellaneous.configure';
@@ -245,7 +249,8 @@ class Login extends Component {
       });
       await login(data)
         .then((res) => {
-          console.log("res: ", JSON.stringify(res))
+          console.log('res: ', JSON.stringify(res));
+          this.setState({isLoader: false});
           this.setState({access_token: res.access_token}, () =>
             this.checkUserType(),
           );
@@ -265,6 +270,34 @@ class Login extends Component {
       routes: [{name: 'Home'}],
     });
     this.setState({isLoader: false});
+  };
+
+  validateEmail = async () => {
+    const {emailid} = this.state;
+    this.setState({isLoader: true});
+    console.log('Email: ', emailid);
+    if (emailid.length !== 0) {
+      if (!verifyEmail(emailid)) {
+        let data = JSON.stringify({
+          EmailID: emailid,
+          Type: 1,
+        });
+        console.log("Log FOr: ", data)
+        await forgotPassword(data).then((res) => {
+          console.log('Res forgot password ', res);
+          this.setState({isLoader: false});
+          this.showMessage(
+            'Link has been sent to your mentioned email address',
+          );
+        });
+      } else {
+        this.setState({isLoader: false});
+        this.showMessage('Please enter valid email address');
+      }
+    } else {
+      this.setState({isLoader: false});
+      this.showMessage('Please enter valid email address');
+    }
   };
 
   checkUserType = async () => {
@@ -357,7 +390,11 @@ class Login extends Component {
                 placeHolder="Email ID"
                 value={emailid}
                 keyboardType="email-address"
-                onChangeText={(emailid) => this.setState({emailid})}
+                onChangeText={(emailid) =>
+                  this.setState({emailid}, () =>
+                    console.log('Email: ', emailid),
+                  )
+                }
               />
             </View>
             <View style={styles.inputContainer}>
@@ -379,6 +416,7 @@ class Login extends Component {
               <TouchText
                 title="Forgot Password?"
                 txtstyle={styles.forgotPassword}
+                onPress={() => this.validateEmail()}
               />
             </View>
             <View style={styles.accountView}>

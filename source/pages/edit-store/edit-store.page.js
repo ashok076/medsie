@@ -99,20 +99,21 @@ class EditStore extends Component {
             type: val.Cat_Name,
           }),
         );
-        this.setState({catArray: arr}, () => this.getBusinessData());
+        this.setState({catArray: arr}, () => this.getBusinessData(JSON.parse(access_token)));
       })
       .catch((error) => console.log('Error: ', error));
   };
 
-  getBusinessData = async () => {
+  getBusinessData = async (access_token) => {
     const {data} = this.props.route.params;
     let apidata = JSON.stringify({
       Type: 3,
       Buss_PkId: data.Buss_PkId,
     });
-    await getBusinessData(apidata).then((response) =>
-      this.getData(response[0][0]),
-    );
+    await getBusinessData(apidata, access_token).then((response) => {
+      this.getData(response[0][0]);
+      console.log('RES: ', JSON.stringify(data));
+    });
   };
 
   getData = async (data) => {

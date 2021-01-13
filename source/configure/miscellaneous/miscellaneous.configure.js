@@ -12,13 +12,10 @@ const pad = (value) => {
 
 export const verifyEmail = (email) => {
   let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if (email.length > 0) {
-    if (reg.test(email) === false) {
-      return true;
-    }
-  } else {
+  if (reg.test(email) === true) {
     return false;
   }
+  return false;
 };
 
 export const verifyPassword = (password) => {

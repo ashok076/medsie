@@ -1,10 +1,10 @@
 import React from 'react';
 import qs from 'qs';
-import {SafeAreaView, View} from 'react-native';
-import {Text, Button} from 'react-native-paper';
+import Icons from 'react-native-vector-icons/AntDesign';
+import {SafeAreaView, View, TouchableOpacity} from 'react-native';
+import {Text, Button, Title} from 'react-native-paper';
 import {Toast} from 'native-base';
 
-import BackHeader from '../../components/back-header/back-header.component';
 import {verify} from '../../configure/api/api.configure';
 import {Color} from '../../assets/color/color.assets';
 
@@ -14,7 +14,7 @@ const VerifyPage = ({route: {params}, navigation}) => {
   const {email, password, name, mobile} = params;
   return (
     <SafeAreaView style={styles.container}>
-        <BackHeader title="Back" navigation={navigation} />
+      {backHeader(navigation, 'Back')}
       <View style={styles.innerContainer}>
         <Text style={styles.accountText}>
           An Email has been Sent to your Registered Email Address. Request you
@@ -32,6 +32,27 @@ const VerifyPage = ({route: {params}, navigation}) => {
   );
 };
 
+const backHeader = (navigation, title) => (
+    <TouchableOpacity
+      style={styles.titleView}
+      onPress={() => navigation.reset({index: 0, routes: [{name: 'Login'}]})}>
+      <View style={styles.rowObject}>
+        <View>
+          <Icons name="arrowleft" color={'rgb(33, 47, 60)'} size={24} />
+        </View>
+        <Title
+          style={[
+            styles.title,
+            {
+              color: 'rgb(33, 47, 60)',
+            },
+          ]}>
+          {title}
+        </Title>
+      </View>
+    </TouchableOpacity>
+  );
+
 const reverify = async (
   email,
   password,
@@ -47,10 +68,8 @@ const reverify = async (
     FirstName: name,
     MobileNumber: mobile,
   });
-  console.log('Data: ', data);
   await verify(data)
     .then((response) => {
-      console.log('Res: ', response);
       showMessage(
         'An Email has been Sent to your Registered Email Address. Request you to please verify your Email',
       );

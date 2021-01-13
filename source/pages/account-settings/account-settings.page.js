@@ -218,7 +218,7 @@ class AccountSettings extends Component {
       isLoader,
       phone,
       dob,
-      name,
+      name, 
       bussinessData,
       access_token,
     } = this.state;
