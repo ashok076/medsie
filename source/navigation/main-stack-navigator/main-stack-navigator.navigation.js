@@ -14,6 +14,7 @@ import EditReply from '../../components/edit-reply/edit-reply.component';
 import SearchAndFilter from '../../pages/search-and-filter/search-and-filter.page'
 import FilterModal from '../../pages/filter-modal/filter-modal.page'
 import VerifyPage from '../../pages/verify/verify.page'
+import ManagedStore from '../../pages/managed-store/managed-store.page'
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,7 @@ const MainStackNavigator = () => (
     <Stack.Screen name="EditReply" component={EditReply} />
     <Stack.Screen name="SearchAndFilter" component={SearchAndFilter} />
     <Stack.Screen name="FilterModal" component={FilterModal} />
+    <Stack.Screen name="ManagedStore" component={ManagedStore}/>
   </Stack.Navigator>
 );
 

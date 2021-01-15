@@ -58,7 +58,7 @@ export const forgotPassword = async (data) => {
 };
 
 export const verify = async (data) => {
-  console.log("API: ", data, API.VERIFY_API)
+  console.log('API: ', data, API.VERIFY_API);
   return axios(API.VERIFY_API, {
     method: 'POST',
     headers: {
@@ -255,6 +255,20 @@ export const reply = async (data, access_token) => {
 
 export const filterData = async (data) => {
   return axios(API.FILTER_DATA, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data,
+  })
+    .then((response) => response.data)
+    .catch((error) => {
+      throw error;
+    });
+};
+
+export const managedStore = async (data) => {
+  return axios(API.MANAGED_STORE, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

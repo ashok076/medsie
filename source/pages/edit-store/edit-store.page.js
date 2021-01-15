@@ -62,6 +62,8 @@ class EditStore extends Component {
     catId: 0,
     sellId: 0,
     buspkid: 0,
+    currentLatitude: 0,
+    currentLongitude: 0
   };
   constructor() {
     super();
@@ -73,24 +75,33 @@ class EditStore extends Component {
   componentDidMount() {
     const {navigation, route} = this.props;
     navigation.addListener('focus', () => {
-      this.getAccessToken();
+      this.getLatLong();
       this.setState(this.initialState);
     });
   }
 
-  getAccessToken = async () => {
-    let access_token = '';
-    try {
-      access_token = await AsyncStorage.getItem('access_token');
-      this.setState({access_token}, () => this.getCategory());
-    } catch (error) {
-      console.log(error);
-    }
+  getLatLong = async () => {
+    const value = await AsyncStorage.multiGet([
+      'latitude',
+      'longitude',
+      'access_token',
+    ]);
+    const currentLatitude = JSON.parse(value[0][1]);
+    const currentLongitude = JSON.parse(value[1][1]);
+    const access_token = JSON.parse(value[2][1]);
+    this.setState(
+      {
+        currentLatitude: currentLatitude,
+        currentLongitude: currentLongitude,
+        access_token: access_token,
+      },
+      () => this.getCategory(),
+    );
   };
 
   getCategory = async () => {
     const {access_token} = this.state;
-    await categoryStore(JSON.parse(access_token))
+    await categoryStore(access_token)
       .then((response) => {
         let arr = [];
         response[0].map((val) =>
@@ -99,20 +110,27 @@ class EditStore extends Component {
             type: val.Cat_Name,
           }),
         );
-        this.setState({catArray: arr}, () => this.getBusinessData(JSON.parse(access_token)));
+        this.setState({catArray: arr}, () => this.getBusinessData());
       })
       .catch((error) => console.log('Error: ', error));
   };
 
-  getBusinessData = async (access_token) => {
+  getBusinessData = async () => {
     const {data} = this.props.route.params;
+    console.log("Data  +++: ", this.props)
+    const { access_token, currentLatitude, currentLongitude } = this.state;
     let apidata = JSON.stringify({
       Type: 3,
       Buss_PkId: data.Buss_PkId,
+      Buss_Lat: currentLatitude,
+      Buss_Long: currentLongitude,
+      PageNumber: 1,
+      NoofRows: 50,
+      Buss_User_TimeZone: createOffset(new Date()),
     });
     await getBusinessData(apidata, access_token).then((response) => {
       this.getData(response[0][0]);
-      console.log('RES: ', JSON.stringify(data));
+      console.log('RES: ', apidata);
     });
   };
 

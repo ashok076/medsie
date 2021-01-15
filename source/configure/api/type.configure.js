@@ -17,5 +17,6 @@ export const API = {
   RATING: BASE_URL + 'api/Medsie/PostRatingMasterData',
   REPLY: BASE_URL + 'api/Medsie/AddUpdateReplyReviewTrans',
   FILTER_DATA: BASE_URL + 'api/Medsie/GetBusinessMasterFilterDetails',
-  FORGOT_PASSWORD: BASE_URL + 'api/Medsie/ForGotPassword'
+  FORGOT_PASSWORD: BASE_URL + 'api/Medsie/ForGotPassword',
+  MANAGED_STORE: BASE_URL + 'api/Medsie/GetBusinessMasterByUserID'
 };

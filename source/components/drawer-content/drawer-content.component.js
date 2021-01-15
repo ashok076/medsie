@@ -82,8 +82,8 @@ class DrawerComponent extends Component {
     } else if (userType === 2) {
       return (
         <DrawerItem
-          label="Viewed your Store"
-          onPress={() => navigation.navigate('ListPage', {id: 0, type: 3})}
+          label="Managed your store"
+          onPress={() => navigation.navigate('ManagedStore', {id: 0, type: 3})}
           labelStyle={styles.labelStyle}
         />
       );
@@ -100,14 +100,6 @@ class DrawerComponent extends Component {
         <DrawerContentScrollView>
           <View style={styles.drawerContent}>
             <Drawer.Section style={styles.drawerSection}>
-              <DrawerItem
-                icon={({color, size}) => <Shops width={size} height={size} />}
-                label="Featured"
-                onPress={() =>
-                  navigation.navigate('ListPage', {id: 1, type: 1})
-                }
-                labelStyle={styles.labelStyle}
-              />
               <DrawerItem
                 icon={({color, size}) => (
                   <MedicalShops width={size} height={size} />

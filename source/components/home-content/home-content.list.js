@@ -7,7 +7,7 @@ import WeedHome from "../../assets/svg-files/weed-shop-home.svg";
 import FeaturedHome from "../../assets/svg-files/featured-home.svg";
 
 export const categories = [
-    {id: 1, icon: <FeaturedHome height={55} width={55}/>, name: 'Recretional Shopa'},
+    // {id: 1, icon: <FeaturedHome height={55} width={55}/>, name: 'Recretional Shopa'},
     {id: 2, icon: <WeedHome height={55} width={55}/>, name: 'Medical Shops'},
     {id: 3, icon: <DeliveriesHome height={55} width={55}/>, name: 'Delivery'},
     {id: 4, icon: <DoctorHome height={55} width={55}/>, name: 'Doctor'},

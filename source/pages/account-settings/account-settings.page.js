@@ -10,7 +10,6 @@ import InputText from '../../components/input-text/input-text.component';
 import InputTextIcon from '../../components/input-text-icon/input-text-icon.component';
 import ModalPicker from '../../components/modal-picker/modal-picker.component';
 import Button from '../../components/button/button.component';
-import EditStoreSettings from '../../components/edit-store-settings/edit-store-settings.component';
 import {
   accountSettings,
   updateUserProfile,
@@ -280,7 +279,6 @@ class AccountSettings extends Component {
             <View style={styles.buttonContainer}>
               <Button title="Edit Settings" onPress={() => this.update()} />
             </View>
-            <EditStoreSettings data={bussinessData} navigation={navigation} />
             {this.dateTimePicker()}
           </View>
         </ScrollView>
